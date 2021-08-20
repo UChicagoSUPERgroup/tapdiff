@@ -1,0 +1,9 @@
+task 6: 1) p19_6 vs. 2) p38_6
+tap_list_1:
+[{'action': 'smart_refrigerator.openclose_door_position=false', 'trigger': 'smart_refrigerator.openclose_door_position=true', 'condition': []}]
+tap_list_2:
+[{'action': 'smart_refrigerator.openclose_door_position=false', 'trigger': 'smart_refrigerator.openclose_door_position=true', 'condition': ['smart_refrigerator.openclose_door_position=true', 'smart_refrigerator.openclose_door_position=false']}]
+unique_sps1:
+['smart_refrigerator.openclose_door_position=1 should never be active']
+unique_sps2:
+[]

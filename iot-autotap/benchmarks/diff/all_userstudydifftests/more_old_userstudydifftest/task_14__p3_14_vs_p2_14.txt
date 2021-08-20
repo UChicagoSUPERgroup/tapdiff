@@ -1,0 +1,5 @@
+task 14: 1) p3_14 vs. 2) p2_14
+unique_sps1:
+['location_sensor.home_a_family_member=0 should never happen when security_camera.siren_value=1 and front_door_lock.lockunlock_setting=1', 'location_sensor.home_a_family_member=0 should never happen when security_camera.siren_value=0 and front_door_lock.lockunlock_setting=1']
+unique_sps2:
+['fitbit.sleep_sensor_status=0 should never happen when front_door_lock.lockunlock_setting=0']

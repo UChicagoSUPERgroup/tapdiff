@@ -1,0 +1,5 @@
+task 2: 1) p28_2 vs. 2) p27_2
+unique_sps1:
+['bedroom_window.openclose_window_position=0 should never happen when living_room_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0', 'living_room_window.openclose_window_position=0 should never happen when bedroom_window.openclose_window_position=1 and bathroom_window.openclose_window_position=0', 'bedroom_window.openclose_window_position=0 should never happen when bathroom_window.openclose_window_position=0 and living_room_window.openclose_window_position=1', 'living_room_window.openclose_window_position=0 should never happen when bedroom_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0', 'bedroom_window.openclose_window_position=0 should never happen when bathroom_window.openclose_window_position=1 and living_room_window.openclose_window_position=0']
+unique_sps2:
+[]

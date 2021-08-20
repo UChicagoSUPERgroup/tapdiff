@@ -1,0 +1,357 @@
+<div class="init-loading" *ngIf="!PRGMNUMSDEFINED">Loading...</div>
+
+<!-- <div class="reminder-front-box" *ngIf="(!isLoading) && (!isError) && (!READY) && PRGMNUMSDEFINED">
+  <div class="reminder-front">You will see a comparison of two programs side-by-side. Use the dropdown menus at the top to select the two programs.
+    <br><br>
+    Rules that are <span class="emphasis">only</span> in the <span style="background:var(--del-highlight)">left</span>
+    or the <span style="background:var(--add-highlight)">right</span> program are highlighted.</div>
+  <div class="ready-button">
+    <button mat-raised-button (click)="setReady(); $event.stopPropagation();">
+      I'm ready!
+    </button>
+  </div>
+  <div class='reminder-front-disclaimer'>
+    After clicking the button above, you will not see this page again until the next task.</div>
+</div> -->
+
+<div *ngIf="PRGMNUMSDEFINED && READY" class="rules-box"
+  [ngClass]="{'hide': urlParams['tutorial']=='true' && this.INTRO_DONE<3}">
+  <div class="row">
+    <div class="column top-select-container border-right">
+      <mat-label class="top-label-for-dropdown top-label">Program
+        on Left</mat-label>
+      <!-------------------------- left select start -------------------------->
+      <div class="prog-dropdown">
+        <mat-form-field *ngIf="VERSION_1!=0">
+          <mat-label *ngIf="urlParams['dropdown-label'] =='true'">(Select a program)</mat-label>
+          <mat-select [(ngModel)]='VERSION_1' (change)="updateDiff($event)" [disabled]="VERSION_1==0">
+            <mat-option *ngFor="let i of PROGRAMNUMS" [value]="i">
+              <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="VERSION_1==0" class="orig-prgm" style="margin-left:0; padding: 0.25em 0; font-size: 2em">Original
+          Program</div>
+        <div class="color-labels">
+          <mat-label class="underneath key">(</mat-label>
+          <div class="del-underneath key">- Rules only in the left program</div>
+          <mat-label class="underneath key" style='margin-right:0.7em'>)</mat-label>
+        </div>
+      </div>
+      <!-------------------------- left select end -------------------------->
+      <!-- <div id="question-button-div" class="row">
+          <button mat-raised-button id="question-button" (click)="openHelp()">
+            <mat-icon class="help-icon">help</mat-icon>&nbsp; &nbsp; More info&nbsp; &nbsp;
+          </button>
+        </div> -->
+    </div>
+    <div class="column top-select-container">
+      <mat-label class="top-label-for-dropdown top-label">Program
+        on Right</mat-label>
+      <!-------------------------- right select start  -------------------------->
+      <div class="prog-dropdown">
+        <mat-form-field id="rightdropdown" *ngIf="PROGRAMNUMS.length>2">
+          <mat-label *ngIf="urlParams['dropdown-label'] =='true'">(Select a program)</mat-label>
+          <mat-select [ngClass]="{'selecting-invalid': VERSION_2 < 0}" (change)="updateDiff($event)"
+            [(ngModel)]='VERSION_2'>
+            <mat-option
+              *ngFor="let i of (urlParams['dropdown-style'] == 'none' ? [-2].concat(PROGRAMNUMS.slice(1)) : PROGRAMNUMS.slice(1))"
+              [value]="i">
+              <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="PROGRAMNUMS.length<=2" class="orig-prgm" style="margin-left:0; padding: 0.25em 0; font-size: 2em">
+          {{this.dropdownValue(VERSION_2)}}</div>
+        <div class="color-labels">
+          <mat-label class="underneath key">(</mat-label>
+          <div class="add-underneath key">+ Rules only in the right program</div>
+          <mat-label class="underneath key" style='margin-right:0.7em'>)</mat-label>
+        </div>
+      </div>
+      <!-------------------------- right select end -------------------------->
+      <!-- <div id="question-button-div" class="row">
+          <button mat-raised-button id="question-button" (click)="openHelp()">
+            <mat-icon class="help-icon">help</mat-icon>&nbsp; &nbsp; More info&nbsp; &nbsp;
+          </button>
+        </div> -->
+    </div>
+  </div>
+
+  <!-- <div class="labels-and-button" *ngIf="!isLoading">
+    <div class="question-button-div">
+      <button mat-raised-button class="question-button"
+        matTooltip="A text summary of the tutorial (from the survey) about how to use this interface."
+        aria-label="Button that displays a tooltip when focused or hovered over" (click)="openHelp()">
+        <mat-icon class="help-icon">help</mat-icon>
+      </button>
+    </div>
+  </div> -->
+
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="error-info" *ngIf="isError">Oops, we're experiencing some technical difficulties,<br> please report this
+    to the researchers.</div>
+
+  <div id="entireprgm">
+    <div class="row" *ngIf="(!isLoading) && (!isError)">
+      <div id="prgmkey" class="column border-right if-while-then">
+        <div class="rule-blocks">
+          <mat-icon class='add-remove-tags'></mat-icon>
+          <div class="tap">
+            <div class='rule-block' style="font-size:40px">
+              If...
+            </div>
+            <div class='rule-block' style="font-size:40px">
+              while...
+            </div>
+            <div class='rule-block' style="font-size:40px">
+              then...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!(VERSION_2 != null && VERSION_2 >= 0) && READY" class="column if-while-then">
+        <div style="display:block; text-align:center; font-size:24px">Please use the dropdown menus above to select programs for comparison.</div>
+      </div>
+      <div *ngIf="VERSION_2 != null && VERSION_2 >= 0" class="column if-while-then">
+        <div class="rule-blocks">
+          <mat-icon class='add-remove-tags'></mat-icon>
+          <div class="tap">
+            <div class='rule-block' style="font-size:40px">
+              If...
+            </div>
+            <div class='rule-block' style="font-size:40px">
+              while...
+            </div>
+            <div class='rule-block' style="font-size:40px">
+              then...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="actualprgm" class="row sdiff-item" *ngFor="let rulePair of PROGRAM_TABLE">
+      <!-- ================================= LEFT ======================================= -->
+      <div id="leftprgm" class="column border-right" *ngIf="rulePair.left; let rule">
+        <div *ngIf="rule.status==-1" class='del-rule-display'>
+          <div class="del-rule-blocks">
+            <mat-icon class='add-remove-tags'>remove</mat-icon>
+            <div class="tap">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+                <div *ngIf="i > 2 && rule.descriptions[i] != ''" class="tiny-and">and</div>
+                <div *ngIf="i < 2"></div>
+                <div class="del-rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="del-underneath">
+                  {{showClause(rule.descriptions[i])}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rule.status==0" class='rule-display'>
+          <div class="rule-blocks">
+            <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+            <div class="tap">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+                <div *ngIf="i > 2 && rule.descriptions[i] != ''" class="tiny-and">and</div>
+                <div *ngIf="i < 2"></div>
+                <div class="rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="underneath">
+                  {{showClause(rule.descriptions[i])}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Placeholders for added rules (those in PROGRAM_2 but not in PROGRAM_1) -->
+        <div *ngIf="rule.status==101" class='add-rule-placeholder-display'>
+          <div class="rule-blocks" style="visibility:hidden">
+            <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+            <div class="tap" style="visibility:hidden">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block" style="visibility:hidden">
+                <div class="rule-icon" style="visibility:hidden">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="underneath" style="visibility:hidden">
+                  {{showClause(rule.descriptions[i])}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rule.status==21" class='del-rule-display'>
+          <div class="change-del-rule-blocks">
+            <mat-icon class='add-remove-tags'>remove</mat-icon>
+            <div class="tap">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+                <div *ngIf="i > 2 && rule.descriptions[i] != ''" class="tiny-and">and</div>
+                <div *ngIf="i < 2"></div>
+                <div *ngIf="rule.statuses[i]==-1">
+                  <div class='del-rule-block'>
+                    <div class="del-rule-icon">
+                      <mat-icon>{{rule.icons[i]}}</mat-icon>
+                    </div>
+                    <div class="del-underneath">
+                      {{showClause(rule.descriptions[i])}}
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="rule.statuses[i]==0">
+                  <div class="rule-icon">
+                    <mat-icon>{{rule.icons[i]}}</mat-icon>
+                  </div>
+                  <div class="underneath">
+                    {{showClause(rule.descriptions[i])}}
+                  </div>
+                </div>
+                <div *ngIf="rule.statuses[i]==1">
+                  <div class="add-rule-icon">
+                    <mat-icon>{{rule.icons[i]}}</mat-icon>
+                  </div>
+                  <div class="add-underneath">
+                    {{showClause(rule.descriptions[i])}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ================================= RIGHT ======================================= -->
+      <div id="rightprgm" class="column" *ngIf="VERSION_2 != null && VERSION_2 >= 0 && rulePair.right; let rule">
+        <div *ngIf="rule.status==102" class='del-rule-placeholder-display'>
+          <div class="rule-blocks" style="visibility:hidden">
+            <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+            <div class="tap" style="visibility:hidden">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block" style="visibility:hidden">
+                <div class="rule-icon" style="visibility:hidden">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="underneath" style="visibility:hidden">
+                  {{showClause(rule.descriptions[i])}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rule.status==0" class='rule-display'>
+          <div class="rule-blocks">
+            <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+            <div class="tap">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+                <div *ngIf="i > 2 && rule.descriptions[i] != ''" class="tiny-and">and</div>
+                <div *ngIf="i < 2"></div>
+                <div class="rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="underneath">
+                  {{showClause(rule.descriptions[i])}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rule.status==1" class='add-rule-display'>
+          <div class="add-rule-blocks">
+            <mat-icon class='add-remove-tags'>add</mat-icon>
+            <div class="tap">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+                <div *ngIf="i > 2 && rule.descriptions[i] != ''" class="tiny-and">and</div>
+                <div *ngIf="i < 2"></div>
+                <div class="add-rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="add-underneath">
+                  {{showClause(rule.descriptions[i])}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rule.status==22" class='add-rule-display'>
+          <div class="change-add-rule-blocks">
+            <mat-icon class='add-remove-tags'>add</mat-icon>
+            <div class="tap">
+              <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+                <div *ngIf="i > 2 && rule.descriptions[i] != ''" class="tiny-and">and</div>
+                <div *ngIf="i < 2"></div>
+                <div *ngIf="rule.statuses[i]==-1">
+                  <div class="del-rule-icon">
+                    <mat-icon>{{rule.icons[i]}}</mat-icon>
+                  </div>
+                  <div class="del-underneath">
+                    {{showClause(rule.descriptions[i])}}
+                  </div>
+                </div>
+                <div *ngIf="rule.statuses[i]==0">
+                  <div class="rule-icon">
+                    <mat-icon>{{rule.icons[i]}}</mat-icon>
+                  </div>
+                  <div class="underneath">
+                    {{showClause(rule.descriptions[i])}}
+                  </div>
+                </div>
+                <div *ngIf="rule.statuses[i]==1">
+                  <div class="add-rule-block">
+                    <div class="add-rule-icon">
+                      <mat-icon>{{rule.icons[i]}}</mat-icon>
+                    </div>
+                    <div class="add-underneath">
+                      {{showClause(rule.descriptions[i])}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column should-invisible" *ngIf="VERSION_2 == null || VERSION_2 < 0">
+        <!-- if explain text is needed. <div *ngIf></div> -->
+        <div class='fake-rule-display' style="visibility:hidden">
+          <div class="rule-blocks">
+            <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+            <div class="tap">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class='buffer'></div> -->
+<div class="tutorial-reminder" *ngIf="urlParams['tutorial']=='true'">
+  <div *ngIf="this.INTRO_DONE == 1 && !this.tutorialStageComplete(1)">
+    Click on "Task instructions" to see what the example task asks you to do.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 2 && !this.tutorialStageComplete(2)">
+    To continue, read the task instructions and then close it.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 3 && !this.tutorialStageComplete(3)">
+    To continue, use the dropdown menu to select Program #1.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 4 && !this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    To continue, use the interface to get the correct answer, and submit it at the bottom of the page.
+  </div>
+  <div *ngIf="this.INTRO_DONE > 4 && this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    Once the tutorial concludes, you may close this tab and return to the study in the previous tab.
+  </div>
+</div>
+
+<div id="scroll-anchor"></div>
+
+<div class="row">
+  <app-save-bar class="save-select-container" [hidden]="isLoading" *ngIf="PRGMNUMSDEFINED && READY"
+    [PROGRAMNUMS_SETTER]="PROGRAMNUMS" [URL_PARAMS]="urlParams" [PROGRAMS_SETTER]="PROGRAMS"
+    [SPECIAL_PARAMS]="tutorialParams" [SHOW_PRGMS_SUBMIT]="VERSION_2 != -2">
+  </app-save-bar>
+</div>

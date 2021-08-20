@@ -1,0 +1,470 @@
+@import './diffcom-all.css';
+@import './diffcom-savebar.css';
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 15px;
+  height: auto;
+}
+
+.column.top-labels,
+.column.current {
+  text-align: left;
+  width: 240px;
+}
+
+.column.radiobuttons {
+  padding-top: 12px;
+  width: auto;
+}
+
+div.tap {
+  width: 90%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  overflow: scroll;
+}
+
+.row.bottom-of-top {
+  /* border-bottom:thin solid var(--border-color); */
+  padding-bottom: 0;
+}
+
+.row.prgm {
+  height: auto;
+  padding: 0.5% 17%;
+  margin-bottom: 10%; /*go with save-bar height.*/
+  /* orig 280px */
+  /* border-bottom: thin solid var(--border-color); */
+  overflow: auto;
+}
+
+.top {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: var(--main-color);
+  font-family: Lato, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.back {
+  float: left;
+  margin-left: 30px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.text {
+  font-family: Lato, sans-serif;
+  font-size: 3vw;
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+div.title {
+  float: left;
+}
+
+.container {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: var(--main-color);
+  font-family: Lato, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  z-index: 999 !important;
+}
+
+h1 {
+  margin-left: 5px;
+  font-size: 48px;
+  color: #fff;
+}
+
+p {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #000000;
+}
+
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+.container mat-icon {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  float: left;
+  margin: 21px 19px 0px 24px;
+}
+
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+/* how to list the rules */
+mat-list {
+  padding-top: 0 !important;
+  /* overflow: auto; */
+}
+
+mat-list-item {
+  height: auto !important;
+  border-bottom: thin solid var(--list-border-color);
+}
+
+mat-list-item:hover {
+  background-color: var(--lighter-color);
+}
+
+mat-list-item:last-child {
+  border-bottom: none;
+}
+
+:host /deep/ .mat-list-item-content {
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+mat-label {
+  font-size: 25px;
+}
+
+mat-label.top-label,
+mat-label.current-label {
+  color: var(--border-color);
+  font-size: 25px;
+  display: inline-block;
+  text-align: left;
+}
+
+.top-labels{
+  padding: 15px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* mat-label.current-label {
+  display: block;
+} */
+
+mat-label.save-label {
+  color: var(--border-color);
+  font-size: 30px;
+  display: inline-block;
+  text-align: left;
+  padding-bottom: 0.5vw;
+  padding-right: 100px;
+}
+
+.top-select-container {
+  height: auto;
+  justify-content: space-around;
+  padding: 1vw 22% 0 22%;
+  /* text-align: center; */
+}
+
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+mat-radio-button {
+  height: auto !important;
+  font-size: 24px;
+}
+
+mat-radio-group {
+  padding-left: 0.5em;
+}
+
+:host /deep/ .mat-radio-label-content {
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+::ng-deep mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  opacity: 0.5 !important;
+  /*click effect color change*/
+  background-color: var(--darker-color) !important;
+}
+
+::ng-deep mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: var(--main-color) !important;
+  /*inner circle color change*/
+}
+
+::ng-deep mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: var(--darker-color) !important;
+  /*outer ring color change*/
+}
+
+
+/* ----------------------------------------------- */
+
+
+.mod-rule-display:hover,
+.change-rule-display:hover{
+  background: antiquewhite;
+}
+
+.autowidth{
+  width: auto;
+}
+
+.labels-and-button{
+  width: 270px;
+  padding:25px 5px;
+}
+
+.label-row{
+  padding: 10px;
+}
+
+.loading{
+  width: 140px;
+  margin: 60px auto;
+  font-size: 30px;
+}
+
+
+/* -----------for dropdown and blank right ---------------------------------- */
+.sdiff-item .column.should-invisible{
+  border-bottom: transparent;
+  visibility: hidden;
+}
+
+.sdiff-item .column.should-invisible :first-child{
+  border-bottom: transparent;
+  visibility: visible;
+}
+
+.prog-dropdown{
+  display: inline-block;
+  /* width: 346px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:host /deep/ .prog-dropdown .mat-select {
+  width: 100%;
+  font-size: 2.3vw;
+  padding: 0px 2px 2px 0px;
+  margin-right: 0px;
+}
+
+:host /deep/ .prog-dropdown .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 25px; /*selected text size*/
+  float: left;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-label-wrapper mat-label{
+  font-size: 24px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-wrapper {
+  padding-top: 0px;
+  background: whitesmoke;
+  border-radius: 20px;
+  border-width: 10px;
+  border-right: 20px solid whitesmoke;
+  border-left: 20px solid whitesmoke;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 10px;
+  padding-bottom: 0em;
+  height: 3vw;
+}
+
+:host /deep/ .prog-dropdown mat-form-field{
+  padding-right: 20px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-type-mat-select .mat-form-field-label{
+  top: 30px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-underline{
+  height: 1.2px;
+  visibility: hidden;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-underline .mat-form-field-ripple{
+  display: none;
+}
+
+:host /deep/ .prog-dropdown .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid;
+  margin: 0 4px;
+}
+
+.none-option-text{
+  color: gray;
+}
+
+:host /deep/ .prog-dropdown mat-select.selecting-invalid .mat-select-value-text {
+  color: gray;
+}
+
+.fake-rule-display{
+  padding: 3px 16px 5px 6px;
+  display: block;
+  height:100%;
+}
+/* -----------for dropdown and blank right END ---------------------------------- */
+
+
+/*------------------ for things around dropdown ---------------------------*/
+.dropdown-top-select-container .top-label-wrapper{
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.dropdown-top-select-container .current-label-wrapper{
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.dropdown-top-select-container{
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.dropdown-top-select-container .top-legends{
+  display: inline-block;
+}
+
+.dropdown-top-select-container .question-button-div{
+  display: inline-block;
+}
+
+/* ----- help button ----- */
+button.question-button:hover {
+  background-color: rgb(0, 163, 172);
+}
+
+.question-button-div{
+  margin: 10px;
+  text-align: center;
+  display: inline;
+}
+
+.question-button{
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 14px;
+  padding: 1px 10px;
+}
+
+.round-button.question-button-div{
+  margin: 10px;
+  text-align: center;
+}
+
+.round-button.question-button{
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 16px;
+  padding: 6px;
+}
+
+
+.dropdown-top-select-container .labels-and-button{
+  width: auto;
+  padding:10px 5px;
+}
+
+.dropdown-top-select-container .question-button-div{
+  margin: 10px;
+  text-align: center;
+}
+
+
+
+.dropdown-top-select-container .question-button-div.round-button .question-button{
+  display: inline;
+  background: #00B8C0;
+  font-size: 16px;
+  padding: 3px;
+  border-radius: 100px;
+  bottom: 4px;
+}
+
+.dropdown-top-select-container .question-button-div .help-icon{
+  padding: 0px 5px 0px 5px;
+}
+
+.dropdown-top-select-container .question-button-div.round-button .help-icon{
+  padding: 0px 0px 0px 0px;
+}
+
+:host /deep/ .dropdown-top-select-container .question-button-div.round-button button{
+  min-width: 0px;
+  min-height: 0px;
+  line-height: 0px;
+}
+
+:host /deep/ .dropdown-top-select-container .question-button-div.round-button mat-icon.help-icon{
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+}
+
+
+/*------------------ for things around dropdown ---------------------------*/
+
+

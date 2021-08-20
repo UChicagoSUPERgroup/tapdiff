@@ -1,0 +1,5 @@
+task 3: 1) p25_3 vs. 2) p40_3
+tap_list_1:
+[{'action': 'smart_oven.lockunlock_setting=true', 'trigger': 'smart_oven.oven_temperature_temperature>100', 'condition': ['smart_oven.openclose_door_position=false']}]
+tap_list_2:
+[{'action': 'smart_oven.lockunlock_setting=true', 'trigger': 'smart_oven.oven_temperature_temperature=100', 'condition': ['location_sensor.kitchen_alice=false']}]

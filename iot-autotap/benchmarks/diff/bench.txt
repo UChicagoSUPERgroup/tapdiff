@@ -1,0 +1,60 @@
+10_5_2_compare (4/19/19)
+real    1m15.389s
+user    0m35.474s
+sys     0m39.914s
+
+10_5_2 (4/20/19 w/ 'never'-only optimizations)
+real    0m17.112s
+user    0m16.323s
+sys     0m0.116s
+
+10_5_2 (+ 'never' optimizations based on 'always')
+real    0m14.445s
+user    0m14.383s
+sys     0m0.056s
+
+10_5_2 (4/28/19 w/ always-only op and organized order of input guesses)
+real    0m17.867s
+user    0m17.605s
+sys     0m0.105s
+
+10_5_2 (5/1: + diff rules first)
+real    0m13.461s
+user    0m13.237s
+sys     0m0.117s
+
+12) (4/19/19 -- interrupted XP)
+real    9m48.406s
+user    9m47.821s
+sys     0m0.528s
+
+12) (4/20/20 w/ 'never'-only optimizations)
+real    4m34.361s
+user    4m33.776s
+sys     0m0.464s
+
+12) (+ 'never' optimizations based on 'always')
+real    3m42.402s
+user    3m41.956s
+sys     0m0.397s
+
+12) (+ 'always' optimizations, and sorting guesses to check)
+real    3m8.450s
+user    3m2.985s
+sys     0m0.809s
+
+real    3m22.733s
+user    3m16.950s
+sys     0m0.892s
+
+12) (5/1: + diff rules first)
+real    3m11.749s
+user    3m7.050s
+sys     0m0.852s
+
+real    2m55.034s
+user    2m54.811s
+sys     0m0.212s
+* outputted ['d10.onoff=1 and d30.onoff=1 should never occur together'] for the 2nd graph which isn't even true... it should be d10 & d30 & !d31 never, and the former would not be true as an output
+
+**double check correctness with small examples: dif_dev_0 seems right**

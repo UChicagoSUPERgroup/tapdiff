@@ -1,0 +1,10 @@
+task 16: 1) p2_16 vs. 2) p1_16
+tap_list_1:
+[{'action': 'smart_tv.power_onoff_setting=false', 'condition': ['smart_tv.power_onoff_setting=true'], 'trigger': 'fitbit.sleep_sensor_status=false'}]
+tap_list_2:
+[{'action': 'smart_tv.power_onoff_setting=false', 'condition': ['fitbit.sleep_sensor_status=true', 'fitbit.heart_rate_sensor_bpm<75'], 'trigger': 'smart_tv.power_onoff_setting=true'}]
+task 16: 1) p2_16 vs. 2) p1_16
+tap_list_1:
+[{'trigger': 'fitbit.sleep_sensor_status=false', 'condition': ['smart_tv.power_onoff_setting=true'], 'action': 'smart_tv.power_onoff_setting=false'}]
+tap_list_2:
+[{'trigger': 'smart_tv.power_onoff_setting=true', 'condition': ['fitbit.sleep_sensor_status=true', 'fitbit.heart_rate_sensor_bpm<75'], 'action': 'smart_tv.power_onoff_setting=false'}]

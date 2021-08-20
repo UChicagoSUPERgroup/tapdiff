@@ -1,0 +1,5 @@
+task 9: 1) p29_9 vs. 2) p19_9
+unique_sps1:
+['location_sensor.home_anyone=1 should never happen when thermostat.thermostat_temperature=1', 'location_sensor.home_anyone=1 should never happen when thermostat.thermostat_temperature=0']
+unique_sps2:
+['thermostat.ac_onoff_setting=1 should never happen when location_sensor.home_anyone=1 and thermostat.thermostat_temperature=0', 'thermostat.ac_onoff_setting=1 should never happen when location_sensor.home_anyone=1 and thermostat.thermostat_temperature=1']

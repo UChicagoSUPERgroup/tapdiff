@@ -1,0 +1,9 @@
+task 14: 1) p18_14 vs. 2) p30_14
+tap_list_1:
+[{'condition': ['fitbit.sleep_sensor_status=false'], 'trigger': 'front_door_lock.lockunlock_setting=false', 'action': 'front_door_lock.lockunlock_setting=true'}, {'condition': ['front_door_lock.lockunlock_setting=false'], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'front_door_lock.lockunlock_setting=true'}]
+tap_list_2:
+[{'condition': [], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'front_door_lock.lockunlock_setting=true'}]
+unique_sps1:
+['front_door_lock.lockunlock_setting=0 and fitbit.sleep_sensor_status=0 should never occur together']
+unique_sps2:
+['fitbit.sleep_sensor_status=0 should never happen when front_door_lock.lockunlock_setting=1']

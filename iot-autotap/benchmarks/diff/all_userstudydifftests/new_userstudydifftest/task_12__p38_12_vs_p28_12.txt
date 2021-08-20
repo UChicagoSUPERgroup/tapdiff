@@ -1,0 +1,5 @@
+task 12: 1) p38_12 vs. 2) p28_12
+tap_list_1:
+[]
+tap_list_2:
+[{'trigger': 'roomba.power_onoff_setting=true', 'condition': ['bathroom_window.openclose_curtains_position=true', 'bedroom_window.openclose_curtains_position=true', 'living_room_window.openclose_curtains_position=true'], 'action': 'roomba.power_onoff_setting=false'}]

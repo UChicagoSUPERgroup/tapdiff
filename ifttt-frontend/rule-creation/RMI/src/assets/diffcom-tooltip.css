@@ -1,0 +1,138 @@
+/* Tooltip container */
+
+.tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+/* https://www.w3schools.com/howto/howto_css_tooltip.asp */
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 650px;
+  margin-left: -325px;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 555;
+  opacity: 0;
+
+  top: 135%;
+  left: 50%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+/*----------------------------------------------*/
+/* Tooltip container */
+
+:host /deep/ .prog-dropdown .tooltip .mat-input-infix{
+  height: 100%;
+}
+
+.prog-dropdown .tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+/* https://www.w3schools.com/howto/howto_css_tooltip.asp */
+
+.prog-dropdown .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 650px;
+  margin-left: -325px;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 555;
+  opacity: 0;
+
+  top: 123%;
+  left: 50%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.prog-dropdown .tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+
+.prog-dropdown .tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.tooltiptext {
+  max-height: 65vh;
+  overflow: auto;
+  transition: opacity 0.3;
+  transition-delay: 0.3s;
+}
+
+.tooltip:hover {
+  transition: opacity 0.3s;
+}
+
+/* .tooltip-right {
+  top: -5px;
+  left: 125%;
+}
+
+.tooltip-top {
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip-left {
+  top: -5px;
+  bottom: auto;
+  right: 128%;
+} */
+
+
+/* .tooltip-right {
+  top: -5px;
+  left: 125%;
+}
+
+.tooltip-top {
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip-left {
+  top: -5px;
+  bottom: auto;
+  right: 128%;
+} */

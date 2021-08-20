@@ -1,0 +1,9 @@
+task 16: 1) p23_16 vs. 2) p2_16
+tap_list_1:
+[{'condition': ['smart_tv.power_onoff_setting=true'], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'smart_tv.power_onoff_setting=false'}]
+tap_list_2:
+[{'condition': ['smart_tv.power_onoff_setting=true'], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'smart_tv.power_onoff_setting=false'}]
+unique_sps1:
+[]
+unique_sps2:
+[]

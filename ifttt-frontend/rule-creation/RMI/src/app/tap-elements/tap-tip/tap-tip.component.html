@@ -1,0 +1,43 @@
+<div>
+  <mat-list *ngIf="(NEVER_COLLAPSE || isRulesboxShowed) && RULES; let rules;">
+    <mat-list-item>
+      <div class="rule-display if-while-then">
+        <div class="rule-blocks">
+          <div class="tap">
+            <div class='rule-block' style="font-size:32px">
+              If...
+            </div>
+            <div class='rule-block' style="font-size:32px">
+              while...
+            </div>
+            <div class='rule-block' style="font-size:32px">
+              then...
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-list-item>
+    <mat-list-item class="rule-display" *ngFor="let rule of rules; let j = index; last as last">
+      <div class="rule-blocks">
+        <div class="tap">
+          <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+            <div class="rule-icon">
+              <mat-icon>{{rule.icons[i]}}</mat-icon>
+            </div>
+            <div class="underneath">
+              {{rule.descriptions[i]}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+  <div *ngIf="RULES && (!NEVER_COLLAPSE)" class="rulebox-button-wrapper">
+    <button class="rulebox-show-button" mat-raised-button (click)="toggleRuleboxShowed(); $event.stopPropagation();">
+      <mat-icon class="rulebox-show-button-icon">{{(!isRulesboxShowed) ? 'expand_more':'expand_less'}}</mat-icon>
+        {{(!isRulesboxShowed) ? 'Click to expand program preview':'Collapse program preview'}}
+      <mat-icon class="rulebox-show-button-icon">{{(!isRulesboxShowed) ? 'expand_more':'expand_less'}}</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="!RULES || RULES.length == 0">Program preview is unavailable</div>
+</div>

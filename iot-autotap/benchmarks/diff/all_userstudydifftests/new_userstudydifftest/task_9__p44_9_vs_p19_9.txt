@@ -1,0 +1,5 @@
+task 9: 1) p44_9 vs. 2) p19_9
+tap_list_1:
+[{'action': 'thermostat.ac_onoff_setting=true', 'trigger': 'thermostat.current_temperature_temperature>75', 'condition': ['location_sensor.home_nobody=false']}]
+tap_list_2:
+[{'action': 'thermostat.thermostat_temperature=72', 'trigger': 'thermostat.ac_onoff_setting=true', 'condition': ['location_sensor.home_anyone=true']}]

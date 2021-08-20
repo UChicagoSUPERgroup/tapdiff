@@ -1,0 +1,1097 @@
+@import '../../assets/diffcom-all.css';
+@import '../../assets/diffcom-tooltip.css';
+@import '../../assets/diffcom-savebar.css';
+
+* {
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
+
+  --main-color: rgb(0, 153, 255);
+  --lighter-color: #ccebff;
+  --darker-color: #008ae6;
+  /* --main-color: #ff9933;
+    --darker-color: #ff8c1a; */
+
+  --border-color: gray;
+  --list-border-color: lightgrey;
+
+  --del-background: #ffeef0;
+  --del-highlight: #fdb8c0;
+  --add-background: #e6ffed;
+  --add-highlight: #acf2bd;
+
+  --mod-background: #fffbee;
+  --mod-highlight: #fdfcb8;
+
+  --ani-time1: 1s;
+  --ani-time2: 0.4s;
+  --ani-time3: 0.2s;
+
+  --bar-height: 50px;
+  --half-bar-height: calc(var(--bar-height)/2);
+  --circle-radius: 0.3em;
+  --circle-offset: calc(var(--circle-radius)/-2);
+  --connector-lines: 1px dashed gray;
+}
+
+/* ------------------ override toolbar ---------------- */
+:host /deep/ .mat-select-trigger {
+  min-width: 16.5vw;
+  transition: var(--ani-time2);
+}
+
+:host /deep/ .float-control-flow .mat-select-trigger {
+  min-width: 10vw;
+}
+
+:host /deep/ .mat-form-field-infix {
+  /* This includes the line at the bottom of the dropdown menu */
+  width: 17vw !important;
+  transition: var(--ani-time2);
+}
+
+:host /deep/ .float-control-flow .mat-form-field-infix {
+  /* This includes the line at the bottom of the dropdown menu */
+  width: 10vw !important;
+}
+
+/* ------------------ override toolbar ---------------- */
+
+
+.init-row {
+  margin-top: 20px;
+}
+
+.current-row {
+  margin-top: 5px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: auto;
+}
+
+.column.top-labels {
+  text-align: left;
+  width: auto;
+  font-size: 25px;
+}
+
+.column.radiobuttons {
+  /* padding-top: 4px; */
+  width: auto;
+}
+
+.col-node.event,
+.col-node.state,
+.col-node,
+.col-node.last {
+  width: 20%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.col-node.event {
+  width: 14%;
+}
+
+.col-node.state {
+  width: 24%;
+}
+
+.col-node.last {
+  width: 38%;
+}
+
+.col-node.last-event {
+  width: 36%;
+}
+
+.col-node.last-state {
+  width: 63%;
+}
+
+.col-node.last-merge-event {
+  width: 36%;
+}
+
+.col-node.last-merge-state {
+  width: 63%;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  overflow: scroll;
+}
+
+.row.node {
+  width: 100%;
+  height: auto;
+}
+
+.row.timeline {
+  margin: 2em 10%;
+  width: 80%;
+  height: auto;
+  /* overflow: auto; */
+  /* padding: 0.5% 25%;
+    border-bottom: thin solid var(--border-color); */
+  margin-bottom: 5em;
+}
+
+.top {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: var(--main-color);
+  font-family: Lato, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.back {
+  float: left;
+  margin-left: 30px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.text {
+  font-family: Lato, sans-serif;
+  font-size: 3vw;
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+div.title {
+  float: left;
+}
+
+.container {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: var(--main-color);
+  font-family: Lato, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  z-index: 999 !important;
+}
+
+h1 {
+  margin-left: 5px;
+  font-size: 48px;
+  color: #fff;
+}
+
+p {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #000000;
+}
+
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+/* icons in the rules */
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+mat-icon {
+  font-size: 20px;
+  height: 20px;
+  width: 22px;
+  vertical-align: middle;
+}
+
+.transition mat-icon {
+  font-size: 100px;
+  width: 50%;
+  margin: 0 25%;
+}
+
+/* .transition.small mat-icon {
+    font-size: 26px;
+    width: 50%;
+    margin: 0 25%;
+  } */
+
+.transition.flip mat-icon {
+  font-size: 100px;
+  width: 50%;
+  margin: 12% 0 0 39%;
+  transform: rotate(90deg);
+}
+
+.container mat-icon {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  float: left;
+  margin: 21px 19px 0px 24px;
+}
+
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+/* top & bottom selections (choosing program & saving) */
+mat-label {
+  font-size: 25px;
+}
+
+mat-label.top-label,
+mat-label.current-label {
+  color: var(--border-color);
+  font-size: 25px;
+  display: inline-block;
+  text-align: left;
+  transition: var(--ani-time1);
+}
+
+.float-control-flow mat-label.top-label,
+.float-control-flow mat-label.current-label {
+  color: white;
+}
+
+mat-label.top-label {
+  width: 200px;
+  margin-top: 2em;
+}
+
+mat-label.current-label {
+  display: block;
+}
+
+mat-label.save-label {
+  color: var(--border-color);
+  font-size: 30px;
+  display: inline-block;
+  text-align: left;
+  padding-bottom: 0.5vw;
+  padding-right: 100px;
+}
+
+mat-label.dev-sel-label {
+  color: var(--border-color);
+  font-size: 24px;
+  display: inline-block;
+  text-align: left;
+  padding-bottom: 0.3vw;
+  padding-right: 100px;
+}
+
+.top-select-container {
+  height: auto;
+  justify-content: space-around;
+  margin: 1vw 15% 0 15%;
+  text-align: center;
+
+  /* border-bottom:thin solid var(--border-color); */
+  padding-bottom: 1em;
+}
+
+
+.nodiff {
+  height: 550px;
+  font-size: 46px;
+  padding: 10% 20%;
+  color: dimgray;
+  text-align: center;
+}
+
+
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+/* the radiobuttons at the top */
+mat-radio-button {
+  height: auto !important;
+  font-size: 30px;
+}
+
+mat-radio-group {
+  padding-left: 2em;
+  font-size: 24px;
+}
+
+.prog-select-radio {
+  font-size: 24px;
+}
+
+:host /deep/ .mat-radio-label-content {
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: normal;
+}
+
+::ng-deep mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  opacity: 0.5 !important;
+  /*click effect color change*/
+  background-color: var(--darker-color) !important;
+}
+
+::ng-deep mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: var(--main-color) !important;
+  /*inner circle color change*/
+}
+
+::ng-deep mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: var(--darker-color) !important;
+  /*outer ring color change*/
+}
+
+
+div.card-cap {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 20px;
+  width: 100%;
+}
+
+.same-dev {
+  /* color: var(--border-color); */
+  /* font-weight: 100; */
+  font-style: normal;
+}
+
+.changed-dev {
+  /* color: black; */
+  /* font-weight: 900; */
+  font-style: italic;
+}
+
+div.underneath {
+  color: #000000;
+}
+
+
+div.change-rule-block {
+  display: inline-block;
+  background: var(--mod-highlight);
+  font-weight: 900;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+div.rule-block {
+  display: inline-block;
+}
+
+div.cap {
+  text-align: right;
+  display: inline-block;
+  /* border-radius: 5px; */
+  /* padding: 5px; */
+  /* background-color: rgba(255, 166, 0, 0.61); */
+}
+
+
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+/* timeline  */
+.slider {
+  width: 80%;
+  cursor: pointer;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  /* padding: 10px; */
+}
+
+.system-state {
+  /* padding: 5%; */
+  padding: 5% 5% 5% 0;
+  /* padding changed for the added arrows */
+  width: auto;
+  height: auto;
+  margin: 2vw;
+  /* width: 10%;
+    margin-bottom: 10px; */
+}
+
+.system-state.normal {
+  /* height: 30em; */
+  height: auto;
+}
+
+.card-title {
+  font-size: 20px;
+  padding-left: 24px;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+
+div.focused-underneath {
+  font-size: 50px;
+}
+
+.default-system-state {
+  color: var(--border-color);
+}
+
+.violation-text {
+  font-size: 30px;
+  color: orange;
+}
+
+.mat-grid-list {
+  margin: 2em 5em !important;
+}
+
+.mat-grid-tile {
+  height: max-content;
+  margin: 2em !important;
+  overflow: visible;
+}
+
+:host /deep/ .mat-card .mat-divider.mat-divider-inset {
+  margin: 0.5em 16px;
+  width: 92%;
+}
+
+:host /deep/ .mat-card {
+  background: beige;
+}
+
+.sys-state-legend {
+  background: beige;
+  padding: 10px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.same-dev {
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-left: 14px;
+  background-color: rgba(255, 166, 0, 0.267);
+  line-height: 1.3;
+}
+
+.card-state-bgcolor-less .same-dev {
+  background-color: transparent;
+}
+
+.card-state-bgcolor-less .change-dev {
+  background-color: #ffd27f;
+  /* for edge */
+  background-color: #ffa5006e;
+}
+
+.change-dev {
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-left: 14px;
+  background-color: #ffd27f;
+  /* for edge */
+  background-color: #ffa500a3;
+  border: dotted;
+  line-height: 1.3;
+}
+
+.change-legend {
+  border: dotted;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #ffd27f;
+  /* for edge */
+  background-color: #ffa500a3;
+}
+
+.chose-state {
+  display: block;
+  padding-left: 20px;
+}
+
+.radio-group {
+  border-radius: 100px;
+  /*greater than height*/
+  background: white;
+  padding: 10px;
+  margin-top: 10px;
+  display: block;
+}
+
+.explain-row,
+.search-row,
+.filter-row {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: darkgray;
+  background: whitesmoke;
+  text-align: center;
+}
+
+/* ========= copy from udiff =========*/
+
+.prog-radios {
+  width: auto;
+  padding-bottom: 30px;
+}
+
+.labels-and-button {
+  width: 330px;
+  padding: 28px 5px;
+}
+
+.question-button-div {
+  margin: 10px;
+  text-align: center;
+}
+
+.question-button {
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 16px;
+  padding: 6px;
+}
+
+/* .label-row{
+  padding: 10px;
+} */
+
+.help-icon {
+  padding: 0px 5px 0px 5px;
+}
+
+.top-labels {
+  padding: 15px;
+  text-align: center;
+}
+
+/* =================== copy from udiff1 =============== */
+div.underneath {
+  display: inline-block;
+  font-size: 18px;
+  text-align: left;
+  flex-wrap: wrap;
+  width: 80%;
+  vertical-align: text-top;
+}
+
+div.underneath.key {
+  text-align: left;
+  width: auto;
+  vertical-align: baseline;
+}
+
+
+.first-trans {
+  margin-bottom: 120px;
+}
+
+.loading {
+  width: 140px;
+  margin: 60px auto;
+  font-size: 30px;
+  color: #008ae6;
+}
+
+
+.radio-suggest-not {
+  color: rgb(175, 175, 175);
+}
+
+
+
+/* -----------for dropdown and blank right ---------------------------------- */
+.sdiff-item .column.should-invisible {
+  border-bottom: transparent;
+  visibility: hidden;
+}
+
+.sdiff-item .column.should-invisible :first-child {
+  border-bottom: transparent;
+  visibility: visible;
+}
+
+.prog-dropdown {
+  display: inline-block;
+  /* width: 346px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:host /deep/ .prog-dropdown .mat-select {
+  width: 100%;
+  font-size: 2.3vw;
+  padding: 0px 2px 2px 0px;
+  margin-right: 0px;
+}
+
+:host /deep/ .prog-dropdown .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 25px;
+  /*selected text size*/
+  float: left;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-label-wrapper mat-label {
+  font-size: 24px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-wrapper {
+  padding-top: 0px;
+  background: whitesmoke;
+  border-radius: 20px;
+  border-width: 10px;
+  border-right: 20px solid whitesmoke;
+  border-left: 20px solid whitesmoke;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 10px;
+  padding-bottom: 0em;
+  height: 3vw;
+}
+
+:host /deep/ .prog-dropdown mat-form-field {
+  padding-right: 20px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-type-mat-select .mat-form-field-label {
+  top: 30px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-underline {
+  height: 1.2px;
+  visibility: hidden;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-underline .mat-form-field-ripple {
+  display: none;
+}
+
+:host /deep/ .prog-dropdown .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid;
+  margin: 0 4px;
+}
+
+.none-option-text {
+  color: gray;
+}
+
+:host /deep/ .prog-dropdown mat-select.selecting-invalid .mat-select-value-text {
+  color: gray;
+}
+
+.fake-rule-display {
+  padding: 3px 16px 5px 6px;
+  display: block;
+  height: 100%;
+}
+
+/* -----------for dropdown and blank right END ---------------------------------- */
+
+
+/*------------------ for things around dropdown ---------------------------*/
+.dropdown-top-select-container .top-label-wrapper {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.dropdown-top-select-container .current-label-wrapper {
+  display: inline-block;
+  padding: 0px 18px 0px 0px;
+}
+
+.dropdown-top-select-container {
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: var(--ani-time3);
+}
+
+.float-control-flow .dropdown-top-select-container {
+  padding-bottom: 0px;
+  padding-top: 5px;
+}
+
+.dropdown-top-select-container .top-legends {
+  display: none;
+}
+
+.dropdown-top-select-container .labels-and-button:hover .top-legends {
+  display: inline-block;
+}
+
+.dropdown-top-select-container .question-button-div {
+  display: inline-block;
+}
+
+/* ----- help button ----- */
+
+
+.dropdown-top-select-container .labels-and-button {
+  position: fixed;
+  right: -20px;
+  top: 135px;
+  /* border-radius: 20px; */
+  background: #c5fdff;
+  background: #1abfc636;
+  padding: 20px;
+  opacity: 0.9;
+  FONT-WEIGHT: 600;
+  z-index: 21;
+  border-radius: 100px 0px 0px 100px;
+  width: auto;
+}
+
+
+.dropdown-top-select-container .question-button-div {
+  margin: 10px;
+  text-align: center;
+}
+
+.dropdown-top-select-container .question-button {
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 30px;
+  padding: 4px;
+  border-radius: 100px;
+  /* bottom: 4px; */
+}
+
+.dropdown-top-select-container .help-icon {
+  padding: 0px 5px 0px 5px;
+}
+
+:host /deep/ .dropdown-top-select-container .question-button-div button {
+  min-width: 0px;
+  min-height: 0px;
+  line-height: 0px;
+}
+
+:host /deep/ .dropdown-top-select-container .question-button-div mat-icon.help-icon {
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+:host /deep/ .dropdown-top-select-container .top-label {
+  width: auto;
+}
+
+/*------------------ for things around dropdown ---------------------------*/
+
+
+/* -----------for filter and filter dropdown ---------------------------------- */
+
+.filter-dropdown {
+  display: inline-block;
+  /* width: 346px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:host /deep/ .filter-dropdown .mat-select {
+  width: 100%;
+  font-size: 2.3vw;
+  padding: 0px 2px 2px 0px;
+  margin-right: 0px;
+}
+
+:host /deep/ .filter-dropdown .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 25px;
+  /*selected text size*/
+  float: left;
+}
+
+:host /deep/ .filter-dropdown .mat-form-field-label-wrapper mat-label {
+  font-size: 24px;
+  top: -50%;
+  border-radius: 10px;
+  padding: 0px 10px;
+  background: whitesmoke;
+}
+
+:host /deep/ .filter-dropdown .mat-form-field-should-float .mat-form-field-label-wrapper mat-label {
+  border-radius: 5px;
+  padding: 3px 10px 3px 10px;
+  background: transparent;
+  transition: 1s;
+  /* color: lightgray; */
+  /* background: black; */
+  /* background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(128,128, 128,0.9) 80%, rgba(255,255,255,1) 100%); */
+}
+
+:host /deep/ .float-control-flow .filter-dropdown .mat-form-field-should-float .mat-form-field-label-wrapper mat-label {
+  background: #5a5a5a;
+  color: whitesmoke;
+}
+
+:host /deep/ .filter-dropdown .mat-form-field-wrapper {
+  padding-top: 0px;
+  background: whitesmoke;
+  border-radius: 10px;
+  border-width: 10px;
+  border-right: 20px solid whitesmoke;
+  border-left: 20px solid whitesmoke;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 10px;
+  padding-bottom: 0em;
+  height: 3vw;
+}
+
+:host /deep/ .filter-dropdown mat-form-field {
+  padding-right: 20px;
+}
+
+:host /deep/ .filter-dropdown .mat-form-field-type-mat-select .mat-form-field-label {
+  top: -50%;
+  /* padding: 3px; */
+}
+
+:host /deep/ .filter-dropdown .mat-form-field-underline {
+  height: 1.2px;
+  visibility: hidden;
+}
+
+:host /deep/ .filter-dropdown .mat-form-field-underline .mat-form-field-ripple {
+  display: none;
+}
+
+:host /deep/ .filter-dropdown .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid;
+  margin: 0 4px;
+}
+
+
+:host /deep/ .filter-dropdown mat-select.selecting-invalid .mat-select-value-text {
+  color: gray;
+}
+
+/* --- fix mat-option too long --- */
+/* not working using :host /deep/ here. in global zone instead. */
+
+/* ------------------------------ located using filter-column ----------------------------- */
+
+
+.filter-column {
+  /* float: left; */
+  /* width: 31%; */
+  /* padding: 10px; */
+  /* margin: 1%; */
+  border-radius: 20px;
+  display: inline-block;
+  /* background: #ffc55c42; */
+}
+
+mat-label.filter-label {
+  color: var(--border-color);
+  font-size: 24px;
+  display: block;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-right: 30px;
+}
+
+
+:host ::ng-deep .filter-column .mat-select-panel .mat-option {
+  height: 3vw !important;
+}
+
+:host ::ng-deep .filter-column .mat-select-trigger {
+  font-size: 22px;
+  min-width: 16vw;
+  transition: var(--ani-time2);
+}
+
+:host ::ng-deep .float-control-flow .filter-column .mat-select-trigger {
+  min-width: 13vw;
+}
+
+:host ::ng-deep .filter-column .mat-form-field-infix {
+  /* This includes the line at the bottom of the dropdown menu */
+  width: 16vw !important;
+  font-size: 20px;
+  color: white !important;
+  padding-top: 0px;
+  /* height: 0vw; */
+  height: 100%;
+  border-top-width: 1px;
+  transition: var(--ani-time2);
+}
+
+:host ::ng-deep .float-control-flow .filter-column .mat-form-field-infix {
+  width: 13vw !important;
+}
+
+:host ::ng-deep .filter-column .mat-form-field-wrapper {
+  padding-top: 1%;
+  height: 3vw;
+  padding-left: 0px;
+}
+
+:host ::ng-deep .filter-column .mat-form-field-label-wrapper {
+  top: 50%;
+  height: 34px;
+}
+
+/* :host /deep/ .mat-form-field-content {
+  width: 17vw !important;
+  font-size: 35px;
+  color: white !important;
+} */
+
+:host ::ng-deep .filter-column .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 22px;
+  float: left;
+}
+
+
+/* -----------for dropdown and blank right END ---------------------------------- */
+* {
+  /* --filters-wrapper-bg: #0000009f; */
+  /* --filter-row-label-color: white; */
+  --filter-wrapper-bg: transparent;
+  --filter-row-label-color: gray;
+  --filter-row-color: darkgray;
+}
+
+.filter-row-label {
+  font-size: 25px;
+  display: inline-block;
+  text-align: left;
+  padding-right: 15px;
+  color: var(--filter-row-label-color);
+  vertical-align: super;
+  transition: var(--ani-time1);
+}
+
+.float-control-flow .filter-row-label {
+  color: white;
+}
+
+.filters-wrapper {
+  display: inline-block;
+  width: auto;
+  background: var(--filters-wrapper-bg);
+  padding: 13px 10px 10px 10px;
+  border-radius: 10px;
+}
+
+.filter-row {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--filter-row-color);
+  background: none;
+  text-align: center;
+  padding: 0px;
+  border-radius: 0px;
+  transition: var(--ani-time2);
+}
+
+.float-control-flow .filter-row {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.prog-row {
+  transition: var(--ani-time2);
+}
+
+.float-control-flow .prog-row {
+  display: inline-block;
+}
+
+/* mat-form-field-should-float */
+
+.control-row {
+  /* margin-left: 17%;
+  margin-right: 17%;
+  border-radius: 0px 0px 40px 40px; */
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  transition: var(--ani-time2);
+}
+
+div.float-control-flow {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  /* width: 66%;
+  border-radius: 0px 0px 40px 40px; */
+  z-index: 31;
+  /* background: #f1f1f1; */
+  background: dimgray;
+  /* for edge */
+  background: #00000082;
+  opacity: 0.9;
+}
+
+.control-flow-placeholder {
+  height: 250px;
+  display: block;
+}
+
+.hidden-control-flow-placeholder {
+  height: 250px;
+  display: none;
+}

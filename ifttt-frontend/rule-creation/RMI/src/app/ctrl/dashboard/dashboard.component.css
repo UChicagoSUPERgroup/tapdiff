@@ -1,0 +1,48 @@
+h1{
+  font-size: 40px;
+  margin: 20px;
+}
+
+textarea{
+  width: 600px;
+  height: 400px;
+  margin: 10px;
+  display: inline-block;
+}
+
+button{
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  display: block;
+  margin: 10px;
+}
+
+
+.user-infos{
+  margin: 20px;
+  width: 600px;
+}
+
+
+.col{
+  width: 30%;
+  display: inline-block;
+}
+
+.cmd-help{
+  margin:20px;
+  color: dimgray;
+}
+
+#log-display{
+  display: inline-block;
+  height: 400px;
+  width: 600px;
+  overflow: scroll;
+}
+
+:host /deep/ .log-item{
+  margin: 10px;
+  line-height: 1.2;
+}

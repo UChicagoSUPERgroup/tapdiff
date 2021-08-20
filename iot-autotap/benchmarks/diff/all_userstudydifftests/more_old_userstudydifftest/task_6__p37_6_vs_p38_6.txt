@@ -1,0 +1,5 @@
+task 6: 1) p37_6 vs. 2) p38_6
+unique_sps1:
+['location_sensor.kitchen_anyone=0 should never happen when smart_refrigerator.openclose_door_position=0', 'location_sensor.kitchen_anyone=0 should never happen when smart_refrigerator.openclose_door_position=1']
+unique_sps2:
+[]

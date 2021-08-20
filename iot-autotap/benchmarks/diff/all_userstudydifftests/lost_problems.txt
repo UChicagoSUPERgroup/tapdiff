@@ -1,0 +1,138 @@
+{'condition': ['weather_sensor.current_temperature_temperature>60', 'thermostat.current_temperature_temperature<80'], 'action': 'bedroom_window.openclose_window_position=true', 'trigger': '!weather_sensor.weather_sensor_weather=Raining'}
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 92, in <module>
+    channel_dict1 = generateChannelDict(channel_name_list1, {}, {}, cap_name_list1, template_dict)
+  File "/home/iftttuser/AutoTap/autotapmc/analyze/Build.py", line 679, in generateChannelDict
+    channel_template = template_dict[channel_name]
+KeyError: '!weather_sensor'
+
+{'trigger': 'thermostat.thermostat_temperature>80', 'action': 'thermostat.thermostat_temperature=80', 'condition': []}
+{'trigger': 'thermostat.current_temperature_temperature=80', 'action': 'thermostat.ac_onoff_setting=true', 'condition': ['thermostat.thermostat_temperature<81', 'thermostat.ac_onoff_setting=false']}
+{'trigger': 'thermostat.current_temperature_temperature>80', 'action': 'thermostat.ac_onoff_setting=true', 'condition': ['thermostat.thermostat_temperature>80', 'thermostat.ac_onoff_setting=false']}
+{'trigger': 'thermostat.current_temperature_temperature>80', 'action': 'thermostat.ac_onoff_setting=true', 'condition': []}
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 111, in <module>
+    setSafeInitState(channel_dict1, tap_sample_1)
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 49, in setSafeInitState
+    val = cond.split('=')[1]
+IndexError: list index out of range
+
+{'trigger': 'smart_faucet.water_onoff_setting=true', 'condition': [], 'action': 'smart_faucet.water_onoff_setting=false'}
+{'trigger': 'smart_faucet.water_onoff_setting=true', 'condition': [], 'action': 'smart_faucet.water_onoff_setting=true'}
+{'trigger': 'smart_faucet.water_onoff_setting=false', 'condition': [], 'action': 'smart_faucet.water_onoff_setting=false'}
+{'trigger': 'security_camera.power_onoff_setting=true', 'condition': ['smart_faucet.water_onoff_setting=false'], 'action': 'smart_faucet.water_onoff_setting=false'}
+{'trigger': 'location_sensor.kitchen_a_family_member=false', 'condition': [], 'action': 'smart_faucet.water_onoff_setting=false'}
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 120, in <module>
+    system_2 = generateFastIoTSystem('TempSystem', channel_dict2, tap_dict_2, [])
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 162, in generateFastIoTSystem
+    result = TempIoTSystem()
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 33, in __init__
+    super(FastIoTSystem, self).__init__(timing_exp_list=[])
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystem.py", line 127, in __init__
+    self._createTS()
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 142, in _createTS
+    next_action_list = self._checkNextActions(current_tuple)
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 99, in _checkNextActions
+    self._applyTapActionFast(tap_index, current_tuple)))
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 84, in _applyTapActionFast
+    if current_states[cond_var_index_list] == cond_var_target_list:
+TypeError: list indices must be integers or slices, not list
+
+{'trigger': 'roomba.power_onoff_setting=true', 'action': 'living_room_window.openclose_curtains_position=false', 'condition': ['living_room_window.openclose_curtains_position=true']}
+{'trigger': 'roomba.power_onoff_setting=true', 'action': 'bathroom_window.openclose_curtains_position=false', 'condition': ['bathroom_window.openclose_curtains_position=true']}
+{'trigger': 'roomba.power_onoff_setting=true', 'action': 'bedroom_window.openclose_curtains_position=false', 'condition': ['bedroom_window.openclose_curtains_position=true']}
+{'trigger': 'roomba.power_onoff_setting=true', 'action': 'roomba.power_onoff_setting=false', 'condition': ['bathroom_window.openclose_curtains_position=true', 'bedroom_window.openclose_curtains_position=true', 'living_room_window.openclose_curtains_position=true']}
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 113, in <module>
+    system_1 = generateFastIoTSystem('TempSystem', channel_dict1, tap_dict_1, [])
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 162, in generateFastIoTSystem
+    result = TempIoTSystem()
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 29, in __init__
+    condition_index = self.var_list.index(var_name)
+ValueError: 'living_room_window.openclose_curtains_position' is not in list
+
+{'condition': ['location_sensor.home_a_guest=true', '10800#location_sensor.home_a_guest=true'], 'action': 'roomba.power_onoff_setting=false', 'trigger': 'roomba.power_onoff_setting=true'}
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 92, in <module>
+    channel_dict1 = generateChannelDict(channel_name_list1, {}, {}, cap_name_list1, template_dict)
+  File "/home/iftttuser/AutoTap/autotapmc/analyze/Build.py", line 679, in generateChannelDict
+    channel_template = template_dict[channel_name]
+KeyError: '10800#location_sensor'
+
+task 2: 1) p28_2 vs. 2) p1_2
+{'condition': ['bathroom_window.openclose_window_position=false'], 'trigger': 'bedroom_window.openclose_window_position=false', 'action': 'living_room_window.openclose_window_position=true'}
+{'condition': ['bathroom_window.openclose_window_position=false'], 'trigger': 'living_room_window.openclose_window_position=false', 'action': 'bedroom_window.openclose_window_position=true'}
+{'condition': ['living_room_window.openclose_window_position=false'], 'trigger': 'bedroom_window.openclose_window_position=false', 'action': 'bathroom_window.openclose_window_position=true'}
+{'condition': ['location_sensor.home_anyone=true', 'bedroom_window.lockunlock_setting=false', 'bedroom_window.openclose_window_position=false'], 'trigger': 'clock.is_it_daytime_time=true', 'action': 'bedroom_window.lockunlock_setting=false'}
+{'condition': ['location_sensor.home_anyone=false', 'bedroom_window.lockunlock_setting=true'], 'trigger': 'clock.is_it_daytime_time=true', 'action': 'bedroom_window.lockunlock_setting=false'}
+{'condition': ['location_sensor.home_anyone=false'], 'trigger': 'bedroom_window.lockunlock_setting=false', 'action': 'bedroom_window.openclose_window_position=true'}
+{'condition': ['clock.is_it_daytime_time=true', 'bedroom_window.lockunlock_setting=false'], 'trigger': 'location_sensor.home_anyone=true', 'action': 'bathroom_window.openclose_window_position=true'}
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 121, in <module>
+    system_2 = generateFastIoTSystem('TempSystem', channel_dict2, tap_dict_2, [])
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 162, in generateFastIoTSystem
+    result = TempIoTSystem()
+  File "/home/iftttuser/AutoTap/autotapmc/model/IoTSystemForDiff.py", line 29, in __init__
+    condition_index = self.var_list.index(var_name)
+ValueError: 'bedroom_window.openclose_window_position' is not in list

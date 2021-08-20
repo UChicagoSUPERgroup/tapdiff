@@ -1,0 +1,5 @@
+task 2: 1) p21_2 vs. 2) p14_2
+unique_sps1:
+[]
+unique_sps2:
+['living_room_window.openclose_window_position=0 and bedroom_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0 should never occur together']

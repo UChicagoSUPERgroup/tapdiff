@@ -1,0 +1,104 @@
+{
+    "cap_list": [
+        "d24.onoff",
+        "d16.onoff",
+        "d33.onoff",
+        "d6.onoff",
+        "d18.onoff",
+        "d17.onoff",
+        "d22.onoff",
+        "d9.onoff"
+    ],
+    "unreachable_combination_1": [
+        "!d18.onoff=true",
+        "d17.onoff=true",
+        "!d24.onoff=true"
+    ],
+    "tap_list_1": [
+        {
+            "trigger": "d18.onoff=false",
+            "condition": [
+                "d17.onoff=true",
+                "!d24.onoff=true",
+                "d16.onoff=true"
+            ],
+            "action": "d24.onoff=true"
+        },
+        {
+            "trigger": "d18.onoff=false",
+            "condition": [
+                "d17.onoff=true",
+                "!d24.onoff=true",
+                "!d16.onoff=true"
+            ],
+            "action": "d17.onoff=false"
+        },
+        {
+            "trigger": "d17.onoff=true",
+            "condition": [
+                "!d18.onoff=true",
+                "!d24.onoff=true",
+                "d16.onoff=true"
+            ],
+            "action": "d17.onoff=false"
+        },
+        {
+            "trigger": "d17.onoff=true",
+            "condition": [
+                "!d18.onoff=true",
+                "!d24.onoff=true",
+                "!d16.onoff=true"
+            ],
+            "action": "d18.onoff=true"
+        },
+        {
+            "trigger": "d24.onoff=false",
+            "condition": [
+                "!d18.onoff=true",
+                "d17.onoff=true"
+            ],
+            "action": "d24.onoff=true"
+        }
+    ],
+    "unreachable_combination_2": [
+        "!d24.onoff=true",
+        "d16.onoff=true",
+        "!d33.onoff=true"
+    ],
+    "tap_list_2": [
+        {
+            "trigger": "d24.onoff=false",
+            "condition": [
+                "d16.onoff=true",
+                "!d33.onoff=true",
+                "d18.onoff=true"
+            ],
+            "action": "d24.onoff=true"
+        },
+        {
+            "trigger": "d24.onoff=false",
+            "condition": [
+                "d16.onoff=true",
+                "!d33.onoff=true",
+                "!d18.onoff=true"
+            ],
+            "action": "d24.onoff=true"
+        },
+        {
+            "trigger": "d16.onoff=true",
+            "condition": [
+                "!d24.onoff=true",
+                "!d33.onoff=true"
+            ],
+            "action": "d33.onoff=true"
+        },
+        {
+            "trigger": "d33.onoff=false",
+            "condition": [
+                "!d24.onoff=true",
+                "d16.onoff=true"
+            ],
+            "action": "d33.onoff=true"
+        }
+    ]
+}

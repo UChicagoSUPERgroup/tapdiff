@@ -1,0 +1,397 @@
+@import '../../../assets/diffcom-savebar.css';
+@import '../../../assets/diffcom-udiff.css';
+
+* {
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
+
+  --main-color: rgb(0, 153, 255);
+  --lighter-color: #ccebff;
+  --darker-color: #008ae6;
+  /* --main-color: #ff9933;
+  --darker-color: #ff8c1a; */
+
+  --border-color: gray;
+  --list-border-color: lightgrey;
+
+  --del-background: #ffeef0;
+  --del-highlight: #fdb8c0;
+  --add-background: #e6ffed;
+  --add-highlight: #acf2bd;
+}
+
+/* TODO: * Viewport = the browser window size. If the viewport is 50cm wide, 1vw = 0.5cm. Also vh.
+em and rem units are practical in creating perfectly scalable layout! em = relative to font size
+of current elt, rem = relative to font size of root elt. */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: auto;
+}
+
+.column.top-labels {
+  text-align: left;
+  width: 30%;
+}
+
+div.column.dropdown-top-labels{
+  width: auto;
+  display: inline-block;
+}
+
+div.dropdown-wrapper{
+  width: auto;
+  text-align: center;
+  display: inline-block;
+}
+
+.column.current {
+  padding-top: 1vw;
+  padding-bottom: 0;
+}
+
+.column.radiobuttons {
+  padding-top: 4px;
+  width: 70%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  overflow: scroll;
+}
+
+.row.prgm {
+  height: auto;
+  padding: 0.5% 16%;
+  /* border-bottom: thin solid var(--border-color); */
+}
+
+.top {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: var(--main-color);
+  font-family: Lato, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.back {
+  float: left;
+  margin-left: 30px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.text {
+  font-family: Lato, sans-serif;
+  font-size: 3vw;
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+div.title {
+  float: left;
+}
+
+div.tap {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  background: var(--main-color);
+  font-family: Lato, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  z-index: 999 !important;
+}
+
+h1 {
+  margin-left: 5px;
+  font-size: 48px;
+  color: #fff;
+}
+
+p {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #000000;
+}
+
+/* icons in the rules */
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+.container mat-icon {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  float: left;
+  margin: 21px 19px 0px 24px;
+}
+
+/* how to list the rules */
+mat-list {
+  padding-top: 0 !important;
+  overflow: auto;
+}
+
+mat-list-item {
+  height: auto !important;
+  border-bottom: thin solid var(--list-border-color);
+}
+
+mat-list-item:hover {
+  background-color: var(--lighter-color);
+}
+
+mat-list-item:last-child {
+  border-bottom: none;
+}
+
+:host /deep/ .mat-list-item-content {
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* top & bottom selections (choosing program & saving) */
+mat-label {
+  font-size: 25px;
+}
+
+mat-label.top-label {
+  color: var(--border-color);
+  font-size: 25px;
+  display: inline-block;
+  text-align: left;
+}
+
+.dropdown-wrapper mat-label.top-label{
+  margin-right: 20px;
+}
+
+mat-label.save-label {
+  color: var(--border-color);
+  font-size: 30px;
+  display: inline-block;
+  text-align: left;
+  padding-bottom: 0.5vw;
+  padding-right: 100px;
+}
+
+.top-select-container {
+  height: auto;
+  justify-content: space-around;
+  padding: 2% 25%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* the radiobuttons at the top */
+mat-radio-button {
+  height: auto !important;
+  font-size: 30px;
+}
+
+mat-radio-group {
+  padding-left: 3em;
+}
+
+:host /deep/ .mat-radio-label-content {
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+::ng-deep mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  opacity: 0.5 !important;
+  /*click effect color change*/
+  background-color: var(--darker-color) !important;
+}
+
+::ng-deep mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: var(--main-color) !important;
+  /*inner circle color change*/
+}
+
+::ng-deep mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: var(--darker-color) !important;
+  /*outer ring color change*/
+}
+
+/* rule display */
+.del-rule-display,
+.add-rule-display,
+.rule-display {
+  padding: 3px 16px 5px 26px;
+  display: block;
+}
+
+.if-while-then-display{
+  background: aliceblue;
+  border-bottom: 3px solid var(--list-border-color);;
+}
+
+.rule-blocks,
+div.del-rule-blocks,
+div.add-rule-blocks {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.rule-block {
+  padding: 5px;
+  display: inline-block;
+  width: 32%;
+}
+
+div.rule-word,
+div.del-rule-word,
+div.add-rule-word,
+div.rule-icon,
+div.del-rule-icon,
+div.add-rule-icon,
+div.blank-del-rule-word,
+div.blank-del-rule-icon {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 24px;
+}
+
+.rule-icon,
+.del-rule-icon,
+.add-rule-icon {
+  /* margin-left: 10px; */
+  padding: 0 2px 4px 2px;
+}
+
+.rule-icon mat-icon,
+.del-rule-icon mat-icon,
+.add-rule-icon mat-icon {
+  position: relative;
+  top: 4px;
+  vertical-align: text-top;
+}
+
+div.underneath,
+div.add-underneath,
+div.del-underneath {
+  display: inline-block;
+  font-size: 22px;
+  text-align: left;
+  flex-wrap: wrap;
+  width: 80%;
+  vertical-align: text-top;
+}
+
+div.underneath.key,
+div.del-underneath.key,
+div.add-underneath.key {
+  text-align: left;
+  width: auto;
+  vertical-align: baseline;
+}
+
+div.del-underneath.key {
+  padding-right: 0.2em;
+  text-decoration: line-through;
+  background-color: var(--del-background)
+}
+
+div.add-underneath.key {
+  padding-left: 0.2em;
+  text-decoration: underline;
+  background-color: var(--add-background)
+}
+
+div.change-del-rule-blocks,
+.del-rule-display {
+  background-color: var(--del-background);
+}
+
+div.change-add-rule-blocks,
+.add-rule-display {
+  background-color: var(--add-background);
+}
+
+.add-remove-tags {
+  position: relative;
+  top: 4px;
+  font-size: 34px;
+  width: 10%;
+  text-align: center;
+}
+
+
+/* -------------------------- */
+.loading{
+  width: 110px;
+  margin: 60px auto;
+  font-size: 30px;
+}
+
+.labels-and-button{
+  width: 330px;
+  padding:28px 5px;
+  position: fixed;
+  right: -20px;
+  top: 135px;
+  /* border-radius: 20px; */
+  background: #c5fdff;
+  background: #1abfc636;
+  padding: 20px;
+  opacity: 0.9;
+  FONT-WEIGHT: 600;
+  z-index: 21;
+  border-radius: 100px 0px 0px 100px;
+  width: auto;
+}
+
+.question-button-div mat-icon.help-icon{
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.question-button-div{
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.question-button{
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 30px;
+  padding: 4px;
+  border-radius: 100px;
+  /* bottom: 4px; */
+}
+
+.question-button-div button{
+  min-width: 0px;
+  min-height: 0px;
+  line-height: 0px;
+}

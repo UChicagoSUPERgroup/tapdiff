@@ -1,0 +1,146 @@
+<div mat-dialog-content>
+  <div class="dialog-content">
+    <article class="markdown-body">
+      <div *ngIf="data.preset == 'bothPrgmsAreSame'">
+        <p>You have selected the <span style="font-weight:bold">same program</span> to compare with itself!</p>
+      </div>
+      <div *ngIf="data.preset == 'udiff'">
+        <p>The colors and symbols indicate how the first program listed can be changed to become the second program
+          listed.</p>
+        <ul>
+          <li><span style="font-weight:bold">Bolded text</span> appears in one program, but not the other.</li>
+          <li>A <span style="background-color:#fdb8c0">red background</span> with a <span
+              style="font-weight:bold">"-"</span> indicates a part of the first
+            program listed
+            that does not appear in the second program. That is, it is <span style="font-weight:bold">"deleted"</span>
+            when changing
+            the first program into the second.</li>
+          <li>A <span style="background-color:#acf2bd">green background</span> with a <span
+              style="font-weight:bold">"+"</span> indicates a part of the
+            second program listed that does not appear in the first program. That is, it is <span
+              style="font-weight:bold">"added"</span> when
+            changing the first program to the second.</li>
+        </ul>
+      </div>
+      <div *ngIf="data.preset == 'udiff2'">
+        <p>To go from the initial program to the current program, (udiff2) </p>
+        <ul>
+          <li>the yellow text with delete line shows what rules or what parts of the rules to delete, </li>
+          <li>and the yellow text with highlight shows what rules or parts of the rules to add. </li>
+        </ul>
+      </div>
+      <div *ngIf="data.preset == 'udiff3'">
+        <p>The colors and symbols indicate how the first program listed can be changed to become the second program
+          listed.</p>
+        <ul>
+          <li><span style="font-weight:bold; color:darkorange">Bolded text</span> appears in one program, but not the
+            other.</li>
+          <li><span style="text-decoration: line-through; color:darkorange">Text with a strikethrough</span> indicates a
+            part of the first
+            program listed that does not appear in the second program. That is, it is <span
+              style="font-weight:bold">"deleted"</span>
+            when transforming the first program to the second.</li>
+          <li><span style="font-weight:bold; background-color:rgb(255, 228, 196); color:darkorange">Text with an orange
+              background</span>
+            indicates a part of the first program listed that does not appear in the second program.
+            That is, it is <span style="font-weight:bold">"added"</span> when transforming
+            the first program to the second.</li>
+        </ul>
+      </div>
+      <div *ngIf="data.preset == 'sdiff'">
+        <p>The interface shows how the rules in the selected programs differ.</p>
+        <ul>
+          <li>If a rule in one program is identical to a rule in the other program, they would be lined up on the same
+            row with a white background.</li>
+          <li>Rules with <span style="background-color:#ffeef0">light red background</span> (and <span
+              style="font-weight:bold">"-"</span> to their left) are only in the program on the left.
+            Rules with <span style="background-color:#e6ffed">light green background</span> (and <span
+              style="font-weight:bold">"+"</span> to their left) are only in the program on the right.
+            <ul style="padding-left:20px">
+              <li>If a rule in one program is similar to a <i>rule</i> in the other program, in that they differ in only
+                one column ("if", "while", or "then"),
+                then they are lined up on the same row. The text that differs would have darker backgrounds (<span
+                  style="background-color:#fdb8c0">darker red background</span> and <span
+                  style="font-weight:bold">bolded text</span> for the rule on the left,
+                <span style="background-color:#acf2bd">darker green
+                  background</span> and <span style="font-weight:bold">bolded text</span> for the rule on the right.
+              </li>
+              <li>Otherwise, the rule will be on its own row (with <span style="background-color:#eee">gray
+                  stripes</span> on the other side), and the entire rule is <span
+                  style="font-weight:bold">bolded</span>.</li>
+            </ul>
+
+        </ul>
+      </div>
+      <div *ngIf="data.preset == 'sdiff2'">
+        <p>The colors and symbols show the difference between the two programs by indicating how to change the Program
+          on Left to become the Program on Right.</p>
+        <ul>
+          <li><span style="font-weight:bold">Bolded</span> rules should be deleted from the Program on Left.</li>
+         
+          <li><span style="font-weight:bold">Bolded</span> rules should be added to the Program on Left if they have a
+            <span style="background-color:#e6ffed">light green background</span> with <span
+              style="font-weight:bold">"+"</span> in front.</li>
+          <li>If a rule in the Program on Left can be partially changed to become a rule in the Program on Right,
+            <span style="font-weight:bold">bolded</span> text with <span style="background-color:darkorange">solid
+              orange
+              background</span> marks the result in Program on Right.
+        </ul>
+      </div>
+      <div *ngIf="data.preset == 'sdiff3'">
+        <p>The colors and symbols show the difference between the two programs. They indicate how to change the program
+          on the left
+          to become the program on the right.</p>
+        <ul>
+          <li><span style="font-weight:bold; background-color:rgb(255, 228, 196);">Text with an orange background</span>
+            indicates the parts of each program that does not appear
+            in the other program.</li>
+        </ul>
+      </div>
+      <div *ngIf="data.preset == 'spdiff'">
+        <p>The interface shows properties that apply to either one or both of the programs. A property can be:
+          </p>
+          <ul>
+            <li>An event will never happen.</li>
+            <li>An event will only or never happen while some states are all true, e.g. X will never happen while Y is true and Z is true.</li>
+            <li>Two or more states will always or never occur together, e.g. X and Y and Z will never all be true at the same time (which implies that two of them can be true at the same time, but not all three).</li>
+          </ul>
+          <p>If there are properties that apply to both programs, they are presented in a box in the middle of the page.</p>
+      </div>
+      <div *ngIf="data.preset == 'qdiff'">
+        <p>The interface asks you a series of questions about what you want the smart home to do under specific scenarios.
+          For each question, you may select one or multiple choices. If you select multiple choices, e.g. "A" and "B", the interface will take it to mean that you want <span style="font-weight:bold">either</span> programs that do
+            "A" <span style="font-weight:bold">or</span> programs that do "B" in this scenario, <span style="font-weight:bold">not</span> programs that do both
+            "A" and "B".</p>
+            <p>Once you have answered all the questions, an <span style="background-color:#ffc171;">orange tally board</span> will appear on the right to show you how well each program matches your answers.
+            You can scroll down this tally board to see the result for all programs.</p>
+      </div>
+      <div *ngIf="data.preset == 'ccsing'">
+        <p>The interface shows the rules in the selected program.</p>
+      </div>
+      <div *ngIf="data.preset == 'tdiff'">
+        <p>The interface shows a series of flowcharts to explain what the two programs do differently under the same
+          scenarios.
+          <br>(Note that it does not show scenarios in which the selected programs make the house do the <i>same</i>
+          things.)
+        </p>
+        <p>
+          Read the <span style="background-color:khaki">flowchart</span> from left to right, and use the <span style="background-color:whitesmoke">row of labels</span> above it to understand the stages of
+          the flowchart. 
+        </p>
+        <ul>
+          <li>The <span style="background-color:#cceaff">blue box</span> in the <span style="background-color:whitesmoke">row of labels</span> lets you click through the flowcharts.</li>
+          <li>Each row of the flowchart tracks the state of a device, a person, or an aspect of the environment.</li>
+          <li><span style="background-color:khaki">Darker text</span> represents changes in state, while <span style="background-color:khaki; color:gray">lighter text</span> represents states staying the same.</li>
+          <li><span style="background-color:lightgray">Gray callouts</span> represent events such as what each program makes the smart home do.</li>
+        </ul>
+        <p>
+          If the flowchart splits into two then the two programs cause the smart home to become different states at the end. Otherwise (even though they do different things) the programs cause the smart home to end up in the same state.
+        </p>
+      </div>
+    </article>
+  </div>
+</div>
+<div class="mat-dialog-actions">
+  <button mat-button cdkFocusInitial class="ok-button" (click)="closeClick()">Ok</button>
+</div>

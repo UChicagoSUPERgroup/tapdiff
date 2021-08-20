@@ -1,0 +1,58 @@
+######################## p38_3 and p38_12 are empty programs #############
+
+task 3: 1) p38_3 vs. 2) p22_3
+{'action': 'smart_oven.lockunlock_setting=true', 'trigger': 'location_sensor.kitchen_bobbie=true', 'condition': ['smart_oven.power_onoff_setting=true', 'smart_oven.lockunlock_setting=false']}
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/random.py", line 253, in choice
+    i = self._randbelow(len(seq))
+  File "/usr/lib/python3.5/random.py", line 230, in _randbelow
+    r = getrandbits(k)          # 0 <= r < 2**k
+ValueError: number of bits must be greater than zero
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 116, in <module>
+    tap_sample_1 = tap_dict_1[random.choice(list(tap_dict_1.keys()))]
+  File "/usr/lib/python3.5/random.py", line 255, in choice
+    raise IndexError('Cannot choose from an empty sequence')
+IndexError: Cannot choose from an empty sequence
+
+
+task 12: 1) p38_12 vs. 2) p21_12
+{'action': 'roomba.power_onoff_setting=false', 'condition': ['bedroom_window.openclose_curtains_position=true', 'bathroom_window.openclose_curtains_position=true'], 'trigger': 'living_room_window.openclose_curtains_position=true'}
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/random.py", line 253, in choice
+    i = self._randbelow(len(seq))
+  File "/usr/lib/python3.5/random.py", line 230, in _randbelow
+    r = getrandbits(k)          # 0 <= r < 2**k
+ValueError: number of bits must be greater than zero
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 46, in <module>
+    importlib.import_module('tests.' + test_file)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "/home/iftttuser/AutoTap/tests/UserStudyDiffTest.py", line 116, in <module>
+    tap_sample_1 = tap_dict_1[random.choice(list(tap_dict_1.keys()))]
+  File "/usr/lib/python3.5/random.py", line 255, in choice
+    raise IndexError('Cannot choose from an empty sequence')
+IndexError: Cannot choose from an empty sequence

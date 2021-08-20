@@ -1,0 +1,9 @@
+task 14: 1) p3_14 vs. 2) p50_14
+orig tap_list_1
+ [{'condition': [], 'trigger': 'clock.is_it_daytime_time=false', 'action': 'front_door_lock.lockunlock_setting=true'}, {'condition': ['front_door_lock.lockunlock_setting=true'], 'trigger': 'location_sensor.home_a_family_member=false', 'action': 'security_camera.siren_value=true'}]
+orig tap_list_2
+ [{'condition': ['front_door_lock.lockunlock_setting=false'], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'front_door_lock.lockunlock_setting=true'}]
+For buchi_ts1: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['clock.is_it_daytime_time=0 should never be active while front_door_lock.lockunlock_setting=0']
+For buchi_ts2: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['fitbit.sleep_sensor_status=0 should never be active while front_door_lock.lockunlock_setting=0']

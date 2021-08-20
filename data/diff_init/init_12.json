@@ -1,0 +1,32 @@
+{
+    "0": {
+        "hue_lights.power_onoff_setting": false,
+        "roomba.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "thermostat.ac_onoff_setting": false,
+        "smart_tv.power_onoff_setting": false,
+        "coffee_pot.power_onoff_setting": false,
+        "location_sensor.home_alice": false,
+        "clock.is_it_daytime_time": false
+    },
+    "1": {
+        "hue_lights.power_onoff_setting": false,
+        "roomba.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "thermostat.ac_onoff_setting": false,
+        "smart_tv.power_onoff_setting": false,
+        "coffee_pot.power_onoff_setting": false,
+        "location_sensor.home_alice": false,
+        "clock.is_it_daytime_time": false
+    },
+    "2": {
+        "hue_lights.power_onoff_setting": false,
+        "roomba.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "thermostat.ac_onoff_setting": false,
+        "smart_tv.power_onoff_setting": false,
+        "coffee_pot.power_onoff_setting": false,
+        "location_sensor.home_alice": false,
+        "clock.is_it_daytime_time": false
+    }
+}

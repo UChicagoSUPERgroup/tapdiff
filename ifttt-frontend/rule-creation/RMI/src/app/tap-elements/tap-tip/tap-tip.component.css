@@ -1,0 +1,109 @@
+@import '../../../assets/diffcom-tooltip.css';
+
+.rule-display{
+  padding: 3px 0px;
+  display: block;
+  height:100%;
+  width: 100%;
+  color: white;
+}
+
+.rule-blocks{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+}
+
+div.tap {
+  width: 100%;
+}
+
+.rule-block{
+  padding: 4px 0px;
+  display: inline-block;
+  width: 32%;
+  color: white;
+  white-space: normal;
+}
+
+.row {
+  display: table;
+  width: 100%;
+  height:100%;
+}
+
+
+div.rule-word{
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 18px;
+}
+
+
+/* .if-while-then{
+  border-bottom: thin solid whitesmoke;
+} */
+
+.underneath{
+  display: inline-block;
+  font-size: 18px;
+  text-align: left;
+  flex-wrap: wrap;
+  width: 80%;
+  vertical-align: text-top;
+}
+
+.rule-icon mat-icon {
+  position: relative;
+  top: 4px;
+  vertical-align: text-top;
+}
+
+div.rule-icon{
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 18px;
+}
+
+mat-list {
+  padding-top: 0 !important;
+}
+
+mat-list-item {
+  height: auto !important;
+  border-bottom: thin dashed gainsboro;
+}
+
+mat-list-item:last-child {
+  border-bottom: none;
+}
+
+mat-list-item:first-child {
+  border-bottom: thin solid white;
+}
+
+
+/* ------------------- */
+.rulebox-button-wrapper{
+  width: 100%;
+}
+
+.rulebox-show-button{
+  background: transparent;
+  border: 3px black solid;
+  width: calc(100% - 20px);
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.rulebox-show-button-icon{
+
+}
+
+.not-visible{
+  display: none;
+}

@@ -1,0 +1,20 @@
+task 2: 1) p14_2 vs. 2) p28_2
+tap_list_1:
+[{'action': 'living_room_window.openclose_window_position=true', 'condition': ['bedroom_window.openclose_window_position=false', 'bathroom_window.openclose_window_position=false'], 'trigger': 'living_room_window.openclose_window_position=false'}, {'action': 'bedroom_window.openclose_window_position=true', 'condition': ['bathroom_window.openclose_window_position=false', 'living_room_window.openclose_window_position=false'], 'trigger': 'bedroom_window.openclose_window_position=false'}, {'action': 'bathroom_window.openclose_window_position=true', 'condition': ['bedroom_window.openclose_window_position=false', 'living_room_window.openclose_window_position=false'], 'trigger': 'bathroom_window.openclose_window_position=false'}]
+tap_list_2:
+[{'action': 'living_room_window.openclose_window_position=true', 'condition': ['bathroom_window.openclose_window_position=false'], 'trigger': 'bedroom_window.openclose_window_position=false'}, {'action': 'bedroom_window.openclose_window_position=true', 'condition': ['bathroom_window.openclose_window_position=false'], 'trigger': 'living_room_window.openclose_window_position=false'}, {'action': 'bathroom_window.openclose_window_position=true', 'condition': ['living_room_window.openclose_window_position=false'], 'trigger': 'bedroom_window.openclose_window_position=false'}]
+unique_sps1:
+['bedroom_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0 and living_room_window.openclose_window_position=0 should never occur together']
+unique_sps2:
+[]
+
+** NOTE: tap_list_2 is not a simplified version of tap_list_1; the following is a simplified version of tap_list_1:
+tap_list_2 = [{'action': 'living_room_window.openclose_window_position=true', 
+'condition': ['bathroom_window.openclose_window_position=false'], 
+'trigger': 'bedroom_window.openclose_window_position=false'}, 
+{'action': 'bedroom_window.openclose_window_position=true', 
+'condition': ['living_room_window.openclose_window_position=false'], 
+'trigger': 'bathroom_window.openclose_window_position=false'}, 
+{'action': 'bathroom_window.openclose_window_position=true', 
+'condition': ['bedroom_window.openclose_window_position=false'], 
+'trigger': 'living_room_window.openclose_window_position=false'}]

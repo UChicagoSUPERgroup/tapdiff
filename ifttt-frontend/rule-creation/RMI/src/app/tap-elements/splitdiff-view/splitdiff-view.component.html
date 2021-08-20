@@ -1,0 +1,302 @@
+<div class="rules-box">
+
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="error-info" *ngIf="isError">Oops, we're experiencing some technical difficulties,<br> please report this
+    to the researchers.</div>
+
+  <div class="row" *ngIf="(!isLoading) && (!isError)">
+    <div class="column rule-display border-right if-while-then">
+      <div class="rule-blocks">
+        <div class="sp-index"></div>
+        <mat-icon class='add-remove-tags'></mat-icon>
+        <div class="tap">
+          <div class='rule-block' style="font-size:40px">
+            If...
+          </div>
+          <div class='rule-block' style="font-size:40px">
+            while...
+          </div>
+          <div class='rule-block' style="font-size:40px">
+            then...
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column rule-display if-while-then">
+      <div class="rule-blocks">
+        <div class="sp-index"></div>
+        <mat-icon class='add-remove-tags'></mat-icon>
+        <div class="tap">
+          <div class='rule-block' style="font-size:40px">
+            If...
+          </div>
+          <div class='rule-block' style="font-size:40px">
+            while...
+          </div>
+          <div class='rule-block' style="font-size:40px">
+            then...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row sdiff-item" *ngFor="let rulePair of PROGRAM_TABLE">
+    <!-- ================================= LEFT ======================================= -->
+    <div class="column border-right" *ngIf="rulePair.left; let rule">
+      <div *ngIf="rule.status==-1" class='del-rule-display'>
+        <div class="del-rule-blocks">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags'>remove</mat-icon>
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.0em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div class="del-rule-icon">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="del-underneath">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="rule.status==0" class='rule-display'>
+        <div class="rule-blocks">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.0em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div class="rule-icon">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="underneath">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Placeholders for added rules (those in PROGRAM_2 but not in PROGRAM_1) -->
+      <div *ngIf="rule.status==101" class='add-rule-placeholder-display'>
+        <div class="rule-blocks" style="visibility:hidden">
+          <div class="sp-index"></div>
+          <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+          <div class="tap" style="visibility:hidden">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block" style="visibility:hidden">
+              <div class="rule-icon" style="visibility:hidden">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="underneath" style="visibility:hidden">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="rule.status==21" class='del-rule-display'>
+        <div class="change-del-rule-blocks">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags'>remove</mat-icon>
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.0em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div *ngIf="rule.statuses[i]==-1">
+                <div class='del-rule-block'>
+                  <div class="del-rule-icon">
+                    <mat-icon>{{rule.icons[i]}}</mat-icon>
+                  </div>
+                  <div class="del-underneath">
+                    {{rule.descriptions[i]}}
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="rule.statuses[i]==0">
+                <div class="rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="underneath">
+                  {{rule.descriptions[i]}}
+                </div>
+              </div>
+              <div *ngIf="rule.statuses[i]==1">
+                <div class="add-rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="add-underneath">
+                  {{rule.descriptions[i]}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================================= RIGHT ======================================= -->
+    <div class="column" *ngIf="VERSION_SECOND != null && VERSION_SECOND >= 0 && rulePair.right; let rule">
+      <div *ngIf="rule.status==102" class='del-rule-placeholder-display'>
+        <div class="rule-blocks" style="visibility:hidden">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+          <div class="tap" style="visibility:hidden">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block" style="visibility:hidden">
+              <div class="rule-icon" style="visibility:hidden">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="underneath" style="visibility:hidden">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="rule.status==0" class='rule-display'>
+        <div class="rule-blocks">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.0em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div class="rule-icon">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="underneath">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="rule.status==1" class='add-rule-display'>
+        <div class="add-rule-blocks">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags'>add</mat-icon>
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.0em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div class="add-rule-icon">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="add-underneath">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="rule.status==22" class='add-rule-display'>
+        <div class="change-add-rule-blocks">
+          <div class="sp-index">
+            <div class="sp-index-expand">
+              <span *ngFor="let spid of (rule['spIdentifiers'] || [])"
+              [ngClass]="{'sp-index-text': spid.charAt(0)=='S', 'indiv-sp-index-text': spid.charAt(0)!='S'}">
+                {{spid}}
+              </span>
+            </div>
+          </div>
+          <mat-icon class='add-remove-tags'>add</mat-icon>
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.0em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div *ngIf="rule.statuses[i]==-1">
+                <div class="del-rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="del-underneath">
+                  {{rule.descriptions[i]}}
+                </div>
+              </div>
+              <div *ngIf="rule.statuses[i]==0">
+                <div class="rule-icon">
+                  <mat-icon>{{rule.icons[i]}}</mat-icon>
+                </div>
+                <div class="underneath">
+                  {{rule.descriptions[i]}}
+                </div>
+              </div>
+              <div *ngIf="rule.statuses[i]==1">
+                <div class="add-rule-block">
+                  <div class="add-rule-icon">
+                    <mat-icon>{{rule.icons[i]}}</mat-icon>
+                  </div>
+                  <div class="add-underneath">
+                    {{rule.descriptions[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column should-invisible" *ngIf="VERSION_SECOND == null || VERSION_SECOND < 0">
+      <!-- if explain text is needed. <div *ngIf></div> -->
+      <div class='fake-rule-display' style="visibility:hidden">
+        <div class="rule-blocks">
+          <div class="sp-index"></div>
+          <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+          <div class="tap">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

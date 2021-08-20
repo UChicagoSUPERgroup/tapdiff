@@ -1,0 +1,5 @@
+task 10: 1) p44_10 vs. 2) p6_10
+unique_sps1:
+['bathroom_window.openclose_curtains_position=0 should always be active', 'bathroom_window.openclose_curtains_position=1 should never be active']
+unique_sps2:
+['location_sensor.bedroom_anyone=1 should never happen when bathroom_window.openclose_curtains_position=1', 'location_sensor.bedroom_anyone=1 should never happen when bathroom_window.openclose_curtains_position=0']

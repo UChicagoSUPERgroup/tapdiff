@@ -1,0 +1,57 @@
+<div class="brief-area">
+  <!-- 1672002,4000777,4160076,4603843,5725646,
+      6579203,7404506,7746729,9559065 -->
+  <div *ngIf="TASK_ID==-1">
+    Loading task reminder...
+    <!-- Hey! TASK_ID is -1. Something must be wrong. -->
+  </div>
+  <div *ngIf="TASK_ID==1672002">
+    <span class='bold'>REMINDER:</span> You should never watch TV with the HUE lights on, regardless of the time of the
+    day.<br>
+    <span class='bold'>Other than that,</span> the HUE lights should always be on at night.
+    <!-- Just Placeholder. The Roomba should not turn on when you are sleeping, or when the TV is on.<br>
+    The TV should never be on when you are sleeping. -->
+  </div>
+  <div *ngIf="TASK_ID==4000777">
+    <span class='bold'>REMINDER:</span> The AC should be off when neither Alice nor Bobbie are at home, and the house
+    should not control
+    the AC when either person is home.
+  </div>
+  <div *ngIf="TASK_ID==4160076">
+    <span class='bold'>REMINDER:</span> The Roomba should not turn on when you are sleeping, or when the TV is on. The
+    TV should never be
+    on when you are sleeping.
+    <!-- <p>Just Placeholder. The Roomba should not turn on when you are sleeping, or when the TV is on.</p>
+    <p>The TV should never be on when you are sleeping.</p> -->
+  </div>
+  <div *ngIf="TASK_ID==4603843">
+    <span class='bold'>REMINDER:</span> Assuming that you only have 3 windows in your house, you want to have <b>exactly
+      one window
+      open</b> in the house at any time.
+  </div>
+  <div *ngIf="TASK_ID==5725646">
+    <span class='bold'>REMINDER:</span> When temperature goes above the AC should turn on, and when temperature goes
+    below 70 degrees then
+    the living room window should open. However, the AC should never blow out this window.
+  </div>
+  <div *ngIf="TASK_ID==6579203">
+    <span class='bold'>REMINDER:</span> When Alice is in the living room at night and the room is too dark (below 100
+    lux of lighting), the
+    HUE lights should automatically turn on.
+  </div>
+  <div *ngIf="TASK_ID==7404506">
+    <span class='bold'>REMINDER:</span> The security camera should always monitor the house when you are asleep, when
+    the front door is
+    unlocked, or both.
+    <span class='bold'>Any program that does this, even if it is not the shortest possible program, will be considered
+      correct.</span>
+  </div>
+  <div *ngIf="TASK_ID==7746729">
+    7746729: tbd
+  </div>
+  <div *ngIf="TASK_ID==9559065">
+    <span class='bold'>REMINDER:</span> The front door should automatically unlock when you wake up and lock when you
+    fall asleep. However,
+    the door should only be in the unlocked state during the day.
+  </div>
+</div>

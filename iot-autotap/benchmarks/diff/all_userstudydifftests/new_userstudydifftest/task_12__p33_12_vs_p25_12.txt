@@ -1,0 +1,9 @@
+task 12: 1) p33_12 vs. 2) p25_12
+tap_list_1:
+[{'condition': ['living_room_window.openclose_curtains_position=true'], 'action': 'roomba.power_onoff_setting=false', 'trigger': 'roomba.power_onoff_setting=true'}]
+tap_list_2:
+[{'condition': [], 'action': 'roomba.power_onoff_setting=true', 'trigger': 'living_room_window.openclose_curtains_position=false'}]
+unique_sps1:
+['roomba.power_onoff_setting=1 should never happen when living_room_window.openclose_curtains_position=1']
+unique_sps2:
+['living_room_window.openclose_curtains_position=0 should never happen when roomba.power_onoff_setting=0', 'living_room_window.openclose_curtains_position=0 should never happen when roomba.power_onoff_setting=1']

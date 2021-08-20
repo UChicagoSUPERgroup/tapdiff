@@ -1,0 +1,5 @@
+task 5: 1) p38_5 vs. 2) p30_5
+tap_list_1:
+[{'action': 'smart_refrigerator.temperature_control_temperature=42', 'trigger': 'smart_refrigerator.temperature_control_temperature<40', 'condition': []}]
+tap_list_2:
+[{'action': 'smart_refrigerator.temperature_control_temperature=40', 'trigger': 'smart_refrigerator.current_temperature_temperature=39', 'condition': []}]

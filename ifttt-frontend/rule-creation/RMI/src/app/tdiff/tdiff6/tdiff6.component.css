@@ -1,0 +1,84 @@
+@import '../tdiff-new.css';
+
+.mat-selection-list {
+  padding-top: 0;
+}
+
+:host /deep/ div.mat-list-text {
+  padding-left: 0.5em !important;
+}
+
+mat-radio-group {
+  font-size: inherit;
+  padding-left: inherit;
+}
+
+::ng-deep .mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+  background: orange !important;
+}
+
+:host /deep/ .mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+  background: orange !important;
+}
+
+:host /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: orange !important;
+}
+
+:host /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  /* background-color: #fff2e1; */
+  background-color: #ffd394;
+}
+
+.selected-input {
+  color: orange;
+  /* #e91e63 */
+}
+
+.unselected-input {
+  color: gray;
+}
+
+.result-instr {
+  font-size: 1.8em;
+  color: gray;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+.result-max-tally, .result-other-tally {
+  font-size: 1.5em;
+  padding: 0 2em;
+  margin: auto 0.5em;
+  font-weight: bold;
+  color: black;
+}
+
+.result-other-tally {
+  font-weight: normal;
+}
+
+.buffer {
+  margin:0;
+  padding: 1em;
+}
+
+.flowchart-device-column {
+  width: fit-content;
+}
+
+.question-spec {
+  font-size: 24px;
+  display: inline-block;
+  margin: auto 1em 10px 1em;
+  padding: 15px;
+  border-radius: 10px;
+  background: #d3d3d37d;
+  max-width: 1200px;
+}

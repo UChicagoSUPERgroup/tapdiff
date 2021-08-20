@@ -1,0 +1,7 @@
+task 7: 1) p23_7 vs. 2) p50_7
+{'trigger': 'smart_faucet.water_onoff_setting=true', 'condition': [], 'action': 'smart_faucet.water_onoff_setting=false'}
+{'trigger': 'smart_faucet.water_onoff_setting=true', 'condition': [], 'action': 'clock.alarm_ringing_value=true'}
+For buchi_ts1: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['smart_faucet.water_onoff_setting=0 should always be active', 'smart_faucet.water_onoff_setting=1 should never be active']
+For buchi_ts2: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['smart_faucet.water_onoff_setting=1 should never happen when clock.alarm_ringing_value=0']

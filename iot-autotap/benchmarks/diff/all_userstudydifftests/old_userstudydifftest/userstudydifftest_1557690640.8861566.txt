@@ -1,0 +1,5 @@
+task 14: 1) p50_14 vs. 2) p30_14
+unique_sps1:
+[]
+unique_sps2:
+['fitbit.sleep_sensor_status=0 should never happen when front_door_lock.lockunlock_setting=1']

@@ -1,0 +1,9 @@
+task 15: 1) p19_15 vs. 2) p21_15
+tap_list_1:
+[{'trigger': 'roomba.power_onoff_setting=true', 'condition': ['location_sensor.home_alice=false', 'location_sensor.home_bobbie=false'], 'action': 'roomba.power_onoff_setting=false'}]
+tap_list_2:
+[{'trigger': 'location_sensor.home_bobbie=false', 'condition': ['roomba.power_onoff_setting=true'], 'action': 'roomba.power_onoff_setting=false'}]
+unique_sps1:
+['roomba.power_onoff_setting=1 should never happen when location_sensor.home_alice=0 and location_sensor.home_bobbie=0']
+unique_sps2:
+['location_sensor.home_bobbie=0 should never happen when roomba.power_onoff_setting=1']

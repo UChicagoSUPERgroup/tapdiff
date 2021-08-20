@@ -1,0 +1,9 @@
+task 16: 1) p23_16 vs. 2) p25_16
+tap_list_1:
+[{'condition': ['smart_tv.power_onoff_setting=true'], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'smart_tv.power_onoff_setting=false'}]
+tap_list_2:
+[{'condition': ['clock.is_it_daytime_time=false'], 'trigger': 'fitbit.sleep_sensor_status=false', 'action': 'smart_tv.power_onoff_setting=false'}]
+unique_sps1:
+['fitbit.sleep_sensor_status=0 should never be active while smart_tv.power_onoff_setting=1']
+unique_sps2:
+['fitbit.sleep_sensor_status=0 should never be active while clock.is_it_daytime_time=0 and smart_tv.power_onoff_setting=1']

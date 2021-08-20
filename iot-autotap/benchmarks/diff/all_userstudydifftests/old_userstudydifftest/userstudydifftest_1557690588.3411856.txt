@@ -1,0 +1,5 @@
+task 6: 1) p38_6 vs. 2) p23_6
+unique_sps1:
+[]
+unique_sps2:
+['smart_refrigerator.openclose_door_position=1 should never happen when clock.alarm_ringing_value=1', 'smart_refrigerator.openclose_door_position=1 should never happen when clock.alarm_ringing_value=0']

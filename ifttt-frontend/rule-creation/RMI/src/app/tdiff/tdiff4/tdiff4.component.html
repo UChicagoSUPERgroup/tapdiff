@@ -1,0 +1,323 @@
+<div *ngIf="PRGMNUMSDEFINED && READY" [ngClass]="{'hide': urlParams['tutorial']=='true' && this.INTRO_DONE<3}">
+  <div *ngIf="PRGMNUMSDEFINED" class="row" style="text-align: center;">
+    <div class="row prog-row">
+      <div class="dropdown-top-select-container">
+        <div class="row label-row">
+          <!-- from label -->
+          <div class="top-label-wrapper">
+            <mat-label class="top-label">Showing differences between
+              <span *ngIf="VERSION_1==0"><span class="orig-prgm">Original Program</span> vs.</span>
+            </mat-label>
+          </div>
+          <div style="all:unset" *ngIf="VERSION_1!=0">
+            <div class="prog-dropdown">
+              <mat-form-field class="tooltip">
+                <mat-label *ngIf="urlParams['dropdown-label'] =='true'">(Select a program)</mat-label>
+                <!-- <app-tap-tip class="tooltiptext" [VERSION]="VERSION_1" [UNPARSED_RULES]="PROGRAMS[VERSION_1]"></app-tap-tip> -->
+                <mat-select [(ngModel)]='VERSION_1' (change)="updateDiffAndTimeline($event)">
+                  <mat-option *ngFor="let i of PROGRAMNUMS" [value]="i">
+                    <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- to label -->
+            <div class="current-label-wrapper">
+              <mat-label class="current-label"> vs. </mat-label>
+            </div>
+          </div>
+          <div id="rightdropdown" class="prog-dropdown" *ngIf="PROGRAMNUMS.length>2">
+            <mat-form-field class="tooltip">
+              <mat-label *ngIf="urlParams['dropdown-label'] =='true'">(Select a program)</mat-label>
+              <!-- <app-tap-tip class="tooltiptext" [VERSION]="VERSION_2" [UNPARSED_RULES]="PROGRAMS[VERSION_2]"></app-tap-tip> -->
+              <mat-select [ngClass]="{'selecting-invalid': VERSION_2 < 0}" (change)="updateDiffAndTimeline($event)"
+                [(ngModel)]='VERSION_2'>
+                <mat-option
+                  *ngFor="let i of (urlParams['dropdown-style'] == 'none' ? [-2].concat(PROGRAMNUMS.slice(1)) : PROGRAMNUMS.slice(1))"
+                  [value]="i">
+                  <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="current-label-wrapper" *ngIf="PROGRAMNUMS.length<=2">
+            <span class="orig-prgm">{{this.dropdownValue(VERSION_2)}}</span>
+          </div>
+        </div>
+        <div class="row label-row">
+          <div class="top-label-wrapper"
+            *ngIf="!isLoading && VERSION_1 != -2 && VERSION_2 != -2 && (urlParams['tutorial']=='false' || (urlParams['tutorial']=='true' && (INTRO_DONE>3 || VERSION_2==1)))">
+            <mat-label class="top-label" style="margin-top:1em; margin-bottom:1em">There is a total of
+              <span style="font-weight:bold; color:var(--main-color)">{{getViewableTimelineCount()}} situation<span
+                  *ngIf="getViewableTimelineCount()!=1">s</span></span> in which <span
+                style="font-weight:bold; color:var(--main-color)">the two
+                programs do different things.</span>
+            </mat-label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="error-info" *ngIf="isError">Oops, we're experiencing some technical difficulties,<br> please report this to
+  the researchers.</div>
+
+<div class="row timeline" *ngIf="(!isLoading) && (!isError)">
+  <div *ngIf="!PRGMNUMSDEFINED" class="init-loading">Loading...</div>
+  <div *ngIf="!(VERSION_2 != null && VERSION_2 >= 0) && READY && (PRGMNUMSDEFINED)" class="helptext-show"
+    [ngClass]="{'hide': urlParams['tutorial']=='true' && this.INTRO_DONE<3}">
+    <div class="helptext-wrapper">Please use the dropdown menus above to select programs for comparison.</div>
+  </div>
+  <div *ngIf="VERSION_2<0" style="height:20em"></div>
+  <div *ngIf="(VERSION_2 >= 0) && (VERSION_1 == VERSION_2) && READY" class="reminder-front">You have chosen the same
+    program to
+    compare
+    with itself, therefore we do not have any flowcharts to show you.</div>
+  <div *ngIf="(VERSION_2 >= 0) && (VERSION_1 != VERSION_2 && TIMELINES.length==0) && READY && (PRGMNUMSDEFINED)" class="reminder-front">These
+    two
+    programs
+    behave the same in all situations, therefore we do not have any flowcharts to show you.</div>
+
+  <div class="flowchart-root" *ngIf="TIMELINES && TIMELINES.length > 0 && timelineValid() && READY">
+    <div class="flowchart-big-box" *ngFor="let thisTIMELINE of getCondensedTimelines(); last as last; let tii=index;"
+      [ngClass]="{'no-margin-bottom': last}">
+      <div class="flowchart-situation">
+        <div class="flowchart-column flowchart-device-column flowchart-float">
+          <div class="flowchart-prog-label-locator1 flowchart-t-top">
+            <div class="situation-label situation-label-float">
+              <span class="flowchart-prog-label">Situation #{{tii+1}}:
+              </span>
+            </div>
+            <div class="flowchart-prog-label-locator1 flowchart-t-top">
+              <div class="device-missing-disclaimer disclaimer-float">
+                If a device isn't here, it doesn't matter for this situation.
+              </div>
+            </div>
+          </div>
+          <div class="flowchart-bar-header"><span class="sign">1</span>The situation starts off...
+          </div>
+          <div class="flowchart-bar flowchart-bar-dev"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last"
+            [ngClass]="{'long-text':trimDevName(getStartDevState(thisTIMELINE, j)).length>25, 'not-last': !last}">
+            <mat-icon>
+              {{thisTIMELINE.sharedStates[0].icons[j]}}
+            </mat-icon>
+            {{trimDevName(getStartDevState(thisTIMELINE, j))}}:
+          </div>
+        </div>
+        <div class="flowchart-column-half flowchart-float">
+          <div class="flowchart-bar-header" style="margin-left:0.5em"> with __________,
+          </div>
+          <div class="flowchart-bar box flowchart-bar-dev-right" [ngClass]="{'not-last': !last}"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last">
+            <span class='flowchart-cap'>
+              {{showVal(thisTIMELINE.sharedStates[0].comps[j], thisTIMELINE.sharedStates[0].vals[j], true, getStartDevState(thisTIMELINE, j))}}
+            </span>
+          </div>
+        </div>
+        <div class="flowchart-column-fifth flowchart-float">
+          <div class="flowchart-bar-header" style="text-align:right">
+            <span class="sign">2</span>
+          </div>
+          <div class="flowchart-bar"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last">
+            <span class="midline">
+              <span class="flowchart-cap"></span>
+            </span>
+          </div>
+        </div>
+        <div class="flowchart-column flowchart-float" style="background:transparent;">
+          <div style="background:white">
+            <div class="flowchart-bar-header">
+              <span style="margin-left: 0.3em">and this happens.</span>
+              <span class="sign" style="visibility: hidden;">2</span>
+            </div>
+            <div class="flowchart-bar"
+              *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[1].devs, tii); first as first; last as last;"
+              [ngClass]="{'long-text':getTriggerIfDev(thisTIMELINE, j)[1].length>25,
+        'box':getTriggerIfDev(thisTIMELINE, j)[0]!='none'}">
+              <span class="midline" *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]=='none'">
+                <span class="flowchart-cap">
+                  <span *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]=='none'">
+                  </span>
+                </span>
+              </span>
+              <span *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]!='none'">
+                <span class="flowchart-cap" [ngClass]="{'long-text':getTriggerIfDev(thisTIMELINE, j)[1].length>25}">
+                  <span *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]!='none'">
+                    {{getTriggerIfDev(thisTIMELINE, j)[1]}}<br>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="flowchart-gap-placeholder flowchart-t-blank" style="background:transparent"></div>
+          <div class="flowchart-bar-header flowchart-bars-placeholder flowchart-t-blank" style="background:transparent">
+          </div>
+          <div class="flowchart-bar flowchart-bar-dev flowchart-cap-gray"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last"
+            [ngClass]="{'long-text':trimDevName(getStartDevState(thisTIMELINE, j)).length>25, 'not-last': !last}"
+            style="text-align:right; line-height:50px; background:transparent; border:none">
+            <mat-icon>
+              {{thisTIMELINE.sharedStates[0].icons[j]}}
+            </mat-icon>
+            {{trimDevName(getStartDevState(thisTIMELINE, j))}}:
+          </div>
+        </div>
+      </div>
+      <div class="flowchart-column-tiny flowchart-float">
+        <div class="flowchart-bar-header" style="text-align:right">
+          <span class="sign" style="visibility: hidden;">3</span>
+        </div>
+        <div class="flowchart-bar"
+          *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last">
+          <span class="midline">
+            <span class="flowchart-cap"></span>
+            <div class="special-circle-left" *ngIf="last"></div>
+          </span>
+        </div>
+      </div>
+      <div class="flowchart-outcome">
+        <div class="flowchart-column-all-L">
+          <div class="flowchart-bar-header">
+            <span class="sign" style="visibility: hidden;">.</span>
+          </div>
+          <div class="flowchart-column-L" *ngFor="let col of devInds(tii); first as firstcol; last as lastcol;"
+            [ngClass]="{'midline-L-no-bottom':lastcol}">
+            <div class="flowchart-L-row" *ngFor="let row of devInds(tii); first as firstrow; last
+            as lastrow">
+              <span
+                [ngClass]="{'midline-L': devInds(tii).length-1>=row+col, 'midline-L-left': devInds(tii).length-1<row+col}">
+                <span class="flowchart-cap"></span>
+              </span>
+              <div class='circle-left' *ngIf="devInds(tii).length-2==row+col"></div>
+              <div class='circle-right' *ngIf="devInds(tii).length-1==row+col"></div>
+              <span class='midline-L-no-bottom'
+                [ngClass]="{'midline-L': devInds(tii).length-1>row+col, 'midline-L-left': devInds(tii).length-1<=row+col}">
+                <span class="flowchart-cap"></span>
+              </span>
+            </div>
+          </div>
+          <br>
+          <div class="flowchart-column-L2" *ngFor="let col of devInds(tii); first as firstcol; last as lastcol;"> </div>
+          <br>
+          <div class="flowchart-column-L" *ngFor="let col of devInds(tii); first as firstcol; last as lastcol;">
+            <div class="flowchart-L-row" *ngFor="let row of devInds(tii); first as firstrow; last
+            as lastrow">
+              <span
+                [ngClass]="{'midline-L': devInds(tii).length-1<row+col, 'midline-L-left': devInds(tii).length-1>=row+col,
+              'midline-L-no-bottom': devInds(tii).length-1>row+col, 'midline-L-corner': devInds(tii).length-1==row+col}">
+                <span class="flowchart-cap"></span>
+              </span>
+              <span class='midline-L-no-bottom'
+                [ngClass]="{'midline-L': devInds(tii).length-1<=row+col, 'midline-L-left': devInds(tii).length-1>row+col}">
+                <span class="flowchart-cap"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flowchart-column flowchart-float" *ngFor="let base of [0, 0]; let columnidx=index; last as last;">
+          <!-- prgm 1 label -->
+          <!-- prgm 1 header going up -->
+          <div class="flowchart-bar-header flowchart-t-blank" *ngIf='columnidx == 0'>
+            <span class="sign">3a</span>
+            <span [ngClass]="{'long-text': (getShortProgramName(VERSION_1).length)>=28,
+              'long-text-header': (getShortProgramName(VERSION_1).length)>=25 && (getShortProgramName(VERSION_1).length)<28
+            }">
+              <!-- ... -->
+              With
+              <span class="prgm-name-in-header1">{{getShortProgramName(VERSION_1)}}</span>,
+            </span>
+          </div>
+          <!-- prgm 1 header for final states -->
+          <div class="flowchart-bar-header flowchart-t-gray" *ngIf='columnidx != 0' style="background:white">
+            <!-- so the home ends up being: -->
+            the outcome would be:
+          </div>
+          <!-- prgm 1 non-headers -->
+          <div class="flowchart-bar" [ngClass]="{
+            'flowchart-t-blank': columnidx == 0,
+            'flowchart-t-gray': columnidx != 0,
+            'not-last': !last,
+            'flowchart-cap-del': columnidx != 0 && devIsDif(thisTIMELINE, j)
+          }" *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.diffStates[base].devs, tii); last as last">
+            <!-- prgm 1 rows going up -->
+            <span class='midline' *ngIf="columnidx==0">
+              <span class='flowchart-cap'></span>
+              <div class="blue-right-triangle" style='left: calc(var(--flowchart-column-normal-width) * 2.68)'></div>
+            </span>
+            <!-- prgm 1 final states -->
+            <span class='flowchart-cap' *ngIf="columnidx != 0"
+              [ngClass]="{'flowchart-cap-del-highlight': devIsDif(thisTIMELINE, j), 'flowchart-cap-gray': !devIsDif(thisTIMELINE, j)}">
+              {{getFinalDevState(thisTIMELINE, base, j)}}
+            </span>
+          </div>
+
+          <!-- prgm 2 label -->
+          <div class="flowchart-gap-placeholder flowchart-t-blank"></div>
+          <div class="flowchart-bar-header flowchart-t-blank" *ngIf='columnidx == 0'>
+            <span class="sign">3b</span>
+            <span [ngClass]="{'long-text': (getShortProgramName(VERSION_2).length)>=28,
+              'long-text-header': (getShortProgramName(VERSION_2).length)>=25 && (getShortProgramName(VERSION_2).length)<28
+              }">
+              With
+              <span class="prgm-name-in-header2">{{getShortProgramName(VERSION_2)}}</span>,
+            </span>
+          </div>
+          <div class="flowchart-bar-header flowchart-t-blank" *ngIf='columnidx != 0' style="background:white">
+            <!-- so the home ends up being: -->
+            the outcome would be:
+          </div>
+          <div class="flowchart-bar" [ngClass]="{
+            'flowchart-t-blank': columnidx == 0,
+            'flowchart-t-gray': columnidx != 0,
+            'not-last': !lastbar,
+            'flowchart-cap-add': columnidx != 0 && devIsDif(thisTIMELINE, j)
+          }" *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.diffStates[base+1].devs, tii); last as lastbar">
+            <span class='midline' *ngIf="columnidx==0">
+              <span class='flowchart-cap'></span>
+              <div class="blue-right-triangle" style='left: calc(var(--flowchart-column-normal-width) * 2.68)'></div>
+            </span>
+            <span class='flowchart-cap' *ngIf="columnidx != 0"
+              [ngClass]="{'flowchart-cap-add-highlight': devIsDif(thisTIMELINE, j), 'flowchart-cap-gray': !devIsDif(thisTIMELINE, j)}">
+              {{getFinalDevState(thisTIMELINE, base+1, j)}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tutorial-reminder" *ngIf="urlParams['tutorial']=='true'">
+  <div *ngIf="this.INTRO_DONE == 1 && !this.tutorialStageComplete(1)">
+    Click on "Task instructions" to see what the example task asks you to do.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 2 && !this.tutorialStageComplete(2)">
+    To continue, read the task instructions and then close it.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 3 && !this.tutorialStageComplete(3)">
+    To continue, use the dropdown menu to select Program #1.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 4 && !this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    To continue, use the interface to get the correct answer, and submit it at the bottom of the page.
+  </div>
+  <div *ngIf="this.INTRO_DONE > 4 && this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    Once the tutorial concludes, you may close this tab and return to the study in the previous tab.
+  </div>
+</div>
+
+<div id="scroll-anchor">
+</div>
+
+<div class="row">
+  <app-save-bar class="save-select-container" *ngIf="READY && PRGMNUMSDEFINED" [PROGRAMNUMS_SETTER]="PROGRAMNUMS"
+    [PROGRAMS_SETTER]="PROGRAMS" [URL_PARAMS]="urlParams" [SPECIAL_PARAMS]="tutorialParams"
+    [SHOW_PRGMS_SUBMIT]="VERSION_2 != -2">
+  </app-save-bar>
+</div>

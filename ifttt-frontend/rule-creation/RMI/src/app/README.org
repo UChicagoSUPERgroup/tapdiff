@@ -1,0 +1,13 @@
+Abbreviations of the modules in ifttt-frontend/rule-creation/RMI/src/app:
+superifttt
+* rmi: displays one user's rules for one task
+** rmid: displays one version of one user's rules for one task
+* rci: lets user choose rules
+
+Interfaces:
+* ccsing: single program view (control condition)
+* sdiff: text differences (Github-style split view)
+* tdiff: outcome differences
+** tdiff4: flowcharts
+** tdiff6: questions
+* spdiff: safety property differences

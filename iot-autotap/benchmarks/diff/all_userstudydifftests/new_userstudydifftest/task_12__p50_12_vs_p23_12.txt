@@ -1,0 +1,5 @@
+task 12: 1) p50_12 vs. 2) p23_12
+tap_list_1:
+[{'condition': ['location_sensor.home_nobody=false', 'bathroom_window.openclose_curtains_position=false', 'bedroom_window.openclose_curtains_position=false', 'living_room_window.openclose_curtains_position=false'], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'roomba.power_onoff_setting=false'}]
+tap_list_2:
+[{'condition': [], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'bathroom_window.openclose_curtains_position=false'}, {'condition': [], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'bedroom_window.openclose_curtains_position=false'}, {'condition': [], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'living_room_window.openclose_curtains_position=false'}]

@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
+
+  --main-color: rgb(0, 153, 255);
+  --lighter-color: #ccebff;
+  --darker-color: #008ae6;
+  /* --main-color: #ff9933;
+    --darker-color: #ff8c1a; */
+
+  --border-color: gray;
+  --list-border-color: lightgrey;
+
+  --del-background: #ffeef0;
+  --del-highlight: #fdb8c0;
+  --add-background: #e6ffed;
+  --add-highlight: #acf2bd;
+  --dif-background: aliceblue;
+  --dif-highlight: var(--lighter-color);
+  --dif-selected-background: #fff2e1;
+  --dif-selected-highlight: #ffd394;
+
+  --del-place-holder-color: lightgrey;
+  --add-place-holder-color: lightgrey;
+}
+
+.error-info {
+  height: 550px;
+  font-size: 46px;
+  padding: 10% 20%;
+  color: #da8500;
+  text-align: center;
+}
+
+.init-loading {
+  height: 550px;
+  font-size: 46px;
+  padding: 10% 20%;
+  color: dimgray;
+  text-align: center;
+}
+
+.reminder-front-box {
+  margin: 2em 10%;
+  width: 80%;
+  height: auto;
+  overflow: auto;
+}
+
+.reminder-front {
+  /* height: 550px; */
+  font-size: 35px;
+  padding: 5% 20% 2% 20%;
+  /* padding: 7vh 15vw; */
+  color: dimgray;
+  text-align: left;
+}
+
+.reminder-front .emphasis {
+  color: orange;
+  font-weight: bold;
+}
+
+/* .reminder-front .note {
+  font-size: 25px;
+} */
+
+.reminder-front-disclaimer {
+  font-size: 25px;
+  color: dimgray;
+  text-align: center;
+  margin-top: 2em;
+  font-weight: bold;
+}
+
+.ready-button {
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+
+.orig-prgm {
+  font-weight: 500;
+  color: black;
+  font-size: 30px;
+  margin: auto 0.5em;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.tutorial-reminder {
+  width: 8em;
+  position: fixed;
+  top: 12em;
+  background:whitesmoke;
+  padding: 0.5em;
+  font-size: 1.5em;
+  line-height:1.5;
+  overflow: auto; 
+  max-height: 20em;
+}
+
+.helptext-show {
+  width: 100%;
+  height: auto;
+}
+
+.helptext-wrapper {
+  display: block;
+  /* width: 100%; */
+  text-align: center;
+  font-size: 36px;
+  padding: 50px;
+  margin: 40px 30px;
+  color: gray;
+  background: ghostwhite;
+  border-radius: 40px;
+}

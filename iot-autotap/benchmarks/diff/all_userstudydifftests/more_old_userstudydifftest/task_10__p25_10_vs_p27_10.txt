@@ -1,0 +1,5 @@
+task 10: 1) p25_10 vs. 2) p27_10
+unique_sps1:
+['bedroom_window.openclose_curtains_position=1 should never happen when location_sensor.bedroom_anyone=1']
+unique_sps2:
+['bathroom_window.openclose_window_position=0 should never happen when clock.is_it_daytime_time=1 and bedroom_window.openclose_curtains_position=0', 'bathroom_window.openclose_window_position=0 should never happen when clock.is_it_daytime_time=1 and bedroom_window.openclose_curtains_position=1']

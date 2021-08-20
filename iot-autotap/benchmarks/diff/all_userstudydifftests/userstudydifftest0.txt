@@ -1,0 +1,9 @@
+task 2
+{'trigger': 'living_room_window.openclose_window_position=false', 'action': 'living_room_window.openclose_window_position=true', 'condition': ['bedroom_window.openclose_window_position=false', 'bathroom_window.openclose_window_position=false']}
+{'trigger': 'bedroom_window.openclose_window_position=false', 'action': 'bedroom_window.openclose_window_position=true', 'condition': ['bathroom_window.openclose_window_position=false', 'living_room_window.openclose_window_position=false']}
+{'trigger': 'bathroom_window.openclose_window_position=false', 'action': 'bathroom_window.openclose_window_position=true', 'condition': ['bedroom_window.openclose_window_position=false', 'living_room_window.openclose_window_position=false']}
+{'trigger': 'location_sensor.home_anyone=true', 'action': 'living_room_window.openclose_window_position=true', 'condition': ['bedroom_window.openclose_window_position=false', 'living_room_window.openclose_window_position=false', 'bathroom_window.openclose_window_position=false']}
+For buchi_ts1: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['living_room_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0 and bedroom_window.openclose_window_position=0 should never occur together']
+For buchi_ts2: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['location_sensor.home_anyone=1 should never happen when living_room_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0 and bedroom_window.openclose_window_position=0']

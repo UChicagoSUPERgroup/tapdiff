@@ -1,0 +1,920 @@
+@import 'tdiff-common.css';
+
+.col-node.my-hide {
+  display: none;
+}
+
+.my-hide {
+  display: none;
+}
+
+.not-found-icon {
+  font-size: 60px;
+  display: inline;
+}
+
+
+.timeline-placeholder-text {
+  font-size: 30px;
+  text-align: left;
+  color: lightgray;
+  line-height: 45px;
+}
+
+.col-node.col-place-holder {
+  width: 75%;
+  padding: 50px;
+}
+
+.col-node.col-place-holder2 {
+  width: 61%;
+  padding: 30px;
+}
+
+/* ----------------------------------- */
+.system-state {
+  margin: 1.3vw;
+}
+
+.state-explain-box {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.ends-up-state-explain-box {
+  margin-left: 36%;
+}
+
+.card-title {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+
+/* ----------------------------------------------------------- */
+.timeline-titles-row {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.timeline-title1,
+.timeline-title2,
+.timeline-title3,
+.timeline-title4,
+.timeline-title5 {
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  color: dimgray;
+}
+
+.timeline-title1,
+.timeline-title3,
+.timeline-title5 {
+  background: lightgray;
+}
+
+.timeline-title2,
+.timeline-title4 {
+  background: whitesmoke;
+}
+
+.timeline-title1 {
+  width: 24%;
+}
+
+.timeline-title2 {
+  width: 14%;
+}
+
+.timeline-title3 {
+  width: 23%;
+}
+
+.timeline-title4 {
+  width: 14%;
+}
+
+.timeline-title5 {
+  width: 23%;
+}
+
+
+.timeline-updown-button {
+  border-radius: 100px;
+  display: inline-block;
+}
+
+.timeline-updown-button-wrapper {
+  text-align: center;
+}
+
+
+.filter-empty-info {
+  text-align: left;
+  font-size: 36px;
+  color: darkgray;
+  padding: 40px;
+}
+
+.filter-empty-info-desc {
+  text-align: left;
+  font-size: 30px;
+  padding: 10px 40px;
+}
+
+
+:host /deep/ .timeline-updown-button mat-icon {
+  line-height: 70px;
+  width: 70px;
+  height: 70px;
+  font-size: 60px;
+}
+
+
+button.timeline-updown-button {
+  padding: 5px;
+  min-width: 0px;
+  min-height: 0px;
+  background: dimgray;
+  transition: var(--ani-time2);
+}
+
+button.timeline-updown-button:hover:enabled {
+  background: linear-gradient(45deg, black, transparent);
+}
+
+:host /deep/ button.timeline-updown-button div.mat-button-ripple {
+  border-radius: 100px;
+}
+
+
+
+/* trans state (state 3) placeholder */
+.transtate-placeholder-wrapper {
+  text-align: center;
+}
+
+.transtate-button {
+  display: inline-block;
+  line-height: 2.1;
+  font-size: 24px;
+  border-radius: 50px;
+  padding: 20px;
+  border: 4px dotted;
+  background: lightgray;
+  color: black;
+  opacity: 0.6;
+}
+
+.transtate-button:hover {
+  background: rgb(145, 145, 145);
+}
+
+/*----------------------------------------------------*/
+
+* {
+  --divide-distance: 50px;
+  --big-box-margin: calc(var(--divide-distance) * (3/2));
+
+  --t-up-offset: 0;
+  --t-top-offset: 0;
+  --t-up-angle: 0;
+  --t-down-offset: var(--divide-distance);
+  --t-bottom-offset: var(--divide-distance);
+  --t-down-angle: 0;
+  --L-width: 1em;
+
+  --flowchart-column-min-width: 200px;
+  --flowchart-column-normal-width: 18%;
+  --flowchart-column-rightmost-width: 30px;
+  --flowchart-info-box-min-width: 165px;
+  --flowchart-stripe-size1: 15px;
+  --flowchart-stripe-size2: 20px;
+  --flowchart-stripe-light-color: #eee;
+  --flowchart-stripe-dark-color: #fafafa;
+}
+
+.flowchart-root {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.flowchart-arrow-row {
+  width: calc(var(--flowchart-column-normal-width) * 5 + var(--flowchart-column-rightmost-width));
+  margin: 0px auto;
+  min-width: calc(var(--flowchart-column-min-width) * 5 + var(--flowchart-column-rightmost-width));
+}
+
+.flowchart-arrow-top,
+.flowchart-arrow-bottom {
+  width: 100%;
+  height: 20px;
+}
+
+.flowchart-arrow-top {
+  background-image: repeating-linear-gradient(45deg,
+      var(--flowchart-stripe-light-color),
+      var(--flowchart-stripe-light-color) var(--flowchart-stripe-size1),
+      var(--flowchart-stripe-dark-color) var(--flowchart-stripe-size1),
+      var(--flowchart-stripe-dark-color) calc(var(--flowchart-stripe-size1) + var(--flowchart-stripe-size2)));
+}
+
+.flowchart-arrow-bottom {
+  background-image: repeating-linear-gradient(135deg,
+      var(--flowchart-stripe-light-color),
+      var(--flowchart-stripe-light-color) var(--flowchart-stripe-size1),
+      var(--flowchart-stripe-dark-color) var(--flowchart-stripe-size1),
+      var(--flowchart-stripe-dark-color) calc(var(--flowchart-stripe-size1) + var(--flowchart-stripe-size2)));
+}
+
+.flowchart-titles-row {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  text-align: center;
+  background: transparent;
+  white-space: nowrap;
+  font-size: 0px;
+}
+
+.flowchart-title.device {
+  background: whitesmoke;
+}
+
+@keyframes flowchart-initstate-animation {
+  0% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.flowchart-title.init-state {
+  background: #19a3ff;
+  color: white;
+  animation: 1s flowchart-initstate-animation infinite alternate-reverse;
+  /* top:-1.5em; */
+  display: inline-block;
+  text-align: left;
+}
+
+.flowchart-title.inter-state {
+  background: whitesmoke;
+}
+
+.flowchart-title.final-state {
+  background: #e6e6e6;
+}
+
+.flowchart-title {
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  padding: 10px;
+  color: dimgray;
+  width: var(--flowchart-column-normal-width);
+  min-width: var(--flowchart-column-min-width);
+}
+
+.flowchart-title-x2 {
+  width: calc(var(--flowchart-column-normal-width) * 2);
+  min-width: calc(var(--flowchart-column-min-width) * 2);
+}
+
+.flowchart-title.rightmost {
+  width: var(--flowchart-column-rightmost-width);
+  max-width: var(--flowchart-column-rightmost-width);
+  background: whitesmoke;
+  min-width: var(--flowchart-column-rightmost-width);
+}
+
+.flowchart-initstates-locator1 {
+  width: 0px;
+  height: 0px;
+  float: left;
+  top: 40px;
+  left: 50%;
+  position: relative;
+}
+
+.flowchart-initstates-locator2 {
+  display: inline-block;
+}
+
+.flowchart-initstates-panel {
+  background: linear-gradient(180deg, #cceaff, transparent);
+  position: relative;
+  left: -50%;
+  /* width: var(--oracle-width); */
+  /* text-align: center; */
+  /* padding: 15px 0px; */
+  text-align: left;
+  padding: 2px 0px;
+}
+
+.flowchart-initstate-switch-button {
+  min-width: 0px;
+  color: white;
+  border-radius: 50px;
+  display: inline-block;
+  background: black;
+  line-height: 20px;
+  padding: 5px;
+  vertical-align: super;
+}
+
+.flowchart-initstate-switch-left-icon,
+.flowchart-initstate-switch-right-icon {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.flowchart-initstate-switch-left-icon {
+  transform: rotate(180deg);
+}
+
+.flowchart-initstate-indicator {
+  /* font-weight: 700; */
+  font-weight: bold;
+  color: black;
+  margin: 0px 5px;
+}
+
+.flowchart-big-box {
+  width: 100%;
+  text-align: center;
+  /* margin: var(--big-box-margin) 0px; */
+  font-size: 0px;
+  white-space: nowrap;
+  margin-top: calc(var(--big-box-margin) + 2vh);
+  margin-bottom: calc(var(--big-box-margin) * 3.5);
+  /* border-bottom: thin solid var(--list-border-color); */
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.flowchart-column,
+.flowchart-column-half,
+.flowchart-column-fifth,
+.flowchart-column-tiny,
+.flowchart-column-all-L,
+.flowchart-column-L,
+.flowchart-column-L2 {
+  width: var(--flowchart-column-normal-width);
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.1vw;
+  min-width: var(--flowchart-column-min-width);
+  background: white;
+}
+
+.flowchart-situation,
+.flowchart-outcome {
+  display: inline;
+}
+
+.flowchart-column-half {
+  width: calc(2*var(--flowchart-column-normal-width)/3);
+  min-width: calc(2*var(--flowchart-column-min-width)/3);
+}
+
+.flowchart-column-fifth {
+  width: calc(var(--flowchart-column-normal-width)/5);
+  min-width: calc(var(--flowchart-column-min-width)/5);
+}
+
+.flowchart-column-tiny {
+  width: calc(var(--flowchart-column-normal-width)/7);
+  min-width: calc(var(--flowchart-column-min-width)/7);
+}
+
+/* for L shape lines...
+Start with col then rows, need smaller cols in each row;
+*/
+.flowchart-column-all-L {
+  width: auto;
+  min-width: auto;
+}
+
+.flowchart-column-L,
+.flowchart-column-L2 {
+  width: var(--L-width);
+  min-width: var(--L-width);
+  /* height:var(--bar-height); */
+  vertical-align: top;
+}
+
+.flowchart-column-L2 {
+  height: calc(var(--t-down-offset) + 2.05em);
+  border-left: var(--connector-lines);
+  /* border-bottom: 1px dotted #000; */
+}
+
+.long-text {
+  font-size: 0.85vw;
+}
+
+.long-text-header {
+  font-size: 0.95vw;
+}
+
+.flowchart-device-column {
+  width: var(--flowchart-column-normal-width);
+  /* min-width: var(--flowchart-column-min-width); */
+  /* min-width: fit-content; */
+  min-width: auto;
+  line-height: 48px;
+}
+
+.box {
+  /* border: 1px solid var(--filter-row-color); */
+  background: whitesmoke;
+}
+
+.flowchart-device-column .flowchart-bar {
+  background: whitesmoke;
+  font-weight: bold;
+}
+
+.flowchart-device-column .flowchart-bar-header {
+  /* background: #ff8c1a; */
+  color: var(--main-color);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.sign {
+  background: var(--main-color);
+  color: white;
+  width: 1.5em;
+  line-height: 1.5em;
+  border-radius: 50%;
+  /* border: 1px solid var(--main-color); */
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* Tooltip text */
+.event-clarification {
+  font-size: 1em;
+  font-weight: bold;
+  background: lightgray;
+  color: white;
+  display: inline-block;
+  border-radius: 50px;
+  width: 1.2em;
+  height: 1.2em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.event-clarification .tooltiptext {
+  visibility: hidden;
+  width: 20em;
+  max-width: 20em;
+  word-wrap: normal;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 50px;
+  display: inline;
+
+  /* Position the tooltip text - see examples below! */
+  left: 50%;
+  bottom: 50%;
+  margin-left: -10em;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.event-clarification:hover .tooltiptext {
+  visibility: visible;
+}
+
+.midline,
+.midline-L,
+.midline-L-left {
+  /* background:red; */
+  width: 100%;
+  text-align: center;
+  border-bottom: var(--connector-lines);
+  line-height: 0.1em;
+  display: flex;
+  height: var(--half-bar-height);
+  justify-content: center;
+}
+
+.midline-L,
+.midline-L-left {
+  width: var(--L-width);
+  min-width: var(--L-width);
+}
+
+.midline-L-left {
+  border-left: var(--connector-lines);
+}
+
+.midline-L-no-bottom {
+  border-bottom: none;
+}
+
+.midline-L-corner {
+  border-bottom-left-radius: 8px;
+}
+
+.circle-left {
+  border-radius: 50%/50%;
+  width: var(--circle-radius);
+  height: var(--circle-radius);
+  background: var(--main-color);
+  /* orange; */
+  /* border: 1px solid black; */
+  position: relative;
+  float: right;
+  top: var(--circle-offset);
+  right: var(--circle-offset);
+}
+
+/* .special-circle-left,
+.special-circle-left2 {
+  border-radius: 50%/50%;
+  width: var(--circle-radius);
+  height: var(--circle-radius);
+  background: var(--main-color);
+  position: relative;
+  float: right;
+  top: calc(var(--half-bar-height) + var(--circle-offset));
+  right: var(--circle-offset);
+}
+
+.special-circle-left2 {
+  top: var(--circle-offset);
+  right: calc(var(--circle-offset) - 1px);
+} */
+
+.special-circle-left {
+  border-radius: 50%/50%;
+  width: var(--circle-radius);
+  height: var(--circle-radius);
+  background: var(--main-color);
+  position: relative;
+  float: right;
+  /* +/- MUST be surrounded by whitespace to be parsed correctly */
+  top: calc(var(--half-bar-height) + var(--circle-offset));
+  /* right: calc(var(--flowchart-column-normal-width)/7); */
+  /* left: calc(var(--flowchart-column-min-width) / 14); */
+  left: calc(var(--flowchart-column-normal-width) *2.6)
+}
+
+.circle-right {
+  border-radius: 50%/50%;
+  width: var(--circle-radius);
+  height: var(--circle-radius);
+  background: var(--main-color);
+  position: relative;
+  top: var(--circle-offset);
+  left: var(--circle-offset);
+}
+
+.blue-right-triangle {
+  position: relative;
+  float: right;
+  left: 15px;
+  top: 14px;
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--main-color);
+}
+
+.flowchart-bar,
+.flowchart-L-row {
+  /* margin: 3px 0px; */
+  width: 100%;
+  height: var(--bar-height);
+  vertical-align: middle;
+  overflow: hidden;
+  /* border-right: 1px dotted gray; */
+  border-radius: 10px;
+}
+
+.flowchart-L-row {
+  border-radius: 0px;
+}
+
+.not-last {
+  border-bottom: 3px dashed white;
+}
+
+.flowchart-gap-placeholder {
+  width: 100%;
+  /* height: var(--bar-height); */
+  height: var(--t-bottom-offset);
+  vertical-align: middle;
+  overflow: hidden;
+  background: transparent;
+}
+
+.flowchart-bars-placeholder {
+  width: 100%;
+  height: 2em;
+  vertical-align: middle;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.flowchart-bar-header {
+  /* margin: 3px 0px;
+  width: 100%;
+  /* height: 50px; */
+  height: 1.5em;
+  line-height: 1.5em;
+  font-weight: bold;
+  /* background: #ff8c1a; */
+  color: var(--main-color);
+  /* opacity: 0.6; */
+  vertical-align: middle;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+  text-align: left;
+  /* animation: 1s flowchart-barheader-animation infinite alternate-reverse; */
+  /* border-right: 1px dotted gray; */
+}
+
+.flowchart-bar-change {
+  background: orange;
+}
+
+.flowchart-device-column .flowchart-bar-dev {
+  text-align: right;
+  background: white;
+}
+
+.flowchart-bar-dev-right {
+  border-left: 5px solid white;
+}
+
+.gotoright {
+  transform: rotate(90deg);
+}
+
+.event-header {
+  /* font-size:50px; */
+  font-weight: bolder;
+}
+
+.flowchart-cap {
+  /* background:white; */
+  line-height: 48px;
+  display: inline-block;
+  /* font-weight: bold; */
+}
+
+.flowchart-t-blank,
+.flowchart-t-gray {
+  float: left;
+}
+
+.flowchart-t-gray {
+  background: whitesmoke;
+}
+
+.flowchart-t-top {
+  transform: translatY(var(--t-top-offset));
+  background: whitesmoke;
+}
+
+/* .flowchart-t-bottom {
+  background: whitesmoke;
+  float: left;
+} */
+
+/* these 3 must be placed after flowchart-t-top/bottom due to specificity/override order */
+.flowchart-cap-gray {
+  /* background:white; */
+  color: gray;
+  font-weight: normal;
+}
+
+.flowchart-cap-del {
+  background: var(--del-background);
+  color: black;
+}
+
+.flowchart-cap-add {
+  background: var(--add-background);
+  color: black;
+}
+
+.flowchart-cap-dif {
+  background: var(--dif-background);
+  color: black;
+}
+
+.flowchart-cap-dif-selected {
+  background: var(--dif-selected-background);
+}
+
+.flowchart-cap-del-highlight,
+.flowchart-cap-add-highlight,
+.flowchart-cap-dif-highlight,
+.flowchart-cap-dif-selected-highlight,
+.prgm-name-in-header1,
+.prgm-name-in-header2 {
+  background: var(--del-highlight);
+  padding: 0 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.flowchart-cap-add-highlight,
+.prgm-name-in-header2 {
+  background: var(--add-highlight);
+}
+
+.flowchart-cap-dif-highlight {
+  background: var(--dif-highlight);
+}
+
+.flowchart-cap-dif-selected-highlight {
+  background: var(--dif-selected-highlight);
+}
+
+.prgm-name-in-header1,
+.prgm-name-in-header2 {
+  color: black;
+}
+
+.intro-text {
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 1em;
+  /* margin-left: var(--big-box-margin); */
+}
+
+/*---------------- info box -----------------*/
+.flowchart-info-locator-a1,
+.flowchart-info-locator-b1 {
+  display: block;
+  width: 0px;
+  height: 0px;
+  position: relative;
+  left: 100%;
+}
+
+.flowchart-info-locator-a2,
+.flowchart-info-locator-b2 {
+  display: grid;
+  width: auto;
+  height: auto;
+}
+
+
+.flowchart-info-box-a,
+.flowchart-info-box-b {
+  position: relative;
+  bottom: calc(100% + 0px);
+  left: -50%;
+}
+
+.flowchart-info-box-b {
+  top: calc(0px);
+  left: -50%;
+}
+
+.flowchart-info-box-content-a,
+.flowchart-info-box-content-b {
+  font-size: 17px;
+  line-height: 20px;
+  border: 2px dimgray solid;
+  background: lightgray;
+  border-radius: 20px;
+  padding: 10px;
+  min-width: var(--flowchart-info-box-min-width);
+  text-align: left;
+  white-space: normal;
+}
+
+.flowchart-info-box-arrow-a,
+.flowchart-info-box-arrow-b {
+  position: relative;
+  left: calc(50% - 10px);
+  width: 0;
+  height: 0;
+  font-size: 0;
+  border: solid 10px;
+  border-color: dimgray transparent transparent transparent;
+}
+
+.flowchart-info-box-arrow-b {
+  border-color: transparent transparent dimgray transparent;
+}
+
+/* ------------- small stuff --------------- */
+/* .flowchart-rightmost-arrow {
+  height: var(--oracle-height);
+  width: var(--flowchart-column-rightmost-width);
+  border-top: calc(var(--oracle-height) / 2) transparent solid;
+  border-bottom: calc(var(--oracle-height) / 2) transparent solid;
+  border-left: var(--flowchart-column-rightmost-width) #e8e7e7 solid;
+  border-right: none;
+}
+
+.flowchart-rightmost-arrow.t-top {
+  transform: translateY(var(--t-top-offset));
+  scaleX(0.5) translateX(calc((var(--oracle-height) * 0.5) * -1));
+} */
+
+/* .flowchart-rightmost-arrow.t-bottom{
+  transform: translateY(calc(var(--t-top-offset) * -1));
+} */
+
+.flowchart-rightmost-arrow.t-bottom {
+  transform: translateY(var(--t-bottom-offset));
+}
+
+.flowchart-rightmost-column {
+  width: var(--flowchart-column-rightmost-width);
+  min-width: var(--flowchart-column-rightmost-width);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.flowchart-prog-label-locator1 {
+  width: 0px;
+  height: 0px;
+  float: left;
+}
+
+.flowchart-prog-label-locator2,
+.situation-label,
+.device-missing-disclaimer {
+  display: inline-block;
+  position: relative;
+  top: -30px;
+  margin-left: 0.2em;
+}
+
+.flowchart-prog-label {
+  /* font-size: 21px; */
+  font-weight: bold;
+  font-size: 40px;
+  /* font-size:35px; if a question */
+  /* color: var(--main-color); */
+  color: black;
+}
+
+.dev-mask-checkbox {
+  padding: 5px;
+  /* font-size: 15px; */
+  color: black;
+  vertical-align: middle;
+}
+
+.device-missing-disclaimer {
+  color: var(--border-color);
+  font-weight: normal;
+  top: -50px;
+  /* margin-left: 0.5em; */
+}
+
+/* float is for prgm 0 vs. X */
+.flowchart-float {
+  vertical-align: top;
+}
+
+.situation-label {
+  top: -60px;
+}
+
+.situation-label-float {
+  top: -80px;
+}
+
+.disclaimer-float {
+  top: -95px;
+}
+
+.highlight {
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.instr {
+  margin: 0 10% 1.5em 10%;
+  font-size:1.5em;
+}

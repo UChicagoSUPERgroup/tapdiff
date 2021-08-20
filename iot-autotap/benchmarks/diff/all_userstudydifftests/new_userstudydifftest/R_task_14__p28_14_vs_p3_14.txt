@@ -1,0 +1,9 @@
+task 14: 1) p28_14 vs. 2) p3_14
+tap_list_1:
+[{'trigger': 'location_sensor.bedroom_a_family_member=true', 'condition': [], 'action': 'front_door_lock.lockunlock_setting=true'}]
+tap_list_2:
+[{'trigger': 'clock.is_it_daytime_time=false', 'condition': [], 'action': 'front_door_lock.lockunlock_setting=true'}, {'trigger': 'location_sensor.home_a_family_member=false', 'condition': ['front_door_lock.lockunlock_setting=true'], 'action': 'security_camera.siren_value=true'}]
+unique_sps1:
+['location_sensor.bedroom_a_family_member=1 should never happen when front_door_lock.lockunlock_setting=0', 'location_sensor.bedroom_a_family_member=1 should never happen when front_door_lock.lockunlock_setting=1']
+unique_sps2:
+['clock.is_it_daytime_time=0 should never happen when front_door_lock.lockunlock_setting=0', 'clock.is_it_daytime_time=0 should never happen when front_door_lock.lockunlock_setting=1']

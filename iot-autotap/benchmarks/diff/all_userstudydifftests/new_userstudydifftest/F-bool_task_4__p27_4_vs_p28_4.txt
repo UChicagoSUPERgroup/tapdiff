@@ -1,0 +1,9 @@
+task 4: 1) p27_4 vs. 2) p28_4
+tap_list_1:
+[{'condition': [], 'action': 'thermostat.thermostat_temperature=80', 'trigger': 'weather_sensor.current_temperature_temperature=88'}, {'condition': [], 'action': 'thermostat.ac_onoff_setting=true', 'trigger': 'weather_sensor.current_temperature_temperature=83'}]
+tap_list_2:
+[{'condition': [], 'action': 'thermostat.ac_onoff_setting=true', 'trigger': 'thermostat.current_temperature_temperature=80'}]
+unique_sps1:
+[]
+unique_sps2:
+[]

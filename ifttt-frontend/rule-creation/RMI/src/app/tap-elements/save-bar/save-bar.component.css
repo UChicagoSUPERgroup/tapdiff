@@ -1,0 +1,518 @@
+@import '../../../assets/diffcom-savebar.css';
+
+* {
+  --special-button-width: 10em;
+}
+.text-info-textbox{
+  display: inline-block;
+  width: 300px;
+  height: 110px;
+  padding: 10px 10px 10px 20px;
+  background: linear-gradient(180deg, transparent, lightgray, transparent);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.text-info-button{
+  background: linear-gradient(45deg, lightgreen, lightseagreen, lightseagreen);
+  border-radius: 0px;
+  min-width: 0px;
+  height: 60px;
+  width: var(--special-button-width);
+  font-size: 1em;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: 1em;
+  vertical-align: middle;
+}
+
+.see-program-button{
+  vertical-align: middle;
+}
+
+p.task-button-small-text{
+  /* font-size: 12px; */
+  font-size:20px;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.all-table{
+  width: 100%;
+}
+
+/* br {
+  line-height: 2em;
+} */
+
+p.choose-program-to-see-instruction {
+  font-size: 15px;
+  line-height: 1;
+  text-align: left;
+  margin: 1em auto auto 1em;
+}
+
+.task-info-panel, .prgm-info-panel{
+  /* border-right: 2px solid lightgray; */
+  vertical-align: middle;
+  /* width: 490px; */
+  width: 11em;
+  /* margin: auto 1em; */
+  text-align:center;
+  /* padding: 0 2em; */
+  position: fixed;
+  left: 0;
+  top: 5em;
+  background: whitesmoke;
+  /* display: inline-block; */
+}
+
+.prgm-info-panel{
+  width:10%;
+}
+
+.save-panel{
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+  background: whitesmoke;
+  border-radius:50px;
+  margin-bottom: 3em;
+}
+
+.prog-checkbox{
+  padding: 15px;
+  font-size: 20px;
+}
+
+.save-button{
+  top: 10px;
+}
+
+
+.checkbox-savebar{
+  padding: 20px;
+  padding-top: 0;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.nested-checkboxes{
+  display: inline-block;
+  transform: scale(1);
+  width: auto;
+  opacity: 1;
+  transition: 0.4s;
+  border-radius: 20px;
+  background: #e2e1e1;
+  padding: 10px;
+  overflow: auto;
+  max-height: 5em;
+  width: 100%;
+}
+
+div.hidden-nested-checkboxes{
+  display: none;
+  transform: scale(0);
+  opacity: 0;
+}
+
+
+.savebar-radios{
+  font-size: 22px;
+}
+
+
+:host /deep/  .mat-radio-label-content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+label{
+  font-size: 22px;
+  /* color: gray; */
+  font-weight: bold;
+  margin-left: -50px;
+  margin-bottom: 1em;
+}
+
+/* ------------scroll hint--------------- */
+.scroll-hint-button{
+  position: fixed;
+  opacity: 0;
+  bottom: 180px; /* adjust the vertical position of scroll hint button*/
+  right: -65px;
+  border-radius: 100px;
+  transition: 0.6s;
+  padding: 0px 0px;
+  min-width: 0px;
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+  background: black;
+}
+
+.scroll-hint-icon{
+  font-size: 36px;
+  padding: 0px;
+  width: 36px;
+  height: 36px;
+}
+
+
+
+@keyframes blink-smooth { 
+  100% { opacity: 0.7; } 
+}
+
+.scroll-hint-button.scroll-hint-button-visible{
+  opacity: 0.35;
+  right: 20px;
+  /* animation: 3s blink-smooth infinite alternate;
+  transition: 0.6s; */
+}
+
+.scroll-hint-button.scroll-hint-button-visible:hover{
+  opacity: 0.8;
+  background: black;
+}
+
+
+.submit-spinner-wrapper{
+  display: inline-block;
+  padding: 0px;
+  vertical-align: middle;
+}
+
+.prog-dropdown {
+  display: inline-block;
+  /* width: 346px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+:host /deep/ .prog-dropdown .mat-select {
+  width: 100%;
+  font-size: 2.3vw;
+  padding: 0px 2px 2px 0px;
+  margin-right: 0px;
+}
+
+:host /deep/ .prog-dropdown .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 25px; /*selected text size*/
+  float: middle;
+  padding-left: 1em;
+  color: white;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-label-wrapper mat-label{
+  font-size: 24px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-type-mat-select .mat-form-field-label{
+  top: 20px !important;
+  left: 30px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-wrapper {
+  padding-top: 0px;
+  background: linear-gradient(45deg, lightgreen, lightseagreen, lightseagreen);
+  border-radius: 0;
+  border-width: 10px;
+  border-right: 0;
+  border-left: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 10px;
+  padding-bottom: 0em;
+  height: 60px;
+  width: 400px;
+}
+
+:host /deep/ .prog-dropdown mat-form-field{
+  /* padding-right: 20px; */
+  padding: 1em;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-type-mat-select .mat-form-field-label{
+  top: 30px;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-underline{
+  height: 1.2px;
+  visibility: hidden;
+}
+
+:host /deep/ .prog-dropdown .mat-form-field-underline .mat-form-field-ripple{
+  display: none;
+}
+
+:host /deep/ .prog-dropdown .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid;
+  margin: 0 4px;
+}
+
+:host /deep/ .prog-dropdown mat-select.selecting-invalid .mat-select-value-text {
+  color: gray;
+}
+
+:host /deep/ .prog-dropdown .mat-select-arrow {
+  border-left: 0;
+  border-right: 0;
+}
+
+.tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+/* https://www.w3schools.com/howto/howto_css_tooltip.asp */
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 650px;
+  margin-left: -325px;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 555;
+  opacity: 0;
+
+  top: 135%;
+  left: 50%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+/*----------------------------------------------*/
+/* Tooltip container */
+
+:host /deep/ .prog-dropdown .tooltip .mat-input-infix{
+  height: 100%;
+}
+
+.prog-dropdown .tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+/* https://www.w3schools.com/howto/howto_css_tooltip.asp */
+
+.prog-dropdown .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 650px;
+  margin-left: -325px;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 555;
+  opacity: 0;
+
+  top: 123%;
+  left: 50%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.prog-dropdown .tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+
+.prog-dropdown .tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.tooltiptext {
+  max-height: 65vh;
+  overflow: auto;
+  transition: opacity 0.3;
+  transition-delay: 0.3s;
+}
+
+.none-option-text{
+  color: gray;
+}
+
+/* see-program-button */
+/* ------------------------------------------------------ */
+.see-program-button {
+  display: inline-block;
+  /* width: 346px; */
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
+
+:host /deep/ .see-program-button .mat-select {
+  width: 100%;
+  font-size: 2.3vw;
+  padding: 0px 2px 2px 0px;
+  margin-right: 0px;
+}
+
+:host /deep/ .see-program-button .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 25px; /*selected text size*/
+  float: middle;
+  padding-left: 1em;
+  color: white;
+}
+
+:host /deep/ .see-program-button .mat-form-field-label-wrapper mat-label{
+  font-size: 24px;
+}
+
+/* :host /deep/ .see-program-button .mat-form-field-type-mat-select .mat-form-field-label{
+  top: 20px !important;
+  left: 30px;
+} */
+
+:host /deep/ .see-program-button .mat-form-field-wrapper {
+  background: linear-gradient(45deg, lightgreen, lightseagreen, lightseagreen);
+  border-radius: 0px;
+  min-width: 0px;
+  height: 30px;
+  width: var(--special-button-width);
+  font-size: 1em;
+  display: inline-block;
+  vertical-align: bottom;
+  /* margin: auto 1em; */
+  vertical-align: middle;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+:host /deep/ .see-program-button mat-form-field{
+  /* padding-right: 20px; */
+  padding-left: 1em;
+  margin-top: 1em;
+}
+
+:host /deep/ .see-program-button .mat-form-field-type-mat-select .mat-form-field-label{
+  /* top: 0; */
+  top: 1em;
+  left: 0.5em;
+  /* top: 30px; */
+}
+
+:host /deep/ .see-program-button .mat-form-field-underline{
+  height: 1.2px;
+  visibility: hidden;
+}
+
+:host /deep/ .see-program-button .mat-form-field-underline .mat-form-field-ripple{
+  display: none;
+}
+
+:host /deep/ .see-program-button .mat-select-trigger {
+  display: initial !important;
+}
+
+:host /deep/ .see-program-button .mat-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid;
+  margin: 0 4px;
+}
+
+:host /deep/ .see-program-button mat-select.selecting-invalid .mat-select-value-text {
+  color: gray;
+}
+
+:host /deep/ .see-program-button .mat-select-value {
+  display: initial !important;
+}
+
+:host /deep/ .see-program-button .mat-select-arrow {
+  border-left: 0;
+  border-right: 0;
+}
+
+/* Tooltip container */
+
+:host /deep/ .see-program-button .tooltip .mat-input-infix{
+  height: 3em;
+  width: 8em !important;
+  top: -0.5em;
+  /* padding-left: 1em; */
+  /* padding-top: 0.5em; */
+  padding-bottom:0;
+}
+
+.see-program-button .tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+/* https://www.w3schools.com/howto/howto_css_tooltip.asp */
+
+.see-program-button .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 650px;
+  margin-left: -325px;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 555;
+  opacity: 0;
+
+  top: 123%;
+  left: 50%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.see-program-button .tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+
+.see-program-button .tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}

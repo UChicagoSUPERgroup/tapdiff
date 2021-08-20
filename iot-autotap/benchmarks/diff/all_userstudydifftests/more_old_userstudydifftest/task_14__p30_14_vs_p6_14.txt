@@ -1,0 +1,5 @@
+task 14: 1) p30_14 vs. 2) p6_14
+unique_sps1:
+['fitbit.sleep_sensor_status=0 should never happen when front_door_lock.lockunlock_setting=1', 'fitbit.sleep_sensor_status=0 should never happen when front_door_lock.lockunlock_setting=0']
+unique_sps2:
+['hue_lights.power_onoff_setting=0 should never happen when front_door_lock.lockunlock_setting=1 and clock.is_it_daytime_time=0', 'hue_lights.power_onoff_setting=0 should never happen when front_door_lock.lockunlock_setting=0 and clock.is_it_daytime_time=0']

@@ -1,0 +1,181 @@
+@import '../../../assets/diffcom-sdiff.css';
+
+* {
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
+
+  --main-color: rgb(0, 153, 255);
+  --lighter-color: #ccebff;
+  --darker-color: #008ae6;
+  /* --main-color: #ff9933;
+    --darker-color: #ff8c1a; */
+
+  --border-color: gray;
+  --list-border-color: lightgrey;
+
+  --del-background: #ffeef0;
+  --del-highlight: #fdb8c0;
+  --add-background: #e6ffed;
+  --add-highlight: #acf2bd;
+
+  --del-place-holder-color: lightgrey;
+  --add-place-holder-color: lightgrey;
+}
+
+.rules-box{
+    padding-left:0%;
+    padding-right:0%;
+}
+
+.rule-blocks,
+div.del-rule-blocks,
+div.add-rule-blocks,
+div.change-add-rule-blocks,
+div.change-del-rule-blocks {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.rule-block {
+  padding: 0px 3px;
+  display: inline-block;
+  width: 32%;
+  text-align: left;
+  /* 33% width makes resizing weird -- causes "then..." to go onto new line */
+}
+
+div.rule-word,
+div.del-rule-word,
+div.add-rule-word,
+div.rule-icon,
+div.del-rule-icon,
+div.add-rule-icon,
+div.blank-del-rule-word,
+div.blank-del-rule-icon {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 20px;
+}
+
+
+div.change-del-rule-blocks{
+  background: transparent;
+}
+
+div.change-add-rule-blocks{
+  background: transparent;
+}
+
+
+div.del-rule-blocks {
+  background: transparent;
+  font-weight: 900;
+}
+
+div.add-rule-blocks {
+  background: transparent;
+  font-weight: 900;
+}
+
+div.add-rule-block,
+div.del-rule-block {
+  width: 100%;
+  display: inline-block;
+  font-weight: 900;
+}
+
+div.add-rule-block {
+  background-color: var(--add-highlight);
+}
+
+div.del-rule-block {
+  background-color: var(--del-highlight);
+}
+
+
+/*  ----- modify for spdiff -----  */
+.add-remove-tags{
+  width: 4%;
+  font-size: 26px;
+  display: inline-block;
+  vertical-align: top;
+}
+.sp-index-display{
+  width: 5%;
+  display: inline-block;
+}
+
+div.tap{
+  display: inline-block;
+  width: calc(90% - var(--sp-index-width));
+}
+
+.rule-blocks, 
+div.del-rule-blocks, 
+div.add-rule-blocks, 
+div.change-add-rule-blocks, 
+div.change-del-rule-blocks,
+div.change-add-rule-blocks{
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* ---- sp index ---- */
+.sp-index{
+  /* display: inline-block; */
+  width: var(--sp-index-width);
+  height: 30px;
+  vertical-align: top;
+  float: left;
+}
+
+.sp-index-expand{
+  width: 200px;
+}
+
+.sp-index-text{
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  margin: 2px 0px 2px 6px;
+  line-height: 24px;
+  /* border-radius: 100px; */
+  border: 2px black solid;
+  /* display: inline-block; */
+  background: linear-gradient(45deg, black, darkgray);
+  color: white;
+  float: left;
+}
+
+.indiv-sp-index-text{
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  margin: 2px 0px 2px 6px;
+  line-height: 24px;
+  border-radius: 100px;
+  border: 2px black solid;
+  /* display: inline-block; */
+  background: linear-gradient(45deg, black, darkgray);
+  color: white;
+  float: left;
+}
+
+
+.del-rule-display,
+.add-rule-display,
+.rule-display,
+.mod-rule-display,
+.change-rule-display,
+.del-rule-placeholder-display,
+.add-rule-placeholder-display{
+  padding: 3px 0px 5px 0px;
+  display: block;
+  height:100%;
+}
+
+.if-while-then{
+  background: #fcfeff;
+}

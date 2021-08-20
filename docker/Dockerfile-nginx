@@ -1,0 +1,8 @@
+FROM nginx
+
+ARG configurefile
+
+COPY ./ssl/superifttt.crt /etc/ssl/certs/superifttt.crt
+COPY ./ssl/private/superifttt.key /etc/ssl/private/superifttt.key
+COPY $configurefile /etc/nginx/nginx.conf
+# CMD echo $backend && echo $frontend && echo $postgres

@@ -1,0 +1,38 @@
+{
+    "0": {
+        "weather_sensor.is_it_raining_condition": false,
+        "bedroom_window.openclose_window_position": false,
+        "location_sensor.home_alice": false,
+        "location_sensor.home_bobbie": false,
+        "thermostat.ac_onoff_setting": false,
+        "smoke_detector.smoke_detection_condition": false,
+        "clock.is_it_daytime_time": false,
+        "front_door_lock.lockunlock_setting": false,
+        "smart_tv.power_onoff_setting": false,
+        "roomba.power_onoff_setting": false
+    },
+    "1": {
+        "weather_sensor.is_it_raining_condition": false,
+        "bedroom_window.openclose_window_position": false,
+        "location_sensor.home_alice": false,
+        "location_sensor.home_bobbie": false,
+        "thermostat.ac_onoff_setting": false,
+        "smoke_detector.smoke_detection_condition": false,
+        "clock.is_it_daytime_time": false,
+        "front_door_lock.lockunlock_setting": false,
+        "smart_tv.power_onoff_setting": false,
+        "roomba.power_onoff_setting": false
+    },
+    "2": {
+        "weather_sensor.is_it_raining_condition": false,
+        "bedroom_window.openclose_window_position": false,
+        "location_sensor.home_alice": false,
+        "location_sensor.home_bobbie": false,
+        "thermostat.ac_onoff_setting": false,
+        "smoke_detector.smoke_detection_condition": false,
+        "clock.is_it_daytime_time": false,
+        "front_door_lock.lockunlock_setting": false,
+        "smart_tv.power_onoff_setting": false,
+        "roomba.power_onoff_setting": false
+    }
+}

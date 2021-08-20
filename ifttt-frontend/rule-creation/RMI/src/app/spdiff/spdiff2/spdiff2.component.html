@@ -1,0 +1,285 @@
+<div class="init-loading" *ngIf="!PRGMNUMSDEFINED">Loading...</div>
+
+<div *ngIf="PRGMNUMSDEFINED && READY" class="rules-box"
+  [ngClass]="{'hide': urlParams['tutorial']=='true' && this.INTRO_DONE<3}">
+  <div class="row">
+    <div class="column top-select-container border-right">
+      <mat-label class="top-label-for-dropdown top-label">Program
+        on Left</mat-label>
+      <!-------------------------- left select start -------------------------->
+      <div class="prog-dropdown" *ngIf="PRGMNUMSDEFINED">
+        <mat-form-field class="tooltip" *ngIf="VERSION_1!=0">
+          <mat-label *ngIf="urlParams['dropdown-label'] =='true'">(Select a program)</mat-label>
+          <!-- <app-tap-tip *ngIf="tooltipEnabled()" class="tooltiptext" [VERSION]="VERSION_1" [UNPARSED_RULES]="PROGRAMS[VERSION_1]"></app-tap-tip> -->
+          <mat-select [(ngModel)]='VERSION_1' (change)="updateDiff($event)">
+            <mat-option *ngFor="let i of PROGRAMNUMS" [value]="i">
+              <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="VERSION_1==0" class="orig-prgm" style="margin-left:0; padding: 0.3em 0; font-size: 2em">Original
+          Program</div>
+        <div class="color-labels">
+          <mat-label class="underneath key">(</mat-label>
+          <div class="del-underneath key">- Patterns that only the left program has</div>
+          <mat-label class="underneath key" style='margin-right:0.7em'>)</mat-label>
+        </div>
+      </div>
+    </div>
+    <div class="column top-select-container">
+      <mat-label class="top-label-for-dropdown top-label">Program
+        on Right</mat-label>
+      <!-------------------------- right select start  -------------------------->
+      <div class="prog-dropdown" *ngIf="PRGMNUMSDEFINED">
+        <mat-form-field id="rightdropdown" class="tooltip" *ngIf="PROGRAMNUMS.length>2">
+          <mat-label *ngIf="urlParams['dropdown-label'] =='true'">(Select a program)</mat-label>
+          <!-- <app-tap-tip *ngIf="tooltipEnabled()" class="tooltiptext" [VERSION]="VERSION_2" [UNPARSED_RULES]="PROGRAMS[VERSION_2]"></app-tap-tip> -->
+          <mat-select [ngClass]="{'selecting-invalid': VERSION_2 < 0}" (change)="updateDiff($event)"
+            [(ngModel)]='VERSION_2'>
+            <mat-option
+              *ngFor="let i of (urlParams['dropdown-style'] == 'none' ? [-2].concat(PROGRAMNUMS.slice(1)) : PROGRAMNUMS.slice(1))"
+              [value]="i">
+              <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="PROGRAMNUMS.length<=2" class="orig-prgm" style="margin-left:0; padding: 0.3em 0; font-size: 2em">
+          {{this.dropdownValue(VERSION_2)}}</div>
+        <div class="color-labels">
+          <mat-label class="underneath key">(</mat-label>
+          <div class="add-underneath key">+ Patterns that only the right program has</div>
+          <mat-label class="underneath key" style='margin-right:0.7em'>)</mat-label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="error-info" *ngIf="isError">Oops, we're experiencing some technical difficulties,<br> please report this
+    to the researchers.</div>
+
+  <div *ngIf="VERSION_2 != null && VERSION_2 >= 0 && (!isLoading) && (!isError)" class="sps-show" id="entiresps">
+    <div id="spkey" class="row">
+      <div *ngIf="anyProperties(FILTERED_SPS_1)" class="column border-right if-while-then">
+        <div class="sp-summary-text">
+          With this program, what would <span class='attrib' style='font-weight:bold'>always</span> or <span class='attrib' style='font-weight:bold'>never</span> happen?
+        </div>
+      </div>
+      <div *ngIf="!anyProperties(FILTERED_SPS_1)" class="column border-right if-while-then" style="background-color:white; border-bottom:none">
+        <div class="sp-summary-text" style='font-weight:bold'>
+          With this program, there is <span class='attrib' style='color:var(--main-color)'>nothing</span> that would <span class='attrib' style='font-weight:bold'>always</span> or <span class='attrib' style='font-weight:bold'>never</span> happen.
+        </div>
+      </div>
+      <div *ngIf="anyProperties(FILTERED_SPS_2)" class="column if-while-then">
+        <div class="sp-summary-text">
+          With this program, what would <span class='attrib' style='font-weight:bold'>always</span> or <span class='attrib' style='font-weight:bold'>never</span> happen?
+        </div>
+      </div>
+      <div *ngIf="!anyProperties(FILTERED_SPS_2)" class="column if-while-then" style="background-color:white; border-bottom:none">
+        <div class="sp-summary-text"  style='font-weight:bold'>
+          With this program, there is <span class='attrib' style='color:var(--main-color)'>nothing</span> that would <span class='attrib' style='font-weight:bold'>always</span> or <span class='attrib' style='font-weight:bold'>never</span> happen.
+        </div>
+      </div>
+    </div>
+    <div class="diff-sps">
+      <div class="row sdiff-item" *ngFor="let spPair of SPS_TABLE; let k = index">
+        <!-- ================================= LEFT ======================================= -->
+        <div class="column border-right" *ngIf="spPair.left; let sp">
+          <div *ngIf="sp.status==-1" class='del-rule-display'>
+            <div class="sp-blocks">
+              <mat-icon class='add-remove-tags'>remove</mat-icon>
+              <div class="tap">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon"
+                    [ngClass]="{'sp-icon-gray':sp.status==0, 'attrib':ATTRIBS.includes(sp.descriptions[i])}">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="del-underneath">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="sp.status==0" class='rule-display'>
+            <div class="sp-blocks">
+              <mat-icon class='add-remove-tags'>fiber_manual_record</mat-icon>
+              <div class="tap">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon"
+                    [ngClass]="{'sp-icon-gray':sp.status==0, 'attrib':ATTRIBS.includes(sp.descriptions[i])}">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="underneath">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="sp.status==101" [ngClass]="{'add-rule-placeholder-display':anyProperties(FILTERED_SPS_1),
+        'rule-display':!anyProperties(FILTERED_SPS_1)}">
+            <div class="sp-blocks" style="visibility:hidden">
+              <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+              <div class="tap" style="visibility:hidden">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block"
+                  style="visibility:hidden">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon" style="visibility:hidden">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="underneath" style="visibility:hidden">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''" style="visibility:hidden">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="sp.status==21" class='del-rule-display'>
+            <div class="sp-blocks">
+              <mat-icon class='add-remove-tags'>remove</mat-icon>
+              <div class="tap">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon"
+                    [ngClass]="{'sp-icon-gray':sp.status==0, 'attrib':ATTRIBS.includes(sp.descriptions[i])}">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="del-underneath">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ================================= RIGHT ======================================= -->
+        <div class="column" *ngIf="VERSION_2 != null && VERSION_2 >= 0 && spPair.right; let sp">
+          <div *ngIf="sp.status==102" [ngClass]="{'del-rule-placeholder-display':anyProperties(FILTERED_SPS_2), 
+        'rule-display':!anyProperties(FILTERED_SPS_2)}">
+            <div class=" sp-blocks" style="visibility:hidden">
+              <mat-icon class='add-remove-tags' style="visibility:hidden">add</mat-icon>
+              <div class="tap" style="visibility:hidden">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block"
+                  style="visibility:hidden">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon" style="visibility:hidden">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="underneath" style="visibility:hidden">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''" style="visibility:hidden">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="sp.status==0" class='rule-display'>
+            <div class="sp-blocks">
+              <mat-icon class='add-remove-tags'>fiber_manual_record</mat-icon>
+              <div class="tap">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon"
+                    [ngClass]="{'sp-icon-gray':sp.status==0, 'attrib':ATTRIBS.includes(sp.descriptions[i])}">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="underneath">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="sp.status==1" class='add-rule-display'>
+            <div class="sp-blocks">
+              <mat-icon class='add-remove-tags'>add</mat-icon>
+              <div class="tap">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon"
+                    [ngClass]="{'sp-icon-gray':sp.status==0, 'attrib':ATTRIBS.includes(sp.descriptions[i])}">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="add-underneath">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="sp.status==22" class='add-rule-display'>
+            <div class="sp-blocks">
+              <mat-icon class='add-remove-tags'>add</mat-icon>
+              <div class="tap">
+                <div *ngFor="let description of sp.descriptions; let i = index" class="sp-block">
+                  <div *ngIf="sp.descriptions[i]!=''" class="sp-icon"
+                    [ngClass]="{'sp-icon-gray':sp.status==0, 'attrib':ATTRIBS.includes(sp.descriptions[i])}">
+                    <mat-icon>{{sp.icons[i]}}</mat-icon>
+                    <div class="add-underneath">
+                      {{sp.descriptions[i]}}
+                    </div>
+                  </div>
+                  <div class="sp-word" *ngIf="sp.words[i] != ''">
+                    {{sp.words[i]}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="!(VERSION_2 != null && VERSION_2 >= 0) && READY" class="helptext-show">
+    <div class="helptext-wrapper">Please use the dropdown menus above to select programs for comparison.</div>
+  </div>
+  <div *ngIf="!(VERSION_2 != null && VERSION_2 >= 0) && READY" style="height:8em;">
+  </div>
+</div>
+
+<div class="tutorial-reminder" *ngIf="urlParams['tutorial']=='true'">
+  <div *ngIf="this.INTRO_DONE == 1 && !this.tutorialStageComplete(1)">
+    Click on "Task instructions" to see what the example task asks you to do.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 2 && !this.tutorialStageComplete(2)">
+    To continue, read the task instructions and then close it.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 3 && !this.tutorialStageComplete(3)">
+    To continue, use the dropdown menu to select Program #1.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 4 && !this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    To continue, use the interface to get the correct answer, and submit it at the bottom of the page.
+  </div>
+  <div *ngIf="this.INTRO_DONE > 4 && this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    Once the tutorial concludes, you may close this tab and return to the study in the previous tab.
+  </div>
+</div>
+
+<div id="scroll-anchor"></div>
+
+<div class="row">
+  <app-save-bar class="save-select-container" [hidden]="isLoading" *ngIf="READY && PRGMNUMSDEFINED"
+    [PROGRAMNUMS_SETTER]="PROGRAMNUMS" [PROGRAMS_SETTER]="PROGRAMS" [URL_PARAMS]="urlParams"
+    [SPECIAL_PARAMS]="tutorialParams" [SHOW_PRGMS_SUBMIT]="VERSION_2 != -2">
+  </app-save-bar>
+</div>

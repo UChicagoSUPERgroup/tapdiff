@@ -1,0 +1,9 @@
+task 7: 1) p23_7 vs. 2) p50_7
+tap_list_1:
+[{'trigger': 'smart_faucet.water_onoff_setting=true', 'action': 'smart_faucet.water_onoff_setting=false', 'condition': []}]
+tap_list_2:
+[{'trigger': 'smart_faucet.water_onoff_setting=true', 'action': 'clock.alarm_ringing_value=true', 'condition': []}]
+unique_sps1:
+['smart_faucet.water_onoff_setting=0 should always be active', 'smart_faucet.water_onoff_setting=1 should never be active']
+unique_sps2:
+['smart_faucet.water_onoff_setting=1 should never happen when clock.alarm_ringing_value=1', 'smart_faucet.water_onoff_setting=1 should never happen when clock.alarm_ringing_value=0']

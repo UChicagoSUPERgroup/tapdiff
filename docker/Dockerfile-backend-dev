@@ -1,0 +1,62 @@
+FROM ubuntu:xenial
+
+USER root
+
+RUN apt update && apt install -y wget net-tools unzip
+RUN groupadd -g 1000 -r iftttuser && useradd --no-log-init -r -u 1000 -g iftttuser iftttuser && mkhomedir_helper iftttuser
+
+# install spot model checker
+RUN wget -q -O - https://www.lrde.epita.fr/repo/debian.gpg | apt-key add - &&\
+    echo 'deb http://www.lrde.epita.fr/repo/debian/ stable/' >> /etc/apt/sources.list &&\
+    apt update && apt install -y libbddx0=2.7.5.0-1 libspot0=2.7.5.0-1 libspotltsmin0=2.7.5.0-1 libspotgen0=2.7.5.0-1 libbddx-dev=2.7.5.0-1 libspot-dev=2.7.5.0-1 spot-doc=2.7.5.0-1 python3-spot=2.7.5.0-1 spot=2.7.5.0-1
+
+# install z3
+RUN cd /root && \
+    wget https://github.com/Z3Prover/z3/releases/download/Z3-4.8.5/z3-4.8.5-x64-ubuntu-16.04.zip && \
+    unzip z3-4.8.5-x64-ubuntu-16.04 && \
+    cd /root/z3-4.8.5-x64-ubuntu-16.04 && \
+    cp bin/*.so /usr/lib && \
+    cp bin/z3 /usr/bin && \
+    cp -r bin/python/z3/ /usr/lib/python3/dist-packages && \
+    cp include/* /usr/include
+
+# install qm package
+RUN cd /root && \
+    wget http://robertdick.org/python/qm-0.2.tar.gz && \
+    tar -zxvf qm-0.2.tar.gz &&\
+    cd /root/qm-0.2 && \
+    python3 setup.py install
+
+# install django
+ADD ./iot-tap-backend/requirements.txt /home/iftttuser
+RUN apt update && apt install -y python3-pip
+RUN pip3 install -r /home/iftttuser/requirements.txt
+RUN apt update && apt install -y postgresql-client-9.5
+
+# install AutoTap
+# RUN apt update && apt install -y python3-pip
+# RUN pip3 install sklearn graphviz kmodes webcolors
+
+# set up scripts
+ADD ./scripts/init-backend.sh /home/iftttuser/
+RUN chown iftttuser /home/iftttuser/init-backend.sh
+RUN chmod +x /home/iftttuser/init-backend.sh
+ADD ./scripts/init-backend-debug.sh /home/iftttuser/
+RUN chown iftttuser /home/iftttuser/init-backend-debug.sh
+RUN chmod +x /home/iftttuser/init-backend-debug.sh
+
+USER iftttuser
+
+# copy init state data
+COPY --chown=iftttuser ./data/diff_init /home/iftttuser/diff_init
+
+# copy code
+# COPY --chown=iftttuser ./iot-tap-backend/ /home/iftttuser/backend/
+# COPY --chown=iftttuser ./scripts/init-backend.sh /home/iftttuser/backend/
+# RUN chmod +x /home/iftttuser/backend/init-backend.sh
+
+# folder to hold static files
+# RUN mkdir /home/iftttuser/backend/iot-tap-backend/static
+
+WORKDIR /home/iftttuser/backend
+CMD ["../init-backend-debug.sh"]

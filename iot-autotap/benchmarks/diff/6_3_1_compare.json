@@ -1,0 +1,92 @@
+{
+    "cap_list": [
+        "d31.onoff",
+        "d37.onoff",
+        "d38.onoff",
+        "d35.onoff",
+        "d28.onoff",
+        "d8.onoff"
+    ],
+    "unreachable_combination_1": [
+        "!d8.onoff=true",
+        "!d35.onoff=true",
+        "!d31.onoff=true"
+    ],
+    "tap_list_1": [
+        {
+            "trigger": "d8.onoff=false",
+            "condition": [
+                "!d35.onoff=true",
+                "!d31.onoff=true",
+                "d38.onoff=true"
+            ],
+            "action": "d35.onoff=true"
+        },
+        {
+            "trigger": "d8.onoff=false",
+            "condition": [
+                "!d35.onoff=true",
+                "!d31.onoff=true",
+                "!d38.onoff=true"
+            ],
+            "action": "d8.onoff=true"
+        },
+        {
+            "trigger": "d35.onoff=false",
+            "condition": [
+                "!d8.onoff=true",
+                "!d31.onoff=true"
+            ],
+            "action": "d35.onoff=true"
+        },
+        {
+            "trigger": "d31.onoff=false",
+            "condition": [
+                "!d8.onoff=true",
+                "!d35.onoff=true"
+            ],
+            "action": "d35.onoff=true"
+        }
+    ],
+    "unreachable_combination_2": [
+        "!d31.onoff=true",
+        "d37.onoff=true",
+        "d38.onoff=true"
+    ],
+    "tap_list_2": [
+        {
+            "trigger": "d31.onoff=false",
+            "condition": [
+                "d37.onoff=true",
+                "d38.onoff=true"
+            ],
+            "action": "d37.onoff=false"
+        },
+        {
+            "trigger": "d37.onoff=true",
+            "condition": [
+                "!d31.onoff=true",
+                "d38.onoff=true"
+            ],
+            "action": "d38.onoff=false"
+        },
+        {
+            "trigger": "d38.onoff=true",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "d28.onoff=true"
+            ],
+            "action": "d37.onoff=false"
+        },
+        {
+            "trigger": "d38.onoff=true",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "!d28.onoff=true"
+            ],
+            "action": "d37.onoff=false"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+task 4: 1) p30_4 vs. 2) p18_4
+tap_list_1:
+[{'action': 'thermostat.ac_onoff_setting=true', 'condition': [], 'trigger': 'thermostat.current_temperature_temperature=80'}]
+tap_list_2:
+[{'action': 'thermostat.ac_onoff_setting=true', 'condition': [], 'trigger': 'thermostat.current_temperature_temperature>80'}]

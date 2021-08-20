@@ -1,0 +1,994 @@
+{
+  "succeed": true,
+  "userid": 242,
+  "diff": [
+    {
+      "condition": [
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is Off",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": null,
+      "event": {
+        "device": { "name": "Bathroom Window", "id": 24 },
+        "parameterVals": [{ "comparator": "=", "value": "Open" }],
+        "capability": {
+          "name": "Open/Close Window",
+          "label": "{DEVICE} {position/T|Opens}{position/F|Closes}",
+          "id": 14
+        },
+        "text": "Bathroom Window Opens",
+        "channel": {
+          "name": "Windows & Doors",
+          "icon": "meeting_room",
+          "id": 5
+        },
+        "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+      },
+      "behavior2": {
+        "device": { "name": "Thermostat", "id": 2 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "AC On/Off",
+          "label": "Turn {setting} the AC",
+          "id": 57
+        },
+        "text": "Turn Off the AC",
+        "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+      }
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": null,
+      "event": {
+        "device": { "name": "Bathroom Window", "id": 24 },
+        "parameterVals": [{ "comparator": "=", "value": "Open" }],
+        "capability": {
+          "name": "Open/Close Window",
+          "label": "{DEVICE} {position/T|Opens}{position/F|Closes}",
+          "id": 14
+        },
+        "text": "Bathroom Window Opens",
+        "channel": {
+          "name": "Windows & Doors",
+          "icon": "meeting_room",
+          "id": 5
+        },
+        "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+      },
+      "behavior2": {
+        "device": { "name": "Thermostat", "id": 2 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "AC On/Off",
+          "label": "Turn {setting} the AC",
+          "id": 57
+        },
+        "text": "Turn Off the AC",
+        "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+      }
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        }
+      ],
+      "behavior1": null,
+      "event": {
+        "device": { "name": "Bathroom Window", "id": 24 },
+        "parameterVals": [{ "comparator": "=", "value": "Open" }],
+        "capability": {
+          "name": "Open/Close Window",
+          "label": "{DEVICE} {position/T|Opens}{position/F|Closes}",
+          "id": 14
+        },
+        "text": "Bathroom Window Opens",
+        "channel": {
+          "name": "Windows & Doors",
+          "icon": "meeting_room",
+          "id": 5
+        },
+        "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+      },
+      "behavior2": {
+        "device": { "name": "Thermostat", "id": 2 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "AC On/Off",
+          "label": "Turn {setting} the AC",
+          "id": 57
+        },
+        "text": "Turn Off the AC",
+        "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+      }
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Open" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Open",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is Off",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Open" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Open",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": null,
+      "event": {
+        "device": { "name": "Bathroom Window", "id": 24 },
+        "parameterVals": [{ "comparator": "=", "value": "Open" }],
+        "capability": {
+          "name": "Open/Close Window",
+          "label": "{DEVICE} {position/T|Opens}{position/F|Closes}",
+          "id": 14
+        },
+        "text": "Bathroom Window Opens",
+        "channel": {
+          "name": "Windows & Doors",
+          "icon": "meeting_room",
+          "id": 5
+        },
+        "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+      },
+      "behavior2": {
+        "device": { "name": "Thermostat", "id": 2 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "AC On/Off",
+          "label": "Turn {setting} the AC",
+          "id": 57
+        },
+        "text": "Turn Off the AC",
+        "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+      }
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Open" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Open",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is On",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "On" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is On",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Closed" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Closed",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is Off",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    },
+    {
+      "condition": [
+        {
+          "device": { "name": "Bathroom Window", "id": 24 },
+          "parameterVals": [{ "comparator": "=", "value": "Open" }],
+          "capability": {
+            "name": "Open/Close Window",
+            "label": "{DEVICE} is {position}",
+            "id": 14
+          },
+          "text": "Bathroom Window is Open",
+          "channel": {
+            "name": "Windows & Doors",
+            "icon": "meeting_room",
+            "id": 5
+          },
+          "parameters": [{ "type": "bin", "name": "position", "id": 13 }]
+        },
+        {
+          "device": { "name": "HUE Lights", "id": 4 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "HUE Lights is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Smart TV", "id": 5 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "Power On/Off",
+            "label": "{DEVICE} is {setting}",
+            "id": 2
+          },
+          "text": "Smart TV is Off",
+          "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+        },
+        {
+          "device": { "name": "Thermostat", "id": 2 },
+          "parameterVals": [{ "comparator": "=", "value": "Off" }],
+          "capability": {
+            "name": "AC On/Off",
+            "label": "The AC is {setting}",
+            "id": 57
+          },
+          "text": "The AC is Off",
+          "channel": { "name": "Temperature", "icon": "ac_unit", "id": 8 },
+          "parameters": [{ "type": "bin", "name": "setting", "id": 64 }]
+        }
+      ],
+      "behavior1": {
+        "device": { "name": "HUE Lights", "id": 4 },
+        "parameterVals": [{ "comparator": "=", "value": "Off" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "Turn {DEVICE} {setting}",
+          "id": 2
+        },
+        "text": "Turn HUE Lights Off",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "event": {
+        "device": { "name": "Smart TV", "id": 5 },
+        "parameterVals": [{ "comparator": "=", "value": "On" }],
+        "capability": {
+          "name": "Power On/Off",
+          "label": "{DEVICE} turns {setting}",
+          "id": 2
+        },
+        "text": "Smart TV turns On",
+        "channel": { "name": "Power", "icon": "power_settings_new", "id": 1 },
+        "parameters": [{ "type": "bin", "name": "setting", "id": 1 }]
+      },
+      "behavior2": null
+    }
+  ]
+}

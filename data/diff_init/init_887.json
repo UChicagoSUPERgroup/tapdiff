@@ -1,0 +1,29 @@
+{
+    "0": {
+        "location_sensor.home_alice": false,
+        "smart_tv.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "hue_lights.power_onoff_setting": false,
+        "weather_sensor.is_it_raining_condition": false,
+        "clock.is_it_daytime_time": true,
+        "living_room_window.openclose_window_position": false
+    },
+    "1": {
+        "location_sensor.home_alice": false,
+        "smart_tv.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "hue_lights.power_onoff_setting": false,
+        "weather_sensor.is_it_raining_condition": false,
+        "clock.is_it_daytime_time": true,
+        "living_room_window.openclose_window_position": false
+    },
+    "2": {
+        "location_sensor.home_alice": false,
+        "smart_tv.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "hue_lights.power_onoff_setting": false,
+        "weather_sensor.is_it_raining_condition": false,
+        "clock.is_it_daytime_time": true,
+        "living_room_window.openclose_window_position": false
+    }
+}

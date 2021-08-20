@@ -1,0 +1,369 @@
+@import '../../../assets/diffcom-all.css';
+@import '../../../assets/diffcom-sdiff.css';
+@import '../../../assets/diffcom-tooltip.css';
+
+* {
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
+
+  --main-color: rgb(0, 153, 255);
+  --lighter-color: #ccebff;
+  --darker-color: #008ae6;
+  /* --main-color: #ff9933;
+    --darker-color: #ff8c1a; */
+
+  --border-color: gray;
+  --list-border-color: lightgrey;
+
+  --del-background: #ffeef0;
+  --del-highlight: #fdb8c0;
+  --add-background: #e6ffed;
+  --add-highlight: #acf2bd;
+
+  --del-place-holder-color: lightgrey;
+  --add-place-holder-color: lightgrey;
+  --sp-index-width: 40px;
+}
+
+/* ==================== override =================== */
+div.tap {
+  width: 90%;
+  padding: 2px;
+  text-align: left;
+}
+
+.prog-radios {
+  display: table-cell;
+}
+
+mat-label.top-label {
+  display: table-cell;
+  padding-right: 40px;
+}
+
+/* .rules-box {
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-bottom: 240px;
+  padding-top: 10px;
+} */
+
+.top-select-container {
+  height: auto;
+  justify-content: space-around;
+  padding: 1vw 0px 2vw 50px;
+}
+
+.sp-display:hover {
+  background-color: var(--lighter-color);
+}
+
+.sp-zero-placeholder {
+  background-image: repeating-linear-gradient(-45deg, #eee, #eee 12px, #fafafa 15px, #fafafa 27px);
+  vertical-align: middle;
+}
+
+.sp-zero-text {
+  text-align: center;
+  font-size: 24px;
+  color: gray;
+  padding: 8px;
+}
+
+.sp-summary-text {
+  /* text-align: center;
+  font-size: 1.5em;
+  line-height: 1.4;
+  padding: 2em 1em; 
+  padding-top: 0px; */
+  padding: 10px;
+  font-size: 30px;
+  /* font-weight:bold; */
+}
+
+/* for sps */
+div.underneath, div.add-underneath, div.del-underneath {
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  /* color: #000000; */
+  width: auto;
+  margin-top: 2px;
+  margin-right: 2px;
+  margin-bottom: 0.25em;
+  vertical-align: middle;
+}
+
+.sp-display {
+  padding: 3px 0 5px 10px;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  /* background: ghostwhite; */
+  vertical-align: top;
+}
+
+.sp-blocks {
+  /* width: calc(100% - var(--sp-index-width) - 12px); */
+  /* give room for sp-index */
+  /* display: inline-block; */
+  /* text-align: left; */
+  /* vertical-align: top; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-remove-tags {
+  top: 1.2vh;
+  font-size: 20px;
+}
+
+.highlight {
+  font-weight:700; 
+  color:var(--main-color);
+}
+
+.attrib {
+  font-weight:800; 
+  color:darkorange;
+}
+
+div.sp-icon.sp-icon-gray {
+  background: whitesmoke;
+}
+
+div.sp-block {
+  padding: 3px;
+  display: inline-block;
+}
+
+div.sp-word,
+div.sp-icon {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  /* text-align: left; */
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.sp-word {
+  margin-left: 10px;
+}
+
+div.sp-icon {
+  background: white;
+  /* background: #fff2e6; */
+  /* background: #ff9933; */
+  /* color: #444; */
+  border-radius: 4px;
+  padding: 0px 6px;
+  margin-bottom: 3px;
+}
+
+.sp-icon {
+  margin-left: 10px;
+  padding: 0 2px 4px 2px;
+}
+
+.sp-icon mat-icon {
+  position: relative;
+  top: 4px;
+  /* color: #000000; */
+}
+
+div.sp-icon.fake-sp-icon {
+  background: none;
+  padding-left: 0px;
+  padding-right: 0px;
+  /* margin-left: 2px; */
+}
+
+/* ================================================= */
+.sps-show {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+/* -----------------error info box-------------------- */
+
+
+
+/* .labels-and-button{
+  margin-top: 4px;
+  margin-bottom: 0px;
+} */
+
+.dev-filter-row {
+  text-align: center;
+  margin: 20px;
+  padding: 15px 60px;
+  border-radius: 20px;
+  border: 7px solid ghostwhite;
+  width: auto;
+  background: whitesmoke;
+  display: inline-block;
+}
+
+.dev-filter-text {
+  font-size: 26px;
+  margin-right: 30px;
+}
+
+.dev-filter-wrapper {
+  display: inline-block;
+}
+
+/* --- bottom margins --- */
+.share-sp-box {
+  margin-bottom: 45px;
+  padding: 20px;
+  border-radius: 18px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.share-sp-box.obvious-share-sp-box {
+  border: 6px solid #b5b5b5;
+}
+
+.diff-sps {
+  margin-bottom: 45px;
+}
+
+/* ---- shared sp ---- */
+.share-sp-display {
+  border-bottom: 2px lightgray solid;
+}
+
+.share-sp-display:last-child {
+  border-bottom: none;
+}
+
+/*--------------------------- expand button ----*/
+button.expand-sp-button {
+  display: inline-block;
+  margin: 25px 10px 15px 10px;
+  font-size: 26px;
+  background: dimgray;
+  padding: 20px 50px;
+  border-radius: 15px;
+}
+
+button mat-icon.share-sp-expand-icon {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+}
+
+/*  ----- cancel bottom border some situation -----  */
+.sdiff-item .column.no-bottom-border {
+  border-bottom: none;
+}
+
+/* ----- splitdiff-view ----- */
+.splitdiff-view {
+  margin-top: 30px;
+}
+
+/* ---- sp index ---- */
+.sp-index {
+  display: inline-block;
+  width: var(--sp-index-width);
+  height: 30px;
+  vertical-align: middle;
+  /* padding: 0.5em; */
+  margin-top: 7px;
+  font-weight:bold;
+  font-size: 22px;
+}
+
+.sp-index-text {
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  margin: 4px;
+  line-height: 24px;
+  /* border-radius: 100px; */
+  border: 2px black solid;
+  display: inline-block;
+  background: linear-gradient(45deg, black, darkgray);
+  color: white;
+}
+
+/* --- firefox sp-display bug fix --- */
+div.sp-display.empty-sp-display {
+  background: none;
+}
+
+div.sp-display.empty-sp-display:hover {
+  background: none;
+}
+
+/* ---- left & right sp index ---- */
+.indiv-sp-index-text {
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  margin: 4px;
+  line-height: 24px;
+  border-radius: 100px;
+  border: 2px black solid;
+  display: inline-block;
+  background: linear-gradient(45deg, black, darkgray);
+  color: white;
+}
+
+.labels-and-button {
+  width: 330px;
+  padding: 28px 5px;
+  position: fixed;
+  right: -20px;
+  top: 135px;
+  /* border-radius: 20px; */
+  background: #c5fdff;
+  background: #1abfc636;
+  padding: 20px;
+  opacity: 0.9;
+  FONT-WEIGHT: 600;
+  z-index: 21;
+  border-radius: 100px 0px 0px 100px;
+  width: auto;
+}
+
+.question-button-div mat-icon.help-icon {
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.question-button-div {
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.question-button {
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 30px;
+  padding: 4px;
+  border-radius: 100px;
+  /* bottom: 4px; */
+}
+
+.question-button-div button {
+  min-width: 0px;
+  min-height: 0px;
+  line-height: 0px;
+}

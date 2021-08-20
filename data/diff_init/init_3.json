@@ -1,0 +1,20 @@
+{
+    "0": {
+        "fitbit.sleep_sensor_status": false,
+        "front_door_lock.lockunlock_setting": true,
+        "security_camera.record_value": true,
+        "roomba.power_onoff_setting": false
+    },
+    "1": {
+        "fitbit.sleep_sensor_status": false,
+        "front_door_lock.lockunlock_setting": true,
+        "security_camera.record_value": true,
+        "roomba.power_onoff_setting": false
+    },
+    "2": {
+        "fitbit.sleep_sensor_status": false,
+        "front_door_lock.lockunlock_setting": true,
+        "security_camera.record_value": true,
+        "roomba.power_onoff_setting": false
+    }
+}

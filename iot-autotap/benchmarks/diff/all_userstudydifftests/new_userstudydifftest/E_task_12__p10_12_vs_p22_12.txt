@@ -1,0 +1,5 @@
+task 12: 1) p10_12 vs. 2) p22_12
+tap_list_1:
+[{'condition': [], 'trigger': 'bathroom_window.openclose_curtains_position=true', 'action': 'roomba.power_onoff_setting=false'}, {'condition': [], 'trigger': 'bedroom_window.openclose_curtains_position=true', 'action': 'roomba.power_onoff_setting=false'}, {'condition': [], 'trigger': 'living_room_window.openclose_curtains_position=true', 'action': 'roomba.power_onoff_setting=false'}]
+tap_list_2:
+[{'condition': ['bathroom_window.openclose_curtains_position=true'], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'roomba.power_onoff_setting=false'}, {'condition': ['bedroom_window.openclose_curtains_position=true'], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'roomba.power_onoff_setting=false'}, {'condition': ['living_room_window.openclose_curtains_position=true'], 'trigger': 'roomba.power_onoff_setting=true', 'action': 'roomba.power_onoff_setting=false'}]

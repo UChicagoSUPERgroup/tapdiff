@@ -1,0 +1,14 @@
+{
+    "0": {
+        "thermostat.ac_onoff_setting": false,
+        "thermostat.heater_onoff_setting": false
+    },
+    "1": {
+        "thermostat.ac_onoff_setting": false,
+        "thermostat.heater_onoff_setting": false
+    },
+    "2": {
+        "thermostat.ac_onoff_setting": false,
+        "thermostat.heater_onoff_setting": false
+    }
+}

@@ -1,0 +1,5 @@
+task 7: 1) p27_7 vs. 2) p50_7
+tap_list_1:
+[{'condition': [], 'trigger': 'smart_faucet.water_onoff_setting=true', 'action': 'smart_faucet.water_onoff_setting=true'}, {'condition': [], 'trigger': 'smart_faucet.water_onoff_setting=false', 'action': 'smart_faucet.water_onoff_setting=false'}, {'condition': ['smart_faucet.water_onoff_setting=false'], 'trigger': 'security_camera.power_onoff_setting=true', 'action': 'smart_faucet.water_onoff_setting=false'}, {'condition': [], 'trigger': 'location_sensor.kitchen_a_family_member=false', 'action': 'smart_faucet.water_onoff_setting=false'}]
+tap_list_2:
+[{'condition': [], 'trigger': 'smart_faucet.water_onoff_setting=true', 'action': 'clock.alarm_ringing_value=true'}]

@@ -1,0 +1,82 @@
+version: "3.1"
+services:
+    postgres:
+      build: 
+        context: .
+        dockerfile: docker/Dockerfile-db
+        args:
+          - datafile=${DATAFILE}
+      volumes:
+        - pg_data:/var/lib/postgresql/9.5/main
+      environment:
+        - DATAFILE
+      secrets:
+        - db_password
+        - db_username
+    
+    backend:
+      build:
+        context: .
+        dockerfile: docker/Dockerfile-backend
+      depends_on:
+        - postgres
+      command: sh -c ./init-backend.sh
+      environment:
+        - PYTHONUNBUFFERED=1
+        - "MIGRATION=${MIGRATION}"
+      secrets:
+        - source: backend_admin_name
+          target: admin_name
+        - source: backend_admin_email
+          target: admin_email
+        - source: backend_admin_password
+          target: admin_password
+        - db_password
+        - db_username
+        - backend_django_secret
+        - host_domain
+      volumes:
+        - ./data-userlog:/home/iftttuser/data-userlog
+
+    frontend:
+      build:
+        context: .
+        dockerfile: docker/Dockerfile-frontend
+      depends_on:
+        - postgres
+        - backend
+
+    nginx:
+      build:
+        context: .
+        dockerfile: docker/Dockerfile-nginx
+        args:
+          - configurefile=./nginx/nginx.conf
+      depends_on:
+        - backend
+        - frontend
+      volumes:
+        - static_backend:/etc/backend/static
+      ports:
+        - "80:80"
+        - "443:443"
+
+secrets:
+  backend_admin_name:
+    file: ./secrets/backend_admin_name
+  backend_admin_email:
+    file: ./secrets/backend_admin_email
+  backend_admin_password:
+    file: ./secrets/backend_admin_password
+  db_username:
+    file: ./secrets/db_username
+  db_password:
+    file: ./secrets/db_password
+  backend_django_secret:
+    file: ./secrets/backend_django_secret
+  host_domain:
+    file: ./secrets/host_domain
+
+volumes:
+  static_backend:
+  pg_data:

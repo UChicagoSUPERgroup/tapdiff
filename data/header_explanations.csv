@@ -1,0 +1,146 @@
+,orig_headers,new_headers,comments
+0,Start Date,start_date,"date and time, Denver tz"
+1,End Date,end_date,"date and time, Denver tz"
+2,Duration (in seconds),q_duration_in_sec,sec
+3,Response ID,q_resp_id,dif from prolific pid
+4,(Tutorial question 1 across interfaces),tut1,"binary: 1 - correct, 0 - incorrect"
+5,(Tutorial question 2 across interfaces),tut2,"binary: 1 - correct, 0 - incorrect"
+6,(Tutorial question 3 across interfaces),tut3,"binary: 1 - correct, 0 - incorrect"
+19,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 1 - I am confident that my answer is correct.",confidence_1,"7pt-likert: 1 - strongly agree (confident), 7 - strongly disagree"
+20,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 1 - I found the task mentally demanding.",demanding_1,"7pt-likert: 1 - strongly agree (demanding), 7 - strongly disagree"
+21,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 1 - I found the interface helpful in completing the task.",helpful_1,"7pt-likert: 1 - strongly agree (helpful), 7 - strongly disagree"
+22,"1 - For 2 minutes, please explain your thought process and how you arrived at your answer for this task, with as many details as you can.",process_1 ,text
+23,1 - How did the design of the interface help or hinder your ability to answer the question?,design_1 ,text
+24,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 3 - I am confident that my answer is correct.",confidence_3,"7pt-likert: 1 - strongly agree (confident), 7 - strongly disagree"
+25,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 3 - I found the task mentally demanding.",demanding_3,"7pt-likert: 1 - strongly agree (demanding), 7 - strongly disagree"
+26,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 3 - I found the interface helpful in completing the task.",helpful_3,"7pt-likert: 1 - strongly agree (helpful), 7 - strongly disagree"
+27,"3 - For 2 minutes, please explain your thought process and how you arrived at your answer for this task, with as many details as you can.",process_3 ,text
+28,3 - How did the design of the interface help or hinder your ability to answer the question?,design_3 ,text
+29,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 2 - I am confident that my answer is correct.",confidence_2,"7pt-likert: 1 - strongly agree (confident), 7 - strongly disagree"
+30,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 2 - I found the task mentally demanding.",demanding_2,"7pt-likert: 1 - strongly agree (demanding), 7 - strongly disagree"
+31,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 2 - I found the interface helpful in completing the task.",helpful_2,"7pt-likert: 1 - strongly agree (helpful), 7 - strongly disagree"
+32,"2 - For 2 minutes, please explain your thought process and how you arrived at your answer for this task, with as many details as you can.",process_2 ,text
+33,2 - How did the design of the interface help or hinder your ability to answer the question?,design_2 ,text
+34,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 4 - I am confident that my answer is correct.",confidence_4,"7pt-likert: 1 - strongly agree (confident), 7 - strongly disagree"
+35,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 4 - I found the task mentally demanding.",demanding_4,"7pt-likert: 1 - strongly agree (demanding), 7 - strongly disagree"
+36,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 4 - I found the interface helpful in completing the task.",helpful_4,"7pt-likert: 1 - strongly agree (helpful), 7 - strongly disagree"
+37,"4 - For 2 minutes, please explain your thought process and how you arrived at your answer for this task, with as many details as you can.",process_4 ,text
+38,4 - How did the design of the interface help or hinder your ability to answer the question?,design_4 ,text
+39,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 7 - I am confident that my answer is correct.",confidence_7,"7pt-likert: 1 - strongly agree (confident), 7 - strongly disagree"
+40,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 7 - I found the task mentally demanding.",demanding_7,"7pt-likert: 1 - strongly agree (demanding), 7 - strongly disagree"
+41,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 7 - I found the interface helpful in completing the task.",helpful_7,"7pt-likert: 1 - strongly agree (helpful), 7 - strongly disagree"
+42,"7 - For 2 minutes, please explain your thought process and how you arrived at your answer for this task, with as many details as you can.",process_7 ,text
+43,7 - How did the design of the interface help or hinder your ability to answer the question?,design_7 ,text
+44,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 12 - I am confident that my answer is correct.",confidence_12,"7pt-likert: 1 - strongly agree (confident), 7 - strongly disagree"
+45,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 12 - I found the task mentally demanding.",demanding_12,"7pt-likert: 1 - strongly agree (demanding), 7 - strongly disagree"
+46,"For the task that you just completed, please indicate how much you agree or disagree with the following statements: - 12 - I found the interface helpful in completing the task.",helpful_12,"7pt-likert: 1 - strongly agree (helpful), 7 - strongly disagree"
+47,"12 - For 2 minutes, please explain your thought process and how you arrived at your answer for this task, with as many details as you can.",process_12 ,text
+48,12 - How did the design of the interface help or hinder your ability to answer the question?,design_12 ,text
+49,"Nice job! You have completed the 6 tasks. Now, please spend 3 minutes to describe how you used the interface to complete the tasks.
+
+ 
+
+We would like you to be specific in describing what you did and the order of what you did. To show you the level of details we're looking for, here is how we would describe the process of accepting a friend request on Facebook (on a desktop web browser):
+
+
+First, I would look at the top right corner to see if there was a red number on the Friend Request icon (or the ""icon with two people on it"" if I didn't know its name). If there was a red number, then I would click on the icon and look at the person's name. If the person was someone I wanted to have as a Facebook friend, then I would click on ""Confirm"".",description,text
+50,Which parts of the interface did you find the most helpful?,most_helpful,text
+51,Which parts of the interface did you find the least helpful?,least_helpful,text
+52,Which parts of the interface did you find the most confusing?,most_confusing,text
+53,"The interface had this button on the left side, which allowed you to see the programs by themselves:
+
+
+
+
+
+
+
+In completing the tasks, did you rely mostly on the programs that you got by clicking on this button, on the interface in the middle of the screen, or both?",prgm_interface_both,"1 - prgm button, 2 - interface, 3 - both"
+54,Why?,prgm_interface_both_explanation,text
+55,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I think that I would like to use this system frequently.",sus_frequent,"7pt-likert: 6 - strongly agree (would use frequently), 12 - strongly disagree"
+56,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I found the system unnecessarily complex.",sus_complex,"7pt-likert: 6 - strongly agree (unnecessarily complex), 12 - strongly disagree"
+57,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I thought the system was easy to use.",sus_easy,"7pt-likert: 6 - strongly agree (easy to use system), 12 - strongly disagree"
+58,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I think that I would need the support of a technical person to be able to use this system.",sus_support,"7pt-likert: 6 - strongly agree (need tech support), 12 - strongly disagree"
+59,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I found the various functions in this system were well integrated.",sus_integrated,"7pt-likert: 6 - strongly agree (well integrated), 12 - strongly disagree"
+60,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I thought there was too much inconsistency in this system.",sus_inconsistency,"7pt-likert: 6 - strongly agree (too inconsistent), 12 - strongly disagree"
+61,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I would imagine that most people would learn to use this system very quickly.",sus_quickly,"7pt-likert: 6 - strongly agree (can learn quickly), 12 - strongly disagree"
+62,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I found the system very cumbersome to use.",sus_cumbersome,"7pt-likert: 6 - strongly agree (very cumbersome), 12 - strongly disagree"
+63,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I felt very confident using the system.",sus_confident,"7pt-likert: 6 - strongly agree (felt confident), 12 - strongly disagree"
+64,"On this page, we will show you 10 statements. Please indicate how much you agree or disagree with each statement based on your experience with the interface you used to analyze the programs.
+
+
+
+We refer to the interface as ""the system"" in these questions. - I needed to learn a lot of things before I could get going with this system.",sus_learn,"7pt-likert: 6 - strongly agree (need to learn lots before starting), 12 - strongly disagree"
+65,What is your age?,age,"1: 18-24, 2: 25-34, 3: 35-44, 4: 45-54, 5: 55-64, 6: 65-74, 7: 75 or older, 8: prefer not to answer"
+66,What is your gender? - Selected Choice,gender_mc,"1 - Woman, 2 - Man, 3 - Non-binary, 4 - self-describe, 5 - prefer not to answer"
+67,What is your gender? - I prefer to self-describe - Text,gender_text,nonempty text if self-describe gender
+68,Please select the highest level of education you have completed:,education,"1 - less than hs, 2 - hs grad, 3 - some college, 4 - 2yr college, 5 - 4yr college, 6 - masters/professional degree, 7 - doctorate, 8 - prefer not to answer"
+69,"Are you majoring in, hold a degree in, or have held a job in any of the following fields: computer science, computer engineering, information technology, or a related field?",cs_position,"1 - yes, 2 - no, 3 - prefer not to answer"
+70,Have you ever completed a class or completed a class-length online tutorial about computer programming?,cs_class,"1 - yes, 2 - no, 3 - prefer not to answer"
+71,Have you ever done computer programming as part of a job or hobby?,cs_experience,"1 - yes, 2 - no, 3 - prefer not to answer"
+72,"Have you previously used the website IFTTT (“If this, then that”)?",ifttt_familiarity,"1 - yes, 2 - no, 3 - not sure"
+73,"Do you, or any other member of your household, own any internet-connected home devices, including (but not limited to) a Nest Thermostat, Philips Hue lights, Samsung SmartThings, Roomba vacuum cleaner, Amazon Echo (""Alexa""), or Google Home?",owned_iot_mc,"1 - yes, 2 - no, 3 - not sure"
+74,What internet-connected home devices do you or other members of your household own?,owned_iot_text,text
+75,(Optional) Do you have any additional thoughts on any aspect of today's study?,feedback,optional text
+76,PROLIFIC_PID,prolific_pid,IMPORTANT
+77,interface,interface,IMPORTANT
+78,task 1 choice,task_1_choice,depends on task
+79,task 1 time (ms),task_1_time_ms,msec
+80,task 1 condition,task_1_condition,((IRRELEVANT))
+81,task 1 correct,task_1_correct,"binary: 1 - correct, 0 - incorrect"
+82,task 12 choice,task_12_choice,depends on task
+83,task 12 time (ms),task_12_time_ms,msec
+84,task 12 condition,task_12_condition,((IRRELEVANT))
+85,task 12 correct,task_12_correct,"binary: 1 - correct, 0 - incorrect"
+86,task 2 choice,task_2_choice,depends on task
+87,task 2 time (ms),task_2_time_ms,msec
+88,task 2 condition,task_2_condition,((IRRELEVANT))
+89,task 2 correct,task_2_correct,"binary: 1 - correct, 0 - incorrect"
+90,task 3 choice,task_3_choice,depends on task
+91,task 3 time (ms),task_3_time_ms,msec
+92,task 3 condition,task_3_condition,((IRRELEVANT))
+93,task 3 correct,task_3_correct,"binary: 1 - correct, 0 - incorrect"
+94,task 4 choice,task_4_choice,depends on task
+95,task 4 time (ms),task_4_time_ms,msec
+96,task 4 condition,task_4_condition,((IRRELEVANT))
+97,task 4 correct,task_4_correct,"binary: 1 - correct, 0 - incorrect"
+98,task 7 choice,task_7_choice,depends on task
+99,task 7 time (ms),task_7_time_ms,msec
+100,task 7 condition,task_7_condition,((IRRELEVANT))
+101,task 7 correct,task_7_correct,"binary: 1 - correct, 0 - incorrect"

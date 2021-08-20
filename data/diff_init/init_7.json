@@ -1,0 +1,17 @@
+{
+    "0": {
+        "roomba.power_onoff_setting": false,
+        "living_room_window.openclose_window_position": true,
+        "smart_tv.power_onoff_setting": true
+    },
+    "1": {
+        "roomba.power_onoff_setting": false,
+        "living_room_window.openclose_window_position": true,
+        "smart_tv.power_onoff_setting": true
+    },
+    "2": {
+        "roomba.power_onoff_setting": false,
+        "living_room_window.openclose_window_position": true,
+        "smart_tv.power_onoff_setting": true
+    }
+}

@@ -1,0 +1,5 @@
+task 15: 1) p21_15 vs. 2) p19_15
+unique_sps1:
+['location_sensor.home_bobbie=0 should never happen when roomba.power_onoff_setting=1']
+unique_sps2:
+['roomba.power_onoff_setting=1 should never happen when location_sensor.home_bobbie=0 and location_sensor.home_alice=0']

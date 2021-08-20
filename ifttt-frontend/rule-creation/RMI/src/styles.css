@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/global/jspanel.css';
+
+mat-option .mat-option-text {
+  overflow: overlay;
+  text-overflow: unset;
+}
+
+/* Based on https://github.com/usablica/intro.js/issues/109 */
+
+.introjs-helperLayer {
+  background: transparent !important;
+}
+
+.introjs-overlay {
+  opacity: 0 !important;
+  z-index: 99999999 !important;
+}
+
+.introjs-helperLayer:before {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 0.5em;
+  border: .2em solid rgba(255, 217, 68, 0.8);
+  box-shadow: 0 0 0 1000em rgba(0, 0, 0, .7);
+  opacity: 1;
+}
+
+.introjs-disabled {
+  display: none !important;
+}
+
+.introjs-skipbutton {
+  display: none !important;
+}
+
+.introjs-donebutton {
+  display: initial !important;
+  color: initial !important;
+}
+
+.introjs-prevbutton {
+  border-right: 1px solid #d4d4d4 !important;
+}
+
+.introjs-tooltiptext {
+  font-size: 1.5em !important;
+  line-height: 1.5 !important;
+  font-family: Roboto,"Open Sans",Lato,"Helvetica Neue",Arial,sans-serif;
+}
+
+.introjs-tooltip {
+  /* min-width: 200px;
+  max-width: 300px; */
+  min-width: 500px !important;
+  max-width: 500px !important;
+}
+
+.introjs-button {
+  font-size: 14px !important;
+}
+
+.introjs-donebutton {
+  float: right;
+}

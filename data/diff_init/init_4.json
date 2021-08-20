@@ -1,0 +1,17 @@
+{
+    "0": {
+        "bedroom_window.openclose_window_position": false,
+        "living_room_window.openclose_window_position": true,
+        "bathroom_window.openclose_window_position": false
+    },
+    "1": {
+        "bedroom_window.openclose_window_position": false,
+        "living_room_window.openclose_window_position": true,
+        "bathroom_window.openclose_window_position": false
+    },
+    "2": {
+        "bedroom_window.openclose_window_position": false,
+        "living_room_window.openclose_window_position": true,
+        "bathroom_window.openclose_window_position": false
+    }
+}

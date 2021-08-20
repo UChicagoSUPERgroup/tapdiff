@@ -1,0 +1,115 @@
+@import 'diffcom-all.css';
+
+/* the "save" button */
+button {
+  display: block;
+  margin: auto 0;
+  text-align: center;
+  background-color: var(--main-color);
+  color: #ffffff;
+  padding: 8px 28px 8px 28px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: var(--darker-color);
+}
+
+.save-button {
+  margin: auto 0px auto 30px;
+  display: inline-block;
+  bottom: 5px;
+}
+
+/* drop-down menus */
+mat-select {
+  width: 30%;
+  font-size: 3vw;
+  padding: 10px 2px 2px 10px;
+  margin-right: 1vw;
+}
+
+::ng-deep .mat-select-panel .mat-option {
+  height: 4vw !important;
+}
+
+:host /deep/ .mat-select-trigger {
+  font-size: 30px;
+  min-width: 16.5vw;
+}
+
+:host /deep/ .mat-form-field-flex {
+  display: inherit;
+  width: auto;
+}
+
+:host /deep/ .mat-form-field-infix {
+  /* This includes the line at the bottom of the dropdown menu */
+  width: 17vw !important;
+  font-size: 20px;
+  color: white !important;
+  padding-top: 0px;
+  height: 0vw;
+  border-top-width: 1px;
+}
+
+:host /deep/ .mat-form-field-wrapper {
+  padding-top: 0.5vw;
+  height: 4vw;
+  padding-left: 0px;
+}
+
+:host /deep/ .mat-form-field-content {
+  width: 17vw !important;
+  font-size: 35px;
+  color: white !important;
+}
+
+:host /deep/ .mat-form-field-label-wrapper{
+  overflow: visible;
+  top: 0px;
+  padding-top: 0px;
+}
+
+:host /deep/ .mat-form-field-label-wrapper mat-label{
+  font-size: 25px;
+}
+
+:host /deep/ .mat-form-field-type-mat-select .mat-form-field-label{
+  top: 34px;
+}
+
+:host /deep/ .mat-select-value-text {
+  /* min-width: 350px !important; */
+  font-size: 30px; /*selected text size*/
+  float: left;
+}
+
+/* ==================================== */
+
+.save-select-container {
+  text-align: center;
+  align-items: stretch;
+  height: auto;
+  justify-self: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  /* position: fixed; */
+  bottom: 0px;
+  width: 100%;
+  margin: auto;
+  background: whitesmoke; /*white smoke*/
+  opacity: 0.9;
+  backdrop-filter: blur(4px);
+}
+
+.buffer {
+  font-size: 28px;
+  text-align: center;
+  background: white;
+  padding: 40px;
+  margin: 30px 55px;
+  border-radius: 20px;
+  color: white;
+}

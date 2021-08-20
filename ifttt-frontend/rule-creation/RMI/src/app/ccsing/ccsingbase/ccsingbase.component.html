@@ -1,0 +1,89 @@
+<div class="init-loading" *ngIf="!PRGMNUMSDEFINED">Loading...</div>
+
+<div class="row" *ngIf="PRGMNUMSDEFINED" [ngClass]="{'hide': urlParams['tutorial']=='true' && this.INTRO_DONE<3}">
+  <div class="top-select-container">
+    <div class="dropdown-wrapper">
+      <mat-label class="top-label">Program</mat-label>
+      <div id="rightdropdown" class="prog-dropdown">
+        <mat-form-field>
+          <mat-select [(ngModel)]='PROGRAM_VERSION' (change)="updateRules($event)">
+            <mat-option *ngFor="let i of PROGRAMNUMS" [value]="i">
+              <span [ngClass]="{'none-option-text': i < 0}">{{this.dropdownValue(i)}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="row prgm" *ngIf="PRGMNUMSDEFINED"
+  [ngClass]="{'hide': urlParams['tutorial']=='true' && this.INTRO_DONE<3}">
+  <mat-list id="entireprgm">
+    <mat-list-item>
+      <div class="rule-display if-while-then-display">
+        <div class="rule-blocks">
+          <div class="tap">
+            <div class='rule-block' style="font-size:40px">
+              If...
+            </div>
+            <div class='rule-block' style="font-size:40px">
+              while...
+            </div>
+            <div class='rule-block' style="font-size:40px">
+              then...
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-list-item>
+    <div id="prgmpart">
+      <mat-list-item class="rule-display" *ngFor="let rule of RULES; let i = index; last as last">
+        <div class="rule-blocks">
+          <div class="tap">
+            <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+              <div *ngIf="i > 2 && rule.descriptions[i] != ''"
+                style="text-align:center; font-weight: bold; font-size: 1.2em">and</div>
+              <div *ngIf="i < 2"></div>
+              <div class="rule-icon">
+                <mat-icon>{{rule.icons[i]}}</mat-icon>
+              </div>
+              <div class="underneath">
+                {{showClause(rule.descriptions[i])}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-list-item>
+    </div>
+  </mat-list>
+</div>
+
+<div class="tutorial-reminder" *ngIf="urlParams['tutorial']=='true'">
+  <div *ngIf="this.INTRO_DONE == 1 && !this.tutorialStageComplete(1)">
+    Click on "Task instructions" to see what the example task asks you to do.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 2 && !this.tutorialStageComplete(2)">
+    To continue, read the task instructions and then close it.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 3 && !this.tutorialStageComplete(3)">
+    To continue, use the dropdown menu to select Program #1.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 4 && !this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    To continue, use the interface to get the correct answer, and submit it at the bottom of the page.
+  </div>
+  <div *ngIf="this.INTRO_DONE > 4 && this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    Once the tutorial concludes, you may close this tab and return to the study in the previous tab.
+  </div>
+</div>
+
+<div class="row">
+  <app-save-bar class="save-select-container" *ngIf="PRGMNUMSDEFINED"
+    [PROGRAMNUMS_SETTER]="PROGRAMNUMS" [PROGRAMS_SETTER]="PROGRAMS" [URL_PARAMS]="urlParams"
+    [SPECIAL_PARAMS]="tutorialParams" [SHOW_PRGMS_SUBMIT]="VERSION_2 != -2">
+  </app-save-bar>
+</div>

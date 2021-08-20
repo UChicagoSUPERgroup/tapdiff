@@ -1,0 +1,9 @@
+task 14: 1) p44_14 vs. 2) p10_14
+tap_list_1:
+[{'trigger': 'security_camera.detect_motion_status=true', 'action': 'security_camera.siren_value=true', 'condition': ['fitbit.sleep_sensor_status=false']}]
+tap_list_2:
+[{'trigger': 'clock.is_it_daytime_time=false', 'action': 'front_door_lock.lockunlock_setting=true', 'condition': []}]
+unique_sps1:
+['security_camera.detect_motion_status=1 should never be active while fitbit.sleep_sensor_status=0 and security_camera.siren_value=0']
+unique_sps2:
+['clock.is_it_daytime_time=0 should never be active while front_door_lock.lockunlock_setting=0']

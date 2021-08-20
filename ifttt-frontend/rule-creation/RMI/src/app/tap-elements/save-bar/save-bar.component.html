@@ -1,0 +1,135 @@
+<table class="all-table">
+  <tbody>
+    <td class="task-info-panel">
+      <button mat-raised-button id="taskinstructions" class="text-info-button" (click)="openTaskPanel()">
+        <!-- <p class="task-button-small-text">Click here for<br>task instructions</p> -->
+        <p class="task-button-small-text">Task<br>instructions</p>
+      </button>
+      <br>
+      <div id="prgmsbutton" class="see-program-button"
+        *ngIf="(URL_PARAMS['tutorial']=='false') || (URL_PARAMS['tutorial']=='true' && userDataService.SUBMIT_ATTEMPT_CORRECT)">
+        <!-- ngIf: && SHOW_PRGMS_SUBMIT -->
+        <mat-form-field class="tooltip">
+          <mat-label>
+            <!-- <p class="task-button-small-text">Click here to<br>see a program</p> -->
+            <p class="task-button-small-text">Programs</p>
+          </mat-label>
+          <mat-select class="noarrow" [ngClass]="{'selecting-invalid': PROGRAM_SHOWN_ID < 0}"
+            [(ngModel)]='PROGRAM_SHOWN_ID' (change)="updateProgramShown($event)" [formControl]="ruleform">
+            <mat-option *ngFor="let i of PROGRAMNUMS" [value]="i">
+              <span [ngClass]="{'none-option-text': i < 0}">{{this.getOptionName(i)}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </td>
+    <td *ngIf="PROGRAMNUMS" id="savepanel" class="save-panel"
+      [ngClass]="{'hide': URL_PARAMS['tutorial']=='true' && SPECIAL_PARAMS['showSavePanel']=='false'}">
+      <!-- ngIf: && SHOW_PRGMS_SUBMIT -->
+      <table class="all-table" *ngIf="URL_PARAMS['save-style'] == 'yesorno' && CURRENT_TASK_ID!=3 && CURRENT_TASK_ID!=9">
+        <tbody>
+          <td>
+            <div><label>Does the Modified {{this.VARIANT_WORD}} do exactly what the Original Program does <br>*<span
+                  style="font-weight: 900">AND</span>*
+                also adds the new feature?</label></div>
+            <div class="checkbox-savebar" *ngIf="URL_PARAMS['save-style'] == 'yesorno'">
+              <mat-radio-group class="savebar-radios" [(ngModel)]='SELECT_CATEGORY' aria-label="Select an option">
+                <mat-radio-button [value]="0">Yes it does</mat-radio-button>
+                <!-- , the Modified {{this.VARIANT_WORD}} does -->
+                <mat-radio-button [value]="1">No it doesn't
+                  <!-- , the Modified {{this.VARIANT_WORD}} does <span style="font-weight: bold">not</span> -->
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </td>
+          <td>
+            <button mat-raised-button [disabled]="IS_SUBMITTING" (click)="saveChecks()"
+              class="save-button">Submit</button>
+            <div style="color:gray; font-size:20px; padding:3% 22% 0">Once you submit, you cannot go back to change your
+              answer.</div>
+          </td>
+        </tbody>
+      </table>
+      <table class="all-table" *ngIf="URL_PARAMS['save-style'] == 'yesorno' && (CURRENT_TASK_ID==3 || CURRENT_TASK_ID==9)">
+        <tbody>
+          <td>
+            <div><label>Does the Modified {{this.VARIANT_WORD}} meet the *<span style="font-weight: 900">SAME
+                  GOAL</span>* as the Original Program?</label></div>
+            <div class="checkbox-savebar" *ngIf="URL_PARAMS['save-style'] == 'yesorno'">
+              <mat-radio-group class="savebar-radios" [(ngModel)]='SELECT_CATEGORY' aria-label="Select an option">
+                <mat-radio-button [value]="0">Yes it does</mat-radio-button>
+                <!-- , the Modified {{this.VARIANT_WORD}} does -->
+                <mat-radio-button [value]="1">No it doesn't
+                  <!-- , the Modified {{this.VARIANT_WORD}} does <span style="font-weight: bold">not</span> -->
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </td>
+          <td>
+            <button mat-raised-button [disabled]="IS_SUBMITTING" (click)="saveChecks()"
+              class="save-button">Submit</button>
+            <div style="color:gray; font-size:20px; padding:3% 22% 0">Once you submit, you cannot go back to change your
+              answer.</div>
+          </td>
+        </tbody>
+      </table>
+
+      <table class="all-table" *ngIf="URL_PARAMS['save-style'] == 'selectfromtwo'">
+        <tbody>
+          <td>
+            <div><label>Which of {{this.VARIANT_WORD}}s #1 and #2, if any, meets Alice's goal?</label></div>
+            <div class="checkbox-savebar" *ngIf="URL_PARAMS['save-style'] == 'selectfromtwo'">
+              <mat-radio-group class="savebar-radios" [(ngModel)]='SELECT_CATEGORY' aria-label="Select an option">
+                <mat-radio-button [value]="0">Both</mat-radio-button>
+                <mat-radio-button [value]="1">Only {{this.VARIANT_WORD}} #1</mat-radio-button>
+                <mat-radio-button [value]="2">Only {{this.VARIANT_WORD}} #2</mat-radio-button>
+                <mat-radio-button [value]="3">Neither</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </td>
+          <td>
+            <button mat-raised-button [disabled]="IS_SUBMITTING" (click)="saveChecks()"
+              class="save-button">Submit</button>
+            <div style="color:gray; font-size:20px; padding:3% 22% 0">Once you submit, you cannot go back to change your
+              answer.</div>
+          </td>
+        </tbody>
+      </table>
+
+      <table class="all-table"
+        *ngIf="URL_PARAMS['save-style'] != 'dropdown' && URL_PARAMS['save-style'] != 'checkbox' && URL_PARAMS['save-style'] != 'yesorno' && URL_PARAMS['save-style'] != 'selectfromtwo'">
+        <tbody>
+          <td>
+            <div><label>Which program(s) meets Alice's goal<span *ngIf="CURRENT_TASK_ID==8">s</span>?<br><span
+                  style='font-weight:normal'>(Checkboxes for the
+                  programs will appear if you select "At least one {{this.VARIANT_WORD.toLowerCase()}}".)</span></label>
+            </div>
+            <div class="checkbox-savebar"
+              *ngIf="URL_PARAMS['save-style'] != 'dropdown' && URL_PARAMS['save-style'] != 'checkbox' && URL_PARAMS['save-style'] != 'yesorno' && URL_PARAMS['save-style'] != 'selectfromtwo'">
+              <mat-radio-group class="savebar-radios" [(ngModel)]='SELECT_CATEGORY' aria-label="Select an option">
+                <mat-radio-button [value]="1">None of them</mat-radio-button>
+                <mat-radio-button [value]="0">At least one {{this.VARIANT_WORD.toLowerCase()}}</mat-radio-button>
+                <br>
+                <div [ngClass]="{'hidden-nested-checkboxes': SELECT_CATEGORY != 0}" class="nested-checkboxes">
+                  <mat-checkbox color="primary" class="prog-checkbox" *ngFor="let i of PROGRAMNUMS"
+                    [(ngModel)]='CHECK_PROGRAMS[i]' [value]="i">
+                    {{getOptionName(i)}}
+                  </mat-checkbox>
+                </div>
+              </mat-radio-group>
+            </div>
+          </td>
+          <td>
+            <button mat-raised-button [disabled]="IS_SUBMITTING" (click)="saveChecks()"
+              class="save-button">Submit</button>
+            <div style="color:gray; font-size:20px; padding:3% 22% 0">Once you submit, you cannot go back to change your
+              answer.</div>
+          </td>
+        </tbody>
+      </table>
+      <div *ngIf="IS_SUBMITTING" class="submit-spinner-wrapper">
+        <mat-spinner [diameter]="50"></mat-spinner>
+      </div>
+    </td>
+  </tbody>
+</table>

@@ -1,0 +1,5 @@
+task 2: 1) p2_2 vs. 2) p34_2
+unique_sps1:
+['bedroom_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0 and living_room_window.openclose_window_position=0 should never occur together', 'living_room_window.openclose_window_position=0 should never happen when bedroom_window.openclose_window_position=1 and bathroom_window.openclose_window_position=0', 'bedroom_window.openclose_window_position=0 should never happen when bathroom_window.openclose_window_position=1 and living_room_window.openclose_window_position=0', 'bathroom_window.openclose_window_position=0 should never happen when living_room_window.openclose_window_position=1 and bedroom_window.openclose_window_position=0']
+unique_sps2:
+['location_sensor.home_anyone=1 should never happen when bedroom_window.openclose_window_position=0 and bathroom_window.openclose_window_position=0 and living_room_window.openclose_window_position=0']

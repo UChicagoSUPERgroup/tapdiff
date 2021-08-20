@@ -1,0 +1,5 @@
+task 3: 1) p40_3 vs. 2) p19_3
+unique_sps1:
+[]
+unique_sps2:
+['smart_oven.openclose_door_position=0 should never happen when smart_oven.lockunlock_setting=0', 'smart_oven.openclose_door_position=0 should never happen when smart_oven.lockunlock_setting=1']

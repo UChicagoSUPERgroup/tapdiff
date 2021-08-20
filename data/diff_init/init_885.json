@@ -1,0 +1,23 @@
+{
+    "0": {
+        "location_sensor.home_alice": false,
+        "smart_tv.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "hue_lights.power_onoff_setting": false,
+        "clock.is_it_daytime_time": true
+    },
+    "1": {
+        "location_sensor.home_alice": false,
+        "smart_tv.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "hue_lights.power_onoff_setting": false,
+        "clock.is_it_daytime_time": true
+    },
+    "2": {
+        "location_sensor.home_alice": false,
+        "smart_tv.power_onoff_setting": false,
+        "speakers.power_onoff_setting": false,
+        "hue_lights.power_onoff_setting": false,
+        "clock.is_it_daytime_time": true
+    }
+}

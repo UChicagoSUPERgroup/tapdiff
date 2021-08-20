@@ -1,0 +1,9 @@
+task 11: 1) p23_11 vs. 2) p37_11
+tap_list_1:
+[{'condition': [], 'trigger': 'amazon_echo.genre_genre=Pop', 'action': 'amazon_echo.genre_genre=Stop'}]
+tap_list_2:
+[{'condition': [], 'trigger': 'amazon_echo.genre_genre=Pop', 'action': 'amazon_echo.genre_genre=Rnb'}]
+unique_sps1:
+[]
+unique_sps2:
+[]

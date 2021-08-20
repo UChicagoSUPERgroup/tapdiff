@@ -1,0 +1,5 @@
+task 12: 1) p28_12 vs. 2) p37_12
+unique_sps1:
+['roomba.power_onoff_setting=1 should never happen when bathroom_window.openclose_curtains_position=1 and living_room_window.openclose_curtains_position=1 and bedroom_window.openclose_curtains_position=1']
+unique_sps2:
+['living_room_window.openclose_curtains_position=1 should never happen when roomba.power_onoff_setting=1', 'living_room_window.openclose_curtains_position=1 should never happen when roomba.power_onoff_setting=0']

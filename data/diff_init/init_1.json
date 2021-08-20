@@ -1,0 +1,47 @@
+{
+    "0": {
+        "location_sensor.home_a_guest": false, 
+        "location_sensor.living_room_a_guest": false,
+        "hue_lights.power_onoff_setting": false,
+        "location_sensor.bathroom_a_guest": false,
+        "bathroom_window.openclose_window_position": false,
+        "clock.is_it_daytime_time": false,
+        "location_sensor.bedroom_a_guest": false,
+        "bedroom_window.openclose_window_position": false,
+        "security_camera.power_onoff_setting": false,
+        "location_sensor.kitchen_a_guest": false,
+        "location_sensor.kitchen_alice": false,
+        "smart_refrigerator.lockunlock_setting": false,
+        "smart_plug.power_onoff_setting": false
+    },
+    "1": {
+        "location_sensor.home_a_guest": false, 
+        "location_sensor.living_room_a_guest": false,
+        "hue_lights.power_onoff_setting": false,
+        "location_sensor.bathroom_a_guest": false,
+        "bathroom_window.openclose_window_position": false,
+        "clock.is_it_daytime_time": false,
+        "location_sensor.bedroom_a_guest": false,
+        "bedroom_window.openclose_window_position": false,
+        "security_camera.power_onoff_setting": false,
+        "location_sensor.kitchen_a_guest": false,
+        "location_sensor.kitchen_alice": false,
+        "smart_refrigerator.lockunlock_setting": false,
+        "smart_plug.power_onoff_setting": false
+    },
+    "2": {
+        "location_sensor.home_a_guest": false, 
+        "location_sensor.living_room_a_guest": false,
+        "hue_lights.power_onoff_setting": false,
+        "location_sensor.bathroom_a_guest": false,
+        "bathroom_window.openclose_window_position": false,
+        "clock.is_it_daytime_time": false,
+        "location_sensor.bedroom_a_guest": false,
+        "bedroom_window.openclose_window_position": false,
+        "security_camera.power_onoff_setting": false,
+        "location_sensor.kitchen_a_guest": false,
+        "location_sensor.kitchen_alice": false,
+        "smart_refrigerator.lockunlock_setting": false,
+        "smart_plug.power_onoff_setting": false
+    }
+}

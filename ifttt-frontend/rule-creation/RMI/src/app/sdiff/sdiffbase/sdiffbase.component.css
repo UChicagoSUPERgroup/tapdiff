@@ -1,0 +1,123 @@
+@import '../../../assets/diffcom-sdiff.css';
+
+.rule-blocks,
+div.del-rule-blocks,
+div.add-rule-blocks,
+div.change-add-rule-blocks,
+div.change-del-rule-blocks {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.rule-block {
+  padding: 2px;
+  display: inline-block;
+  width: 32%;
+  /* 33% width makes resizing weird -- causes "then..." to go onto new line */
+}
+
+div.rule-word,
+div.del-rule-word,
+div.add-rule-word,
+div.rule-icon,
+div.del-rule-icon,
+div.add-rule-icon,
+div.blank-del-rule-word,
+div.blank-del-rule-icon {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: 18px;
+}
+
+
+div.change-del-rule-blocks{
+  background: transparent;
+}
+
+div.change-add-rule-blocks{
+  background: transparent;
+}
+
+
+div.del-rule-blocks {
+  background: transparent;
+  font-weight: 900;
+}
+
+div.add-rule-blocks {
+  background: transparent;
+  font-weight: 900;
+}
+
+div.add-rule-block,
+div.del-rule-block {
+  width: 100%;
+  display: inline-block;
+  font-weight: 900;
+}
+
+div.add-rule-block {
+  background-color: var(--add-highlight);
+}
+
+div.del-rule-block {
+  background-color: var(--del-highlight);
+}
+
+div.tiny-and {
+  text-align:center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.labels-and-button{
+  width: 330px;
+  padding:28px 5px;
+  position: fixed;
+  right: -20px;
+  top: 135px;
+  /* border-radius: 20px; */
+  background: #c5fdff;
+  background: #1abfc636;
+  padding: 20px;
+  opacity: 0.9;
+  FONT-WEIGHT: 600;
+  z-index: 21;
+  border-radius: 100px 0px 0px 100px;
+  width: auto;
+}
+
+.question-button-div mat-icon.help-icon{
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.question-button-div{
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.question-button{
+  display: inline;
+  background: #00B8C0;
+  /* border-radius: 50%; */
+  /* background: lightskyblue; */
+  font-size: 30px;
+  padding: 4px;
+  border-radius: 100px;
+  /* bottom: 4px; */
+}
+
+.question-button-div button{
+  min-width: 0px;
+  min-height: 0px;
+  line-height: 0px;
+}

@@ -1,0 +1,10 @@
+task 3: 1) p23_3 vs. 2) p50_3
+tap_list_1:
+[{'condition': ['smart_oven.power_onoff_setting=true'], 'action': 'smart_oven.power_onoff_setting=false', 'trigger': 'location_sensor.kitchen_bobbie=true'}]
+tap_list_2:
+[{'condition': ['smart_oven.openclose_door_position=false', 'location_sensor.home_bobbie=false'], 'action': 'smart_oven.lockunlock_setting=true', 'trigger': 'smart_oven.power_onoff_setting=true'}]
+unique_sps1:
+['location_sensor.kitchen_bobbie=1 should never happen when smart_oven.power_onoff_setting=1']
+unique_sps2:
+['smart_oven.power_onoff_setting=1 should never be active while location_sensor.home_bobbie=0 and smart_oven.lockunlock_setting=0 and smart_oven.openclose_door_position=0']
+

@@ -1,0 +1,5 @@
+task 3: 1) p30_3 vs. 2) p34_3
+tap_list_1:
+[{'trigger': 'smart_oven.oven_temperature_temperature>100', 'condition': [], 'action': 'smart_oven.lockunlock_setting=true'}]
+tap_list_2:
+[{'trigger': 'location_sensor.kitchen_bobbie=true', 'condition': [], 'action': 'smart_oven.lockunlock_setting=true'}]

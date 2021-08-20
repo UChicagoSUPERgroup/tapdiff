@@ -1,0 +1,181 @@
+{
+    "cap_list": [
+        "d31.onoff",
+        "d37.onoff",
+        "d13.onoff",
+        "d5.onoff",
+        "d19.onoff",
+        "d20.onoff",
+        "d30.onoff",
+        "d9.onoff"
+    ],
+    "unreachable_combination_1": [
+        "d31.onoff=true",
+        "d5.onoff=true",
+        "!d19.onoff=true",
+        "d30.onoff=true"
+    ],
+    "tap_list_1": [
+        {
+            "trigger": "d31.onoff=true",
+            "condition": [
+                "d5.onoff=true",
+                "!d19.onoff=true",
+                "d30.onoff=true",
+                "d20.onoff=true",
+                "d13.onoff=true"
+            ],
+            "action": "d31.onoff=false"
+        },
+        {
+            "trigger": "d31.onoff=true",
+            "condition": [
+                "d5.onoff=true",
+                "!d19.onoff=true",
+                "d30.onoff=true",
+                "d20.onoff=true",
+                "!d13.onoff=true"
+            ],
+            "action": "d30.onoff=false"
+        },
+        {
+            "trigger": "d31.onoff=true",
+            "condition": [
+                "d5.onoff=true",
+                "!d19.onoff=true",
+                "d30.onoff=true",
+                "!d20.onoff=true",
+                "d13.onoff=true"
+            ],
+            "action": "d5.onoff=false"
+        },
+        {
+            "trigger": "d31.onoff=true",
+            "condition": [
+                "d5.onoff=true",
+                "!d19.onoff=true",
+                "d30.onoff=true",
+                "!d20.onoff=true",
+                "!d13.onoff=true"
+            ],
+            "action": "d19.onoff=true"
+        },
+        {
+            "trigger": "d5.onoff=true",
+            "condition": [
+                "d31.onoff=true",
+                "!d19.onoff=true",
+                "d30.onoff=true"
+            ],
+            "action": "d30.onoff=false"
+        },
+        {
+            "trigger": "d19.onoff=false",
+            "condition": [
+                "d31.onoff=true",
+                "d5.onoff=true",
+                "d30.onoff=true"
+            ],
+            "action": "d31.onoff=false"
+        },
+        {
+            "trigger": "d30.onoff=true",
+            "condition": [
+                "d31.onoff=true",
+                "d5.onoff=true",
+                "!d19.onoff=true"
+            ],
+            "action": "d31.onoff=false"
+        }
+    ],
+    "unreachable_combination_2": [
+        "!d31.onoff=true",
+        "d37.onoff=true",
+        "d13.onoff=true",
+        "!d5.onoff=true"
+    ],
+    "tap_list_2": [
+        {
+            "trigger": "d31.onoff=false",
+            "condition": [
+                "d37.onoff=true",
+                "d13.onoff=true",
+                "!d5.onoff=true",
+                "d9.onoff=true"
+            ],
+            "action": "d31.onoff=true"
+        },
+        {
+            "trigger": "d31.onoff=false",
+            "condition": [
+                "d37.onoff=true",
+                "d13.onoff=true",
+                "!d5.onoff=true",
+                "!d9.onoff=true"
+            ],
+            "action": "d37.onoff=false"
+        },
+        {
+            "trigger": "d37.onoff=true",
+            "condition": [
+                "!d31.onoff=true",
+                "d13.onoff=true",
+                "!d5.onoff=true"
+            ],
+            "action": "d13.onoff=false"
+        },
+        {
+            "trigger": "d13.onoff=true",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "!d5.onoff=true"
+            ],
+            "action": "d5.onoff=true"
+        },
+        {
+            "trigger": "d5.onoff=false",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "d13.onoff=true",
+                "d20.onoff=true",
+                "d9.onoff=true"
+            ],
+            "action": "d37.onoff=false"
+        },
+        {
+            "trigger": "d5.onoff=false",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "d13.onoff=true",
+                "d20.onoff=true",
+                "!d9.onoff=true"
+            ],
+            "action": "d31.onoff=true"
+        },
+        {
+            "trigger": "d5.onoff=false",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "d13.onoff=true",
+                "!d20.onoff=true",
+                "d9.onoff=true"
+            ],
+            "action": "d5.onoff=true"
+        },
+        {
+            "trigger": "d5.onoff=false",
+            "condition": [
+                "!d31.onoff=true",
+                "d37.onoff=true",
+                "d13.onoff=true",
+                "!d20.onoff=true",
+                "!d9.onoff=true"
+            ],
+            "action": "d5.onoff=true"
+        }
+    ]
+}

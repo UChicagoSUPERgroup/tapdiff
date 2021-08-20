@@ -1,0 +1,5 @@
+task 12: 1) p3_12 vs. 2) p28_12
+unique_sps1:
+['living_room_window.openclose_curtains_position=0 should never happen when roomba.power_onoff_setting=0 and clock.is_it_daytime_time=1', 'living_room_window.openclose_curtains_position=0 should never happen when clock.is_it_daytime_time=1 and roomba.power_onoff_setting=1']
+unique_sps2:
+['roomba.power_onoff_setting=1 should never happen when living_room_window.openclose_curtains_position=1 and bathroom_window.openclose_curtains_position=1 and bedroom_window.openclose_curtains_position=1']

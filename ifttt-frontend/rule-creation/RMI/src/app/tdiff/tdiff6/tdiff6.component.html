@@ -1,0 +1,291 @@
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="error-info" *ngIf="isError">Oops, we're experiencing some technical difficulties,<br> please report this to
+  the researchers.</div>
+
+<div class='buffer'></div>
+
+<div class="row timeline" *ngIf="(!isLoading) && (!isError)">
+  <div *ngIf="!PROGRAMNUMS" class="init-loading">Loading...</div>
+  <div id="instr"
+    *ngIf="PROGRAMNUMS && (urlParams['tutorial']=='false' || (urlParams['tutorial']=='true' && INTRO_DONE>2))"
+    style='margin-bottom:var(--big-box-margin)'>
+    <div class='instr'>
+      There is a total of
+      <span style="font-weight:bold; color:var(--main-color)">{{TIMELINES.length}} situation<span
+          *ngIf="TIMELINES.length>1">s</span></span> <span style="font-style:italic">(NOT
+        program<span *ngIf='TIMELINES.length>1'>s</span>)</span> <span
+        style="font-weight:bold; color:var(--main-color)">in which the
+        {{PROGRAMNUMS.length}} programs offer different outcomes.</span>
+    </div>
+    <div class='instr'>You should select the outcomes that are acceptable for each situation. Once you're done, <span
+        style="font-weight:bold">the interface will
+        show the programs that would achieve the acceptable outcomes at the bottom</span>.</div>
+  </div>
+
+  <div class="flowchart-root"
+    *ngIf="TIMELINES && TIMELINES.length > 0 && (urlParams['tutorial']!='true' || (urlParams['tutorial']=='true' && this.INTRO_DONE>=3))">
+    <div class="flowchart-big-box"
+      *ngFor="let thisTIMELINE of TIMELINES; first as firstSit; last as last; let tii=index;"
+      [ngClass]="{'no-margin-bottom': last, 'hide': urlParams['tutorial']=='true' && !firstSit && this.INTRO_DONE<4}">
+      <div class="flowchart-situation">
+        <div class="flowchart-column flowchart-device-column flowchart-float" style="background:transparent">
+          <div style="background:white">
+            <div class="flowchart-prog-label-locator1 flowchart-t-top">
+              <div class="situation-label situation-label-float">
+                <span class="flowchart-prog-label">
+                  Situation #{{tii+1}}:
+                </span>
+              </div>
+              <div class="flowchart-prog-label-locator1 flowchart-t-top">
+                <div class="device-missing-disclaimer disclaimer-float">
+                  If a device isn't here, it doesn't matter for this situation.
+                </div>
+              </div>
+            </div>
+            <div class="flowchart-bar-header"><span class="sign">1</span>The situation starts off...
+            </div>
+            <div class="flowchart-bar flowchart-bar-dev"
+              *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last"
+              [ngClass]="{'long-text':trimDevName(getStartDevState(thisTIMELINE, j)).length>25, 'not-last': !last}">
+              <mat-icon>
+                {{thisTIMELINE.sharedStates[0].icons[j]}}
+              </mat-icon>
+              {{trimDevName(getStartDevState(thisTIMELINE, j))}}:
+            </div>
+          </div>
+        </div>
+        <div class="flowchart-column-half flowchart-float">
+          <div class="flowchart-bar-header" style="margin-left:0.5em"> with __________,
+          </div>
+          <div class="flowchart-bar box flowchart-bar-dev-right" [ngClass]="{'not-last': !last}"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last">
+            <span class='flowchart-cap'>
+              {{showVal(thisTIMELINE.sharedStates[0].comps[j], thisTIMELINE.sharedStates[0].vals[j], true, getStartDevState(thisTIMELINE, j))}}
+            </span>
+          </div>
+        </div>
+        <div class="flowchart-column-fifth flowchart-float">
+          <div class="flowchart-bar-header" style="text-align:right">
+            <span class="sign">2</span>
+          </div>
+          <div class="flowchart-bar"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last">
+            <span class="midline">
+              <span class="flowchart-cap"></span>
+            </span>
+          </div>
+        </div>
+        <div class="flowchart-column flowchart-float" style="background:transparent;">
+          <div style="background:white">
+            <div class="flowchart-bar-header">
+              <span style="margin-left: 0.3em">and this happens.</span>
+              <span class="sign" style="visibility: hidden;">2</span>
+            </div>
+            <div class="flowchart-bar"
+              *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[1].devs, tii); first as first; last as last;"
+              [ngClass]="{'long-text':getTriggerIfDev(thisTIMELINE, j)[1].length>25,
+              'box':getTriggerIfDev(thisTIMELINE, j)[0]!='none'}">
+              <span class="midline" *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]=='none'">
+                <span class="flowchart-cap">
+                  <span *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]=='none'">
+                  </span>
+                </span>
+              </span>
+              <span *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]!='none'">
+                <span class="flowchart-cap" [ngClass]="{'long-text':getTriggerIfDev(thisTIMELINE, j)[1].length>25}">
+                  <span *ngIf="getTriggerIfDev(thisTIMELINE, j)[0]!='none'">
+                    {{getTriggerIfDev(thisTIMELINE, j)[1]}}<br>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flowchart-column-tiny flowchart-float">
+        <div class="flowchart-bar-header" style="text-align:right">
+          <span class="sign">3</span>
+        </div>
+        <div class="flowchart-bar"
+          *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last">
+          <span class="midline">
+            <span class="flowchart-cap"></span>
+            <div class="blue-right-triangle"></div>
+          </span>
+        </div>
+      </div>
+      <div class="flowchart-column-half flowchart-float">
+        <div class="flowchart-bar-header">
+          <span style="margin-left: 0.3em">The outcome is...</span>
+          <span class="sign" style="visibility: hidden;">3</span>
+        </div>
+        <div style="display:inline-block"
+          [style.height.px]="(getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii).length*50)"
+          style="width: 100%;border: 3px dashed gray; border-radius: 50px">
+          <mat-icon
+            [style.paddingTop.px]="((getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii).length-1)*50/2)"
+            [style.paddingBottom.px]="((getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii).length-1)*50/2)"
+            style="width: 100%; font-size:var(--bar-height);">
+            help_outline
+          </mat-icon>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class="flowchart-gap-placeholder flowchart-t-blank"></div>
+      </div>
+      <div class='row flowchart-outcome'
+        style="display:inherit; overflow:auto; border: 3px dashed gray; border-radius:50px; width:max-content; padding:0 20px; margin:auto">
+        <div class='row'>
+          <div class="flowchart-bar-header flowchart-gap-placeholder flowchart-t-blank"
+            style="font-size:25px; margin-top:0.5em; color:black">The programs offer these outcomes.
+            Select <span style="font-style:italic">all that are acceptable</span> in this situation:</div>
+        </div>
+        <div class="flowchart-column flowchart-device-column flowchart-float"
+          style="background:transparent; margin-right:2em">
+          <div class="flowchart-bar-header flowchart-bars-placeholder flowchart-t-blank"></div>
+          <div class="flowchart-bar flowchart-bar-dev flowchart-cap-gray"
+            *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.sharedStates[0].devs, tii); first as first; last as last"
+            [ngClass]="{'long-text':trimDevName(getStartDevState(thisTIMELINE, j)).length>25, 'not-last': !last}"
+            style="text-align:right; line-height:50px; border:none">
+            <mat-icon>
+              {{thisTIMELINE.sharedStates[0].icons[j]}}
+            </mat-icon>
+            {{trimDevName(getStartDevState(thisTIMELINE, j))}}:
+          </div>
+        </div>
+        <mat-selection-list #checkboxes (selectionChange)="getResultCheckbox(tii, checkboxes.selectedOptions.selected)"
+          class='popupcheckboxes' [(ngModel)]="thisTIMELINE.answer" style="width:min-content; display:inline-block">
+          <div class="flowchart-column flowchart-float"
+            *ngFor="let choice of thisTIMELINE.choices; let cc = index; first as firstDiff" style="margin-right:2em">
+            <!-- should be equivalent to <div *ngFor="let diffState of thisTIMELINE.diffStates; let base=index"> -->
+            <div class="flowchart-bar-header flowchart-bars-placeholder flowchart-t-blank" style="justify-content:left">
+              {{this.userDataService.convertNumStrToLetter(cc)}}.
+            </div>
+            <span>
+              <div class="flowchart-bar flowchart-t-gray" [ngClass]="{
+                    'not-last': !lastbar,
+                    'flowchart-cap-dif': stateIsDif(thisTIMELINE, j) && !thisTIMELINE.answer.includes(cc),
+                    'flowchart-cap-dif-selected': stateIsDif(thisTIMELINE, j) && thisTIMELINE.answer.includes(cc),
+                    'flowchart-cap-gray': !stateIsDif(thisTIMELINE, j)
+                  }"
+                *ngFor="let j of getDeviceIndexByCurrentMask(thisTIMELINE.diffStates[cc].devs, tii); last as lastbar">
+                <span class='flowchart-cap'
+                  [ngClass]="{'flowchart-cap-dif-highlight': stateIsDif(thisTIMELINE, j) && !thisTIMELINE.answer.includes(cc), 
+                    'flowchart-cap-dif-selected-highlight': stateIsDif(thisTIMELINE, j) && thisTIMELINE.answer.includes(cc)}">
+                  {{getFinalDevState(thisTIMELINE, cc, j)}}
+                </span>
+              </div>
+            </span>
+            <div class="flowchart-bar-header flowchart-bars-placeholder flowchart-t-blank" style="margin-top: 0.5em">
+              <mat-list-option checkboxPosition="before" class="checkbox" [value]="cc">
+                <span class="flowchart-bar-header" style="font-size:0.9vw; font-weight:bold;"
+                  [ngClass]="thisTIMELINE.answer.includes(cc) ? 'selected-input' : 'unselected-input'">
+                </span>
+              </mat-list-option>
+            </div>
+          </div>
+        </mat-selection-list>
+        <div id="toggle" style="vertical-align: bottom; display: inline-block; margin-bottom:15px;">
+          <div
+            style="text-align:left; font-size:20px; line-height:1.5; font-weight:bold; vertical-align: top; padding-bottom:0.5em"
+            [ngClass]="TOGGLES[tii] ? 'selected-input' : 'unselected-input'">
+            None of these<br>
+            outcomes are<br>
+            acceptable
+          </div>
+          <div class="flowchart-bar-header flowchart-bars-placeholder flowchart-t-blank"
+            style="width: 100%; height: auto; text-align:right">
+            <mat-slide-toggle [(ngModel)]="TOGGLES[tii]" (change)="getResultToggle(tii)"
+              style="font-size:0.9vw; font-weight:bold;">
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+      <div class='row' style='text-align:right' *ngIf="urlParams['tutorial']=='true'">
+        <button mat-raised-button [disabled]="!TOGGLES[tii] && thisTIMELINE.answer.length==0" (click)="checkAnswer(tii)"
+          class="save-button">Check my answer!</button>
+        <div style="color:gray; font-size:20px">(Not available in the real study)</div>
+      </div>
+    </div>
+
+    <div id="results" style="background: aliceblue; border-radius: 10px; margin: 5em 5em 0;"
+      *ngIf="allQuestionsAnswered() && (urlParams['tutorial']!='true' || (urlParams['tutorial']=='true' && INTRO_DONE>4))">
+      <div style="padding: 2em;">
+        <div>
+          <div class="flowchart-prog-label" style="color:var(--main-color)">Based on your response...</div>
+          <div *ngIf="PROGRAMNUMS.length==0 || noPrgmsWork()">
+            <!-- OTHERPRGMS[0] is the prgm w/ the highest percentage (except 100%) because they're sorted -->
+            <div style="font-size: 1.5em">None of the programs match any of the acceptable outcomes.</div>
+          </div>
+          <div *ngIf="PROGRAMNUMS.length>0 && !noPrgmsWork()">
+            <div class='result-instr' *ngIf="IDEALPRGMS.length==0" style="font-weight:bold; color:black">
+              None of the programs could match an acceptable outcome for <span style="font-style:italic">every
+                situation</span> above.
+            </div>
+            <div id="yay100" *ngIf="IDEALPRGMS.length>0">
+              <div class='result-instr' style="font-weight:bold">
+                These programs matched an outcome in <span style="font-style:italic">every situation</span> above:
+              </div>
+              <div class="result-max-tally">
+                <span *ngFor="let pnum of IDEALPRGMS; last as lastMax">
+                  {{getProgramNameForTally(pnum[0])}}<span *ngIf="!lastMax">, </span>
+                </span>
+              </div>
+            </div>
+            <div id="therest" *ngIf="OTHERPRGMS.length != 0" style="margin-top:5em">
+              <div class='result-instr' style="font-weight:normal">
+                The rest of the programs:
+              </div>
+              <div class="result-other-tally">
+                <span *ngFor="let pnum of OTHERPRGMS; first as firstPrgm; last as lastPrgm">
+                  {{getProgramNameForTally(pnum[0])}} <span style="color:gray">({{getPercentage(pnum[0])}}%<span
+                      *ngIf="firstPrgm"> of situations above</span><span *ngIf="getPercentage(pnum[0])>0">, from <span
+                        *ngIf="firstPrgm">situations </span>#{{PROGRAMCHOICERESULTS[pnum[0]]}}</span>)</span><span
+                    *ngIf="!lastPrgm">, </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tutorial-reminder" *ngIf="urlParams['tutorial']=='true'">
+  <div *ngIf="this.INTRO_DONE == 1 && !this.tutorialStageComplete(1)">
+    Click on "Task instructions" to see what the example task asks you to do.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 2 && !this.tutorialStageComplete(2)">
+    To continue, read the task instructions and then close it.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 3 && !this.tutorialStageComplete(3)">
+    To continue, select the acceptable outcomes for Situation #1, and then click on the "Check my
+    answer!" button.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 4 && !this.SECOND_ANSWERED">
+    To continue, select the acceptable outcomes for Situation #2, and then click on the "Check my
+    answer!" button.
+  </div>
+  <div *ngIf="this.INTRO_DONE == 5 && !this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    To continue, refer to the results based on your responses, and submit the answer at the bottom of the page.
+  </div>
+  <div *ngIf="this.INTRO_DONE > 5 && this.userDataService.SUBMIT_ATTEMPT_CORRECT">
+    <span style="font-weight:bold; color:var(--main-color)">Make sure to scroll all the way up to see the rest of the
+      tutorial.</span><br><br>Once the tutorial concludes, you may close this tab and return to the study in the
+    previous tab.
+  </div>
+</div>
+
+<div id="scroll-anchor">
+</div>
+
+<div class="row">
+  <app-save-bar class="save-select-container" *ngIf="PRGMNUMSDEFINED" [PROGRAMNUMS_SETTER]="PROGRAMNUMS"
+    [PROGRAMS_SETTER]="PROGRAMS" [URL_PARAMS]="urlParams" [SPECIAL_PARAMS]="tutorialParams"
+    [SHOW_PRGMS_SUBMIT]="allQuestionsAnswered()">
+  </app-save-bar>
+</div>

@@ -1,0 +1,5 @@
+task 6: 1) p19_6 vs. 2) p38_6
+unique_sps1:
+['smart_refrigerator.openclose_door_position=1 should never be active']
+unique_sps2:
+[]

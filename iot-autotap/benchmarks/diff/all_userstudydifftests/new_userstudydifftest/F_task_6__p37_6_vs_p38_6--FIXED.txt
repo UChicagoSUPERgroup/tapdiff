@@ -1,0 +1,9 @@
+task 6: 1) p37_6 vs. 2) p38_6
+tap_list_1:
+[{'trigger': 'location_sensor.kitchen_anyone=false', 'action': 'smart_refrigerator.openclose_door_position=false', 'condition': []}]
+tap_list_2:
+[{'trigger': 'smart_refrigerator.openclose_door_position=true', 'action': 'smart_refrigerator.openclose_door_position=false', 'condition': ['smart_refrigerator.openclose_door_position=true', 'smart_refrigerator.openclose_door_position=false']}]
+unique_sps1:
+['location_sensor.kitchen_anyone=0 should never happen when smart_refrigerator.openclose_door_position=1']
+unique_sps2:
+[]

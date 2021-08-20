@@ -1,0 +1,5 @@
+task 14: 1) p10_14 vs. 2) p50_14
+unique_sps1:
+['clock.is_it_daytime_time=0 should never happen when front_door_lock.lockunlock_setting=0', 'clock.is_it_daytime_time=0 should never happen when front_door_lock.lockunlock_setting=1']
+unique_sps2:
+['fitbit.sleep_sensor_status=0 should never happen when front_door_lock.lockunlock_setting=0']

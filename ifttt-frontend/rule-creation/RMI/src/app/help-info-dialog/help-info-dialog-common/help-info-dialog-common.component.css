@@ -1,0 +1,17 @@
+@import "../../../assets/github-markdown.css";
+
+.dialog-content{
+  border-radius: 10px;
+  border-color: aqua;
+  border-style: dashed;
+  margin: 12px;
+}
+
+.ok-button {
+  border-radius: 3px;
+  background: rgb(241, 241, 241);
+}
+
+p {
+  font-size: 2em;
+}

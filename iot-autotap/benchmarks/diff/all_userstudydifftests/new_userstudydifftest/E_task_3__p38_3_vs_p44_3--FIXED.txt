@@ -1,0 +1,9 @@
+task 3: 1) p38_3 vs. 2) p44_3
+tap_list_1:
+[]
+tap_list_2:
+[{'action': 'smart_oven.lockunlock_setting=true', 'trigger': 'location_sensor.kitchen_bobbie=true', 'condition': []}]
+For buchi_ts1: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[]
+For buchi_ts2: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+['location_sensor.kitchen_bobbie=1 should never be active while smart_oven.lockunlock_setting=0']

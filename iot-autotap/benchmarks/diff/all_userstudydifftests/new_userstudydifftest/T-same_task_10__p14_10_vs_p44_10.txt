@@ -1,0 +1,9 @@
+task 10: 1) p14_10 vs. 2) p44_10
+tap_list_1:
+[{'trigger': 'bathroom_window.openclose_curtains_position=true', 'action': 'bathroom_window.openclose_curtains_position=false', 'condition': []}]
+tap_list_2:
+[{'trigger': 'bathroom_window.openclose_curtains_position=true', 'action': 'bathroom_window.openclose_curtains_position=false', 'condition': []}]
+unique_sps1:
+[]
+unique_sps2:
+[]
